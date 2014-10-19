@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
@@ -14,22 +9,26 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
 @Embeddable
 public class AudioFormatPK implements Serializable {
+
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 3)
     @Column(name = "AUDIO_LANGUAGE")
     private String audioLanguage;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 3)
     @Column(name = "SUBTITLE_LANGUAGE")
     private String subtitleLanguage;
 
     public AudioFormatPK() {
+        super();
     }
 
     public AudioFormatPK(String audioLanguage, String subtitleLanguage) {
@@ -38,7 +37,8 @@ public class AudioFormatPK implements Serializable {
     }
 
     public String getAudioLanguage() {
-        return audioLanguage;
+
+        return (this.audioLanguage);
     }
 
     public void setAudioLanguage(String audioLanguage) {
@@ -46,40 +46,59 @@ public class AudioFormatPK implements Serializable {
     }
 
     public String getSubtitleLanguage() {
-        return subtitleLanguage;
+
+        return (this.subtitleLanguage);
     }
 
     public void setSubtitleLanguage(String subtitleLanguage) {
         this.subtitleLanguage = subtitleLanguage;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (audioLanguage != null ? audioLanguage.hashCode() : 0);
-        hash += (subtitleLanguage != null ? subtitleLanguage.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getAudioLanguage() != null)
+                ? this.getAudioLanguage().hashCode() : 0);
+        hash += ((this.getSubtitleLanguage() != null)
+                ? this.getSubtitleLanguage().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof AudioFormatPK)) {
-            return false;
+
+            return (false);
         }
+
         AudioFormatPK other = (AudioFormatPK) object;
-        if ((this.audioLanguage == null && other.audioLanguage != null) || (this.audioLanguage != null && !this.audioLanguage.equals(other.audioLanguage))) {
-            return false;
+        if (((this.getAudioLanguage() == null)
+                && (other.getAudioLanguage() != null))
+                || ((this.getAudioLanguage() != null)
+                && !(this.getAudioLanguage().equals(other.getAudioLanguage())))) {
+
+            return (false);
         }
-        if ((this.subtitleLanguage == null && other.subtitleLanguage != null) || (this.subtitleLanguage != null && !this.subtitleLanguage.equals(other.subtitleLanguage))) {
-            return false;
+
+        if (((this.getSubtitleLanguage() == null)
+                && (other.getSubtitleLanguage() != null))
+                || ((this.getSubtitleLanguage() != null)
+                && !(this.getSubtitleLanguage().equals(
+                        other.getSubtitleLanguage())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.AudioFormatPK[ audioLanguage=" + audioLanguage + ", subtitleLanguage=" + subtitleLanguage + " ]";
+
+        return ("co.edu.udea.profarq.labuno.model.entity.AudioFormatPK[ audioLanguage="
+                + this.audioLanguage + ", subtitleLanguage="
+                + this.subtitleLanguage + " ]");
     }
-    
 }

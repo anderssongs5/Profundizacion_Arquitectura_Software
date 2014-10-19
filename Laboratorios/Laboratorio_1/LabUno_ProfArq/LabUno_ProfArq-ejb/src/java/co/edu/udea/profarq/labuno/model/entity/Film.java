@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
@@ -28,47 +23,58 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "FILM")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Film.findAll", query = "SELECT f FROM Film f"),
-    @NamedQuery(name = "Film.findByTitle", query = "SELECT f FROM Film f WHERE f.filmPK.title = :title"),
-    @NamedQuery(name = "Film.findByReleaseDate", query = "SELECT f FROM Film f WHERE f.filmPK.releaseDate = :releaseDate"),
-    @NamedQuery(name = "Film.findBySypnosis", query = "SELECT f FROM Film f WHERE f.sypnosis = :sypnosis"),
-    @NamedQuery(name = "Film.findByPseudonym", query = "SELECT f FROM Film f WHERE f.pseudonym = :pseudonym"),
-    @NamedQuery(name = "Film.findByDuration", query = "SELECT f FROM Film f WHERE f.duration = :duration"),
-    @NamedQuery(name = "Film.findByImage", query = "SELECT f FROM Film f WHERE f.image = :image")})
+    @NamedQuery(name = "Film.findAll",
+            query = "SELECT f FROM Film f"),
+    @NamedQuery(name = "Film.findByTitle",
+            query = "SELECT f FROM Film f WHERE f.filmPK.title = :title"),
+    @NamedQuery(name = "Film.findByReleaseDate",
+            query = "SELECT f FROM Film f WHERE f.filmPK.releaseDate = :releaseDate"),
+    @NamedQuery(name = "Film.findBySypnosis",
+            query = "SELECT f FROM Film f WHERE f.sypnosis = :sypnosis"),
+    @NamedQuery(name = "Film.findByPseudonym",
+            query = "SELECT f FROM Film f WHERE f.pseudonym = :pseudonym"),
+    @NamedQuery(name = "Film.findByDuration",
+            query = "SELECT f FROM Film f WHERE f.duration = :duration"),
+    @NamedQuery(name = "Film.findByImage",
+            query = "SELECT f FROM Film f WHERE f.image = :image")})
+@Table(name = "FILM")
+@XmlRootElement()
 public class Film implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
+    @EmbeddedId()
     protected FilmPK filmPK;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 255)
     @Column(name = "SYPNOSIS")
     private String sypnosis;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 150)
     @Column(name = "PSEUDONYM")
     private String pseudonym;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Column(name = "DURATION")
     private long duration;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 55)
     @Column(name = "IMAGE")
     private String image;
     @JoinTable(name = "GENRE_BY_FILM", joinColumns = {
         @JoinColumn(name = "FILM_TITLE", referencedColumnName = "TITLE"),
-        @JoinColumn(name = "FILM_RELEASE_DATE", referencedColumnName = "RELEASE_DATE")}, inverseJoinColumns = {
-        @JoinColumn(name = "GENRE", referencedColumnName = "GENRE")})
-    @ManyToMany
+        @JoinColumn(name = "FILM_RELEASE_DATE",
+                referencedColumnName = "RELEASE_DATE")}, inverseJoinColumns = {
+                @JoinColumn(name = "GENRE", referencedColumnName = "GENRE")})
+    @ManyToMany()
     private List<Genre> genreList;
     @ManyToMany(mappedBy = "filmList")
     private List<Director> directorList;
@@ -82,13 +88,15 @@ public class Film implements Serializable {
     private Classification classification;
 
     public Film() {
+        super();
     }
 
     public Film(FilmPK filmPK) {
         this.filmPK = filmPK;
     }
 
-    public Film(FilmPK filmPK, String sypnosis, String pseudonym, long duration, String image) {
+    public Film(FilmPK filmPK, String sypnosis, String pseudonym,
+            long duration, String image) {
         this.filmPK = filmPK;
         this.sypnosis = sypnosis;
         this.pseudonym = pseudonym;
@@ -101,7 +109,8 @@ public class Film implements Serializable {
     }
 
     public FilmPK getFilmPK() {
-        return filmPK;
+
+        return (this.filmPK);
     }
 
     public void setFilmPK(FilmPK filmPK) {
@@ -109,7 +118,8 @@ public class Film implements Serializable {
     }
 
     public String getSypnosis() {
-        return sypnosis;
+
+        return (this.sypnosis);
     }
 
     public void setSypnosis(String sypnosis) {
@@ -117,7 +127,8 @@ public class Film implements Serializable {
     }
 
     public String getPseudonym() {
-        return pseudonym;
+
+        return (this.pseudonym);
     }
 
     public void setPseudonym(String pseudonym) {
@@ -125,7 +136,8 @@ public class Film implements Serializable {
     }
 
     public long getDuration() {
-        return duration;
+
+        return (this.duration);
     }
 
     public void setDuration(long duration) {
@@ -133,34 +145,38 @@ public class Film implements Serializable {
     }
 
     public String getImage() {
-        return image;
+
+        return (this.image);
     }
 
     public void setImage(String image) {
         this.image = image;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Genre> getGenreList() {
-        return genreList;
+
+        return (this.genreList);
     }
 
     public void setGenreList(List<Genre> genreList) {
         this.genreList = genreList;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Director> getDirectorList() {
-        return directorList;
+
+        return (this.directorList);
     }
 
     public void setDirectorList(List<Director> directorList) {
         this.directorList = directorList;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Billboard> getBillboardList() {
-        return billboardList;
+
+        return (this.billboardList);
     }
 
     public void setBillboardList(List<Billboard> billboardList) {
@@ -168,7 +184,8 @@ public class Film implements Serializable {
     }
 
     public Country getCountry() {
-        return country;
+
+        return (this.country);
     }
 
     public void setCountry(Country country) {
@@ -176,36 +193,45 @@ public class Film implements Serializable {
     }
 
     public Classification getClassification() {
-        return classification;
+
+        return (this.classification);
     }
 
     public void setClassification(Classification classification) {
         this.classification = classification;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (filmPK != null ? filmPK.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getFilmPK() != null) ? this.getFilmPK().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Film)) {
-            return false;
+
+            return (false);
         }
+
         Film other = (Film) object;
-        if ((this.filmPK == null && other.filmPK != null) || (this.filmPK != null && !this.filmPK.equals(other.filmPK))) {
-            return false;
+        if (((this.getFilmPK() == null) && (other.getFilmPK() != null))
+                || ((this.getFilmPK() != null)
+                && !(this.getFilmPK().equals(other.getFilmPK())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.Film[ filmPK=" + filmPK + " ]";
+
+        return ("co.edu.udea.profarq.labuno.model.entity.Film[ filmPK="
+                + this.filmPK + " ]");
     }
-    
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
@@ -14,22 +9,26 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
-@Embeddable
+@Embeddable()
 public class VideoFormatPK implements Serializable {
+
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 2)
     @Column(name = "DIMENSION")
     private String dimension;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 15)
     @Column(name = "MEAN")
     private String mean;
 
     public VideoFormatPK() {
+        super();
     }
 
     public VideoFormatPK(String dimension, String mean) {
@@ -38,7 +37,8 @@ public class VideoFormatPK implements Serializable {
     }
 
     public String getDimension() {
-        return dimension;
+
+        return (this.dimension);
     }
 
     public void setDimension(String dimension) {
@@ -46,40 +46,54 @@ public class VideoFormatPK implements Serializable {
     }
 
     public String getMean() {
-        return mean;
+
+        return (this.mean);
     }
 
     public void setMean(String mean) {
         this.mean = mean;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (dimension != null ? dimension.hashCode() : 0);
-        hash += (mean != null ? mean.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getDimension() != null)
+                ? this.getDimension().hashCode() : 0);
+        hash += ((this.getMean() != null) ? this.getMean().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof VideoFormatPK)) {
-            return false;
+
+            return (false);
         }
+
         VideoFormatPK other = (VideoFormatPK) object;
-        if ((this.dimension == null && other.dimension != null) || (this.dimension != null && !this.dimension.equals(other.dimension))) {
-            return false;
+        if (((this.getDimension() == null) && (other.getDimension() != null))
+                || ((this.getDimension() != null)
+                && !(this.getDimension().equals(other.getDimension())))) {
+
+            return (false);
         }
-        if ((this.mean == null && other.mean != null) || (this.mean != null && !this.mean.equals(other.mean))) {
-            return false;
+
+        if (((this.getMean() == null) && (other.getMean() != null))
+                || ((this.getMean() != null)
+                && !(this.getMean().equals(other.getMean())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.VideoFormatPK[ dimension=" + dimension + ", mean=" + mean + " ]";
+
+        return ("co.edu.udea.profarq.labuno.model.entity.VideoFormatPK[ dimension="
+                + this.dimension + ", mean=" + this.mean + " ]");
     }
-    
 }

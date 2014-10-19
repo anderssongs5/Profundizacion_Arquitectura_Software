@@ -7,15 +7,37 @@
       xmlns:p="http://primefaces.org/ui" >
 
     <h:head>
-        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-        <title>PrimeFaces</title>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+        <title>Laboratorio 1</title>
     </h:head>
 
     <h:body>
         <f:view>
             <h:form>
-                <p:selectOneMenu id="videoFormatSelectOneMenu" >
-                    <f:selectItems value="#{videoFormatManagedBean.videoFormatSelectItems}" ></f:selectItems>
+                <p:selectOneMenu id="videoFormatsSelectOneMenu" >
+                    <f:selectItems
+                        value="#{videoFormatManagedBean.videoFormatsSelectItems}" >
+                    </f:selectItems>
+                </p:selectOneMenu>
+                <p:selectOneMenu id="citiesSelectOneMenu" >
+                    <f:selectItems
+                        value="#{cityManagedBean.citiesSelectItems}" >
+                    </f:selectItems>
+                </p:selectOneMenu>
+                <p:selectOneMenu id="classificationsSelectOneMenu" >
+                    <f:selectItems
+                        value="#{classificationManagedBean.classificationsSelectItems}" >
+                    </f:selectItems>
+                </p:selectOneMenu>
+                <p:selectOneMenu id="countriesSelectOneMenu" >
+                    <f:selectItems
+                        value="#{countryManagedBean.contriesSelectItems}" >
+                    </f:selectItems>
+                </p:selectOneMenu>
+                <p:selectOneMenu id="languagesSelectOneMenu" >
+                    <f:selectItems
+                        value="#{languageManagedBean.languagesSelectItems}" >
+                    </f:selectItems>
                 </p:selectOneMenu>
             </h:form>
         </f:view>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
@@ -23,25 +18,31 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "CITY")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "City.findAll", query = "SELECT c FROM City c"),
-    @NamedQuery(name = "City.findByCode", query = "SELECT c FROM City c WHERE c.code = :code"),
-    @NamedQuery(name = "City.findByCity", query = "SELECT c FROM City c WHERE c.city = :city")})
+    @NamedQuery(name = "City.findAll",
+            query = "SELECT c FROM City c"),
+    @NamedQuery(name = "City.findByCode",
+            query = "SELECT c FROM City c WHERE c.code = :code"),
+    @NamedQuery(name = "City.findByCity",
+            query = "SELECT c FROM City c WHERE c.city = :city")})
+@Table(name = "CITY")
+@XmlRootElement()
 public class City implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Id
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 5)
     @Column(name = "CODE")
     private String code;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 35)
     @Column(name = "CITY")
     private String city;
@@ -49,6 +50,7 @@ public class City implements Serializable {
     private List<Theater> theaterList;
 
     public City() {
+        super();
     }
 
     public City(String code) {
@@ -61,7 +63,8 @@ public class City implements Serializable {
     }
 
     public String getCode() {
-        return code;
+
+        return (this.code);
     }
 
     public void setCode(String code) {
@@ -69,45 +72,55 @@ public class City implements Serializable {
     }
 
     public String getCity() {
-        return city;
+
+        return (this.city);
     }
 
     public void setCity(String city) {
         this.city = city;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Theater> getTheaterList() {
-        return theaterList;
+
+        return (this.theaterList);
     }
 
     public void setTheaterList(List<Theater> theaterList) {
         this.theaterList = theaterList;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (code != null ? code.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getCode() != null) ? this.getCode().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof City)) {
-            return false;
+
+            return (false);
         }
+
         City other = (City) object;
-        if ((this.code == null && other.code != null) || (this.code != null && !this.code.equals(other.code))) {
-            return false;
+        if (((this.getCode() == null) && (other.getCode() != null))
+                || ((this.getCode() != null)
+                && !(this.getCode().equals(other.getCode())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.City[ code=" + code + " ]";
+
+        return ("co.edu.udea.profarq.labuno.model.entity.City[ code="
+                + this.code + " ]");
     }
-    
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
@@ -24,30 +19,38 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "DIRECTOR")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Director.findAll", query = "SELECT d FROM Director d"),
-    @NamedQuery(name = "Director.findByFullName", query = "SELECT d FROM Director d WHERE d.fullName = :fullName")})
+    @NamedQuery(name = "Director.findAll",
+            query = "SELECT d FROM Director d"),
+    @NamedQuery(name = "Director.findByFullName",
+            query = "SELECT d FROM Director d WHERE d.fullName = :fullName")})
+@Table(name = "DIRECTOR")
+@XmlRootElement()
 public class Director implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Id
+    @Id()
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 55)
     @Column(name = "FULL_NAME")
     private String fullName;
     @JoinTable(name = "FILMS_DIRECTORS", joinColumns = {
-        @JoinColumn(name = "DIRECTOR_FULL_NAME", referencedColumnName = "FULL_NAME")}, inverseJoinColumns = {
-        @JoinColumn(name = "FILM_TITLE", referencedColumnName = "TITLE"),
-        @JoinColumn(name = "FILM_RELEASE_DATE", referencedColumnName = "RELEASE_DATE")})
-    @ManyToMany
+        @JoinColumn(name = "DIRECTOR_FULL_NAME",
+                referencedColumnName = "FULL_NAME")}, inverseJoinColumns = {
+                @JoinColumn(name = "FILM_TITLE", referencedColumnName = "TITLE"),
+                @JoinColumn(name = "FILM_RELEASE_DATE",
+                        referencedColumnName = "RELEASE_DATE")})
+    @ManyToMany()
     private List<Film> filmList;
 
     public Director() {
+        super();
     }
 
     public Director(String fullName) {
@@ -55,45 +58,56 @@ public class Director implements Serializable {
     }
 
     public String getFullName() {
-        return fullName;
+
+        return (this.fullName);
     }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Film> getFilmList() {
-        return filmList;
+
+        return (this.filmList);
     }
 
     public void setFilmList(List<Film> filmList) {
         this.filmList = filmList;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (fullName != null ? fullName.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getFullName() != null)
+                ? this.getFullName().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Director)) {
-            return false;
+
+            return (false);
         }
+
         Director other = (Director) object;
-        if ((this.fullName == null && other.fullName != null) || (this.fullName != null && !this.fullName.equals(other.fullName))) {
-            return false;
+        if (((this.getFullName() == null) && (other.getFullName() != null))
+                || ((this.getFullName() != null)
+                && !(this.getFullName().equals(other.getFullName())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.Director[ fullName=" + fullName + " ]";
+
+        return ("co.edu.udea.profarq.labuno.model.entity.Director[ fullName="
+                + this.fullName + " ]");
     }
-    
 }

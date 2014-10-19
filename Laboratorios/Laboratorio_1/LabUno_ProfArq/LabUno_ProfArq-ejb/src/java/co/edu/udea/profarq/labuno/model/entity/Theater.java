@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
@@ -25,32 +20,41 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "THEATER")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Theater.findAll", query = "SELECT t FROM Theater t"),
-    @NamedQuery(name = "Theater.findByCityCode", query = "SELECT t FROM Theater t WHERE t.theaterPK.cityCode = :cityCode"),
-    @NamedQuery(name = "Theater.findByTheater", query = "SELECT t FROM Theater t WHERE t.theaterPK.theater = :theater"),
-    @NamedQuery(name = "Theater.findByAddress", query = "SELECT t FROM Theater t WHERE t.address = :address")})
+    @NamedQuery(name = "Theater.findAll",
+            query = "SELECT t FROM Theater t"),
+    @NamedQuery(name = "Theater.findByCityCode",
+            query = "SELECT t FROM Theater t WHERE t.theaterPK.cityCode = :cityCode"),
+    @NamedQuery(name = "Theater.findByTheater",
+            query = "SELECT t FROM Theater t WHERE t.theaterPK.theater = :theater"),
+    @NamedQuery(name = "Theater.findByAddress",
+            query = "SELECT t FROM Theater t WHERE t.address = :address")})
+@Table(name = "THEATER")
+@XmlRootElement()
 public class Theater implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
+    @EmbeddedId()
     protected TheaterPK theaterPK;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 55)
     @Column(name = "ADDRESS")
     private String address;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "theater1")
     private List<Billboard> billboardList;
-    @JoinColumn(name = "CITY_CODE", referencedColumnName = "CODE", insertable = false, updatable = false)
+    @JoinColumn(name = "CITY_CODE", referencedColumnName = "CODE",
+            insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private City city;
 
     public Theater() {
+        super();
     }
 
     public Theater(TheaterPK theaterPK) {
@@ -67,7 +71,8 @@ public class Theater implements Serializable {
     }
 
     public TheaterPK getTheaterPK() {
-        return theaterPK;
+
+        return (this.theaterPK);
     }
 
     public void setTheaterPK(TheaterPK theaterPK) {
@@ -75,16 +80,18 @@ public class Theater implements Serializable {
     }
 
     public String getAddress() {
-        return address;
+
+        return (this.address);
     }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Billboard> getBillboardList() {
-        return billboardList;
+
+        return (this.billboardList);
     }
 
     public void setBillboardList(List<Billboard> billboardList) {
@@ -92,36 +99,46 @@ public class Theater implements Serializable {
     }
 
     public City getCity() {
-        return city;
+
+        return (this.city);
     }
 
     public void setCity(City city) {
         this.city = city;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (theaterPK != null ? theaterPK.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getTheaterPK() != null)
+                ? this.getTheaterPK().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Theater)) {
-            return false;
+
+            return (false);
         }
+
         Theater other = (Theater) object;
-        if ((this.theaterPK == null && other.theaterPK != null) || (this.theaterPK != null && !this.theaterPK.equals(other.theaterPK))) {
-            return false;
+        if (((this.getTheaterPK() == null) && (other.getTheaterPK() != null))
+                || ((this.getTheaterPK() != null)
+                && !(this.getTheaterPK().equals(other.getTheaterPK())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.Theater[ theaterPK=" + theaterPK + " ]";
+
+        return ("co.edu.udea.profarq.labuno.model.entity.Theater[ theaterPK="
+                + this.theaterPK + " ]");
     }
-    
 }

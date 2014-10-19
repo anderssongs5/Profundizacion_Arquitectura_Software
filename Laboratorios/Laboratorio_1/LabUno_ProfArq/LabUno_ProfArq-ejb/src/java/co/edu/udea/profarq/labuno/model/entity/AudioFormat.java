@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
@@ -23,33 +18,43 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "AUDIO_FORMAT")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "AudioFormat.findAll", query = "SELECT a FROM AudioFormat a"),
-    @NamedQuery(name = "AudioFormat.findByAudioLanguage", query = "SELECT a FROM AudioFormat a WHERE a.audioFormatPK.audioLanguage = :audioLanguage"),
-    @NamedQuery(name = "AudioFormat.findBySubtitleLanguage", query = "SELECT a FROM AudioFormat a WHERE a.audioFormatPK.subtitleLanguage = :subtitleLanguage"),
-    @NamedQuery(name = "AudioFormat.findByDescription", query = "SELECT a FROM AudioFormat a WHERE a.description = :description")})
+    @NamedQuery(name = "AudioFormat.findAll",
+            query = "SELECT a FROM AudioFormat a"),
+    @NamedQuery(name = "AudioFormat.findByAudioLanguage",
+            query = "SELECT a FROM AudioFormat a WHERE a.audioFormatPK.audioLanguage = :audioLanguage"),
+    @NamedQuery(name = "AudioFormat.findBySubtitleLanguage",
+            query = "SELECT a FROM AudioFormat a WHERE a.audioFormatPK.subtitleLanguage = :subtitleLanguage"),
+    @NamedQuery(name = "AudioFormat.findByDescription",
+            query = "SELECT a FROM AudioFormat a WHERE a.description = :description")})
+@Table(name = "AUDIO_FORMAT")
+@XmlRootElement()
 public class AudioFormat implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
+    @EmbeddedId()
     protected AudioFormatPK audioFormatPK;
     @Size(max = 255)
     @Column(name = "DESCRIPTION")
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "audioFormat")
     private List<Billboard> billboardList;
-    @JoinColumn(name = "SUBTITLE_LANGUAGE", referencedColumnName = "ISO_CODE", insertable = false, updatable = false)
+    @JoinColumn(name = "SUBTITLE_LANGUAGE", referencedColumnName = "ISO_CODE",
+            insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Languages languages;
-    @JoinColumn(name = "AUDIO_LANGUAGE", referencedColumnName = "ISO_CODE", insertable = false, updatable = false)
+    @JoinColumn(name = "AUDIO_LANGUAGE", referencedColumnName = "ISO_CODE",
+            insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Languages languages1;
 
     public AudioFormat() {
+        super();
     }
 
     public AudioFormat(AudioFormatPK audioFormatPK) {
@@ -61,7 +66,8 @@ public class AudioFormat implements Serializable {
     }
 
     public AudioFormatPK getAudioFormatPK() {
-        return audioFormatPK;
+
+        return (this.audioFormatPK);
     }
 
     public void setAudioFormatPK(AudioFormatPK audioFormatPK) {
@@ -69,16 +75,18 @@ public class AudioFormat implements Serializable {
     }
 
     public String getDescription() {
-        return description;
+
+        return (this.description);
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Billboard> getBillboardList() {
-        return billboardList;
+
+        return (this.billboardList);
     }
 
     public void setBillboardList(List<Billboard> billboardList) {
@@ -86,7 +94,8 @@ public class AudioFormat implements Serializable {
     }
 
     public Languages getLanguages() {
-        return languages;
+
+        return (this.languages);
     }
 
     public void setLanguages(Languages languages) {
@@ -94,36 +103,48 @@ public class AudioFormat implements Serializable {
     }
 
     public Languages getLanguages1() {
-        return languages1;
+
+        return (this.languages1);
     }
 
     public void setLanguages1(Languages languages1) {
         this.languages1 = languages1;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (audioFormatPK != null ? audioFormatPK.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getAudioFormatPK() != null)
+                ? this.getAudioFormatPK().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof AudioFormat)) {
-            return false;
+
+            return (false);
         }
+
         AudioFormat other = (AudioFormat) object;
-        if ((this.audioFormatPK == null && other.audioFormatPK != null) || (this.audioFormatPK != null && !this.audioFormatPK.equals(other.audioFormatPK))) {
-            return false;
+        if (((this.getAudioFormatPK() == null)
+                && (other.getAudioFormatPK() != null))
+                || ((this.getAudioFormatPK() != null)
+                && !(this.getAudioFormatPK().equals(
+                        other.getAudioFormatPK())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.AudioFormat[ audioFormatPK=" + audioFormatPK + " ]";
+
+        return ("co.edu.udea.profarq.labuno.model.entity.AudioFormat[ audioFormatPK="
+                + this.audioFormatPK + " ]");
     }
-    
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
@@ -23,25 +18,31 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "LANGUAGES")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Languages.findAll", query = "SELECT l FROM Languages l"),
-    @NamedQuery(name = "Languages.findByIsoCode", query = "SELECT l FROM Languages l WHERE l.isoCode = :isoCode"),
-    @NamedQuery(name = "Languages.findByLanguageName", query = "SELECT l FROM Languages l WHERE l.languageName = :languageName")})
+    @NamedQuery(name = "Languages.findAll",
+            query = "SELECT l FROM Languages l"),
+    @NamedQuery(name = "Languages.findByIsoCode",
+            query = "SELECT l FROM Languages l WHERE l.isoCode = :isoCode"),
+    @NamedQuery(name = "Languages.findByLanguageName",
+            query = "SELECT l FROM Languages l WHERE l.languageName = :languageName")})
+@Table(name = "LANGUAGES")
+@XmlRootElement()
 public class Languages implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Id
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 3)
     @Column(name = "ISO_CODE")
     private String isoCode;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 25)
     @Column(name = "LANGUAGE_NAME")
     private String languageName;
@@ -51,6 +52,7 @@ public class Languages implements Serializable {
     private List<AudioFormat> audioFormatList1;
 
     public Languages() {
+        super();
     }
 
     public Languages(String isoCode) {
@@ -63,7 +65,8 @@ public class Languages implements Serializable {
     }
 
     public String getIsoCode() {
-        return isoCode;
+
+        return (this.isoCode);
     }
 
     public void setIsoCode(String isoCode) {
@@ -71,54 +74,66 @@ public class Languages implements Serializable {
     }
 
     public String getLanguageName() {
-        return languageName;
+
+        return (this.languageName);
     }
 
     public void setLanguageName(String languageName) {
         this.languageName = languageName;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<AudioFormat> getAudioFormatList() {
-        return audioFormatList;
+
+        return (this.audioFormatList);
     }
 
     public void setAudioFormatList(List<AudioFormat> audioFormatList) {
         this.audioFormatList = audioFormatList;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<AudioFormat> getAudioFormatList1() {
-        return audioFormatList1;
+
+        return (this.audioFormatList1);
     }
 
     public void setAudioFormatList1(List<AudioFormat> audioFormatList1) {
         this.audioFormatList1 = audioFormatList1;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (isoCode != null ? isoCode.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getIsoCode() != null)
+                ? this.getIsoCode().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Languages)) {
-            return false;
+
+            return (false);
         }
+
         Languages other = (Languages) object;
-        if ((this.isoCode == null && other.isoCode != null) || (this.isoCode != null && !this.isoCode.equals(other.isoCode))) {
-            return false;
+        if (((this.getIsoCode() == null) && (other.getIsoCode() != null))
+                || ((this.getIsoCode() != null)
+                && !(this.getIsoCode().equals(other.getIsoCode())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.Languages[ isoCode=" + isoCode + " ]";
+
+        return ("co.edu.udea.profarq.labuno.model.entity.Languages[ isoCode="
+                + this.isoCode + " ]");
     }
-    
 }

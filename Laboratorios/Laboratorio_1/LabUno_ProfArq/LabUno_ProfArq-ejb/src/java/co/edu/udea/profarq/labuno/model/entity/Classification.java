@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
@@ -23,20 +18,24 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "CLASSIFICATION")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Classification.findAll", query = "SELECT c FROM Classification c"),
-    @NamedQuery(name = "Classification.findByAge", query = "SELECT c FROM Classification c WHERE c.age = :age")})
+    @NamedQuery(name = "Classification.findAll",
+            query = "SELECT c FROM Classification c"),
+    @NamedQuery(name = "Classification.findByAge",
+            query = "SELECT c FROM Classification c WHERE c.age = :age")})
+@Table(name = "CLASSIFICATION")
+@XmlRootElement()
 public class Classification implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 2)
     @Column(name = "AGE")
     private String age;
@@ -44,6 +43,7 @@ public class Classification implements Serializable {
     private List<Film> filmList;
 
     public Classification() {
+        super();
     }
 
     public Classification(String age) {
@@ -51,45 +51,55 @@ public class Classification implements Serializable {
     }
 
     public String getAge() {
-        return age;
+
+        return (this.age);
     }
 
     public void setAge(String age) {
         this.age = age;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Film> getFilmList() {
-        return filmList;
+
+        return (this.filmList);
     }
 
     public void setFilmList(List<Film> filmList) {
         this.filmList = filmList;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (age != null ? age.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getAge() != null) ? this.getAge().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Classification)) {
-            return false;
+
+            return (false);
         }
+
         Classification other = (Classification) object;
-        if ((this.age == null && other.age != null) || (this.age != null && !this.age.equals(other.age))) {
-            return false;
+        if (((this.getAge() == null) && (other.getAge() != null))
+                || ((this.getAge() != null)
+                && !(this.getAge().equals(other.getAge())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.Classification[ age=" + age + " ]";
-    }
 
+        return ("co.edu.udea.profarq.labuno.model.entity.Classification[ age="
+                + this.age + " ]");
+    }
 }

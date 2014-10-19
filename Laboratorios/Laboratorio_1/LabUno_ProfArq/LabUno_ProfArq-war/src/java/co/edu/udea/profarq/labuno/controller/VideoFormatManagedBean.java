@@ -17,7 +17,7 @@ public class VideoFormatManagedBean {
 
     @EJB()
     private VideoFormatManagerSessionBean videoFormatManagerSessionBean;
-    private SelectItem[] videoFormatSelectItems;
+    private SelectItem[] videoFormatsSelectItems;
 
     public VideoFormatManagedBean() {
         super();
@@ -41,16 +41,16 @@ public class VideoFormatManagedBean {
             }
         }
 
-        this.setVideoFormatSelectItems(selectItems);
+        this.setVideoFormatsSelectItems(selectItems);
     }
 
-    public SelectItem[] getVideoFormatSelectItems() {
+    public SelectItem[] getVideoFormatsSelectItems() {
 
-        return videoFormatSelectItems;
+        return (this.videoFormatsSelectItems);
     }
 
-    public void setVideoFormatSelectItems(SelectItem[] videoFormatSelectItems) {
-        this.videoFormatSelectItems = videoFormatSelectItems;
+    public void setVideoFormatsSelectItems(SelectItem[] videoFormatsSelectItems) {
+        this.videoFormatsSelectItems = videoFormatsSelectItems;
     }
 
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
@@ -23,20 +18,26 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "STATUS")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Status.findAll", query = "SELECT s FROM Status s"),
-    @NamedQuery(name = "Status.findByStatus", query = "SELECT s FROM Status s WHERE s.status = :status"),
-    @NamedQuery(name = "Status.findByDescription", query = "SELECT s FROM Status s WHERE s.description = :description")})
+    @NamedQuery(name = "Status.findAll",
+            query = "SELECT s FROM Status s"),
+    @NamedQuery(name = "Status.findByStatus",
+            query = "SELECT s FROM Status s WHERE s.status = :status"),
+    @NamedQuery(name = "Status.findByDescription",
+            query = "SELECT s FROM Status s WHERE s.description = :description")})
+@Table(name = "STATUS")
+@XmlRootElement()
 public class Status implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Id
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 1)
     @Column(name = "STATUS")
     private String status;
@@ -47,6 +48,7 @@ public class Status implements Serializable {
     private List<Billboard> billboardList;
 
     public Status() {
+        super();
     }
 
     public Status(String status) {
@@ -54,7 +56,8 @@ public class Status implements Serializable {
     }
 
     public String getStatus() {
-        return status;
+
+        return (this.status);
     }
 
     public void setStatus(String status) {
@@ -62,45 +65,55 @@ public class Status implements Serializable {
     }
 
     public String getDescription() {
-        return description;
+
+        return (this.description);
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Billboard> getBillboardList() {
-        return billboardList;
+
+        return (this.billboardList);
     }
 
     public void setBillboardList(List<Billboard> billboardList) {
         this.billboardList = billboardList;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (status != null ? status.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getStatus() != null) ? this.getStatus().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Status)) {
-            return false;
+
+            return (false);
         }
+
         Status other = (Status) object;
-        if ((this.status == null && other.status != null) || (this.status != null && !this.status.equals(other.status))) {
-            return false;
+        if (((this.getStatus() == null) && (other.getStatus() != null))
+                || ((this.getStatus() != null)
+                && !(this.getStatus().equals(other.getStatus())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.Status[ status=" + status + " ]";
+
+        return ("co.edu.udea.profarq.labuno.model.entity.Status[ status="
+                + this.status + " ]");
     }
-    
 }

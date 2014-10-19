@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
@@ -23,25 +18,31 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "COUNTRY")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Country.findAll", query = "SELECT c FROM Country c"),
-    @NamedQuery(name = "Country.findByIsoCode", query = "SELECT c FROM Country c WHERE c.isoCode = :isoCode"),
-    @NamedQuery(name = "Country.findByCountry", query = "SELECT c FROM Country c WHERE c.country = :country")})
+    @NamedQuery(name = "Country.findAll",
+            query = "SELECT c FROM Country c"),
+    @NamedQuery(name = "Country.findByIsoCode",
+            query = "SELECT c FROM Country c WHERE c.isoCode = :isoCode"),
+    @NamedQuery(name = "Country.findByCountry",
+            query = "SELECT c FROM Country c WHERE c.country = :country")})
+@Table(name = "COUNTRY")
+@XmlRootElement()
 public class Country implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Id
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 3)
     @Column(name = "ISO_CODE")
     private String isoCode;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 55)
     @Column(name = "COUNTRY")
     private String country;
@@ -49,6 +50,7 @@ public class Country implements Serializable {
     private List<Film> filmList;
 
     public Country() {
+        super();
     }
 
     public Country(String isoCode) {
@@ -61,7 +63,8 @@ public class Country implements Serializable {
     }
 
     public String getIsoCode() {
-        return isoCode;
+
+        return (this.isoCode);
     }
 
     public void setIsoCode(String isoCode) {
@@ -69,45 +72,56 @@ public class Country implements Serializable {
     }
 
     public String getCountry() {
-        return country;
+
+        return (this.country);
     }
 
     public void setCountry(String country) {
         this.country = country;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Film> getFilmList() {
-        return filmList;
+
+        return (this.filmList);
     }
 
     public void setFilmList(List<Film> filmList) {
         this.filmList = filmList;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (isoCode != null ? isoCode.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getIsoCode() != null)
+                ? this.getIsoCode().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Country)) {
-            return false;
+
+            return (false);
         }
+
         Country other = (Country) object;
-        if ((this.isoCode == null && other.isoCode != null) || (this.isoCode != null && !this.isoCode.equals(other.isoCode))) {
-            return false;
+        if (((this.getIsoCode() == null) && (other.getIsoCode() != null))
+                || ((this.getIsoCode() != null)
+                && !(this.getIsoCode().equals(other.getIsoCode())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.Country[ isoCode=" + isoCode + " ]";
+
+        return ("co.edu.udea.profarq.labuno.model.entity.Country[ isoCode="
+                + this.isoCode + " ]");
     }
-    
 }
