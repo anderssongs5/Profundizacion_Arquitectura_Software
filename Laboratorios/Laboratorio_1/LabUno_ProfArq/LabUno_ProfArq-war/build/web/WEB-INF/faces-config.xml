@@ -9,6 +9,11 @@
         <managed-bean-name>billboardManagedBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.profarq.labuno.controller.BillboardManagedBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <description>This property is for injecting the Fill Managed Bean.</description>
+            <property-name>filmManagedBean</property-name>
+            <value>#{filmManagedBean}</value>
+        </managed-property>
     </managed-bean>
     <managed-bean>
         <description>Bean for management the data related with the Video Format Entity.</description>
@@ -46,4 +51,22 @@
         <managed-bean-class>co.edu.udea.profarq.labuno.controller.FilmManagedBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>/filmsListPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>SHOW_FILM</from-outcome>
+            <to-view-id>/filmViewerPage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>CREATE_BILLBOARD</from-outcome>
+            <to-view-id>/billbardsListPage.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/filmViewerPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>BACK_FILMS_LIST</from-outcome>
+            <to-view-id>/filmsListPage.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

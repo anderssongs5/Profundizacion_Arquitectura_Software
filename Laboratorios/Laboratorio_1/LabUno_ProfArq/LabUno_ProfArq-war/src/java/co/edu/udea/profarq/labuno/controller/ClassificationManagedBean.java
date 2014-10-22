@@ -34,22 +34,26 @@ public class ClassificationManagedBean {
 
             for (int position = 0; position < classificationsList.size(); position++) {
                 Classification classification = classificationsList.get(position);
-                String valueForSelectItem;
-
-                if (!classification.getAge().equals("00")) {
-                    valueForSelectItem = String.format("%s %s %s", "Mayores de",
-                            classification.getAge(), " años");
-                } else {
-                    valueForSelectItem = String.format("%s",
-                            "Todo público");
-                }
 
                 selectItems[position] = new SelectItem(classification,
-                        valueForSelectItem);
+                        this.formatClassification(classification));
             }
         }
 
         this.setClassificationsSelectItems(selectItems);
+    }
+
+    public String formatClassification(Classification classification) {
+        String formatedValue;
+
+        if (!classification.getAge().equals("00")) {
+            formatedValue = String.format("%s %s %s", "Mayores de",
+                    classification.getAge(), " años");
+        } else {
+            formatedValue = String.format("%s", "Todo público");
+        }
+
+        return (formatedValue);
     }
 
     public SelectItem[] getClassificationsSelectItems() {

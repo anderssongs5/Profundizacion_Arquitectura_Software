@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -74,9 +75,9 @@ public class Film implements Serializable {
         @JoinColumn(name = "FILM_RELEASE_DATE",
                 referencedColumnName = "RELEASE_DATE")}, inverseJoinColumns = {
                 @JoinColumn(name = "GENRE", referencedColumnName = "GENRE")})
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Genre> genreList;
-    @ManyToMany(mappedBy = "filmList")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "filmList")
     private List<Director> directorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "film")
     private List<Billboard> billboardList;
