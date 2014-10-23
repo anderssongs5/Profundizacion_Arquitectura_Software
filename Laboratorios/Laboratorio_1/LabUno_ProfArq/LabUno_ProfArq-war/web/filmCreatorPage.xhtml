@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Create Film</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <p:growl id="growl" showDetail="true" life="3000" ></p:growl>
+                <center>
+                    <p:panel header="Create New Film" id="newMoviePanel" >
+                        <h:panelGrid id="newMoviePanelGrid" columns="1" >
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="title" style="font-weight: bold" value="Title:" >
+                                </p:outputLabel>
+                                <p:inputText id="title" value="#{filmManagedBean.newFilm.filmPK.title}" 
+                                             title="Title" required="true" 
+                                             requiredMessage="Title film is required."
+                                             size="73" >
+                                </p:inputText>
+                                <p:watermark for="title" value="Original Title" ></p:watermark>
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="2" style="width: 100%" >
+                                <p:outputLabel
+                                    value="Pseudonym" style="font-weight: bold" for="pseudonym" >
+                                </p:outputLabel>
+                                <p:inputText id="pseudonym" size="60"
+                                             value="#{filmManagedBean.newFilm.pseudonym}" 
+                                             title="Pseydonym or common name."
+                                             required="true"
+                                             requiredMessage="Pseudonym is required." >
+                                </p:inputText>                                
+                                <p:watermark for="pseudonym" value="Pseudonym" ></p:watermark>
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="5" style="width: 100%" >
+                                <p:outputLabel
+                                    for="releaseDate" style="font-weight: bold" value="Release Date:" >
+                                </p:outputLabel>
+                                <p:calendar title="Realease Date" id="releaseDate"
+                                            value="#{filmManagedBean.newFilm.filmPK.releaseDate}" 
+                                            showOn="button" required="true" size="13"
+                                            requiredMessage="The ReleaseDate is required.">
+                                    <f:convertDateTime pattern="dd/mm/yyyy" ></f:convertDateTime>
+                                </p:calendar>
+                                <p:watermark for="releaseDate" value="dd/mm/yyyy" ></p:watermark> 
+
+                                <p:outputLabel
+                                    for="duration" style="font-weight: bold" value="Duration:" >
+                                </p:outputLabel>
+                                <p:inputText id="duration" type="number" size="10"
+                                             value="#{filmManagedBean.newFilm.duration}"
+                                             title="Duration" required="true" 
+                                             requiredMessage="Duration is required." >
+                                </p:inputText>                                
+                                <p:watermark for="duration" value="Duration in milliseconds" ></p:watermark>
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="4" style="width: 100%" >
+                                <p:outputLabel
+                                    for="country" style="font-weight: bold" value="Country:" >
+                                </p:outputLabel>
+                                <p:selectOneMenu id="country" value="#{filmManagedBean.newFilm.country.isoCode}" 
+                                                 required="true" 
+                                                 requiredMessage="Country is required.">
+                                    <f:selectItems 
+                                        value="#{countryManagedBean.contriesSelectItems}" >
+                                    </f:selectItems>
+                                </p:selectOneMenu>
+                                <p:outputLabel
+                                    for="classification" style="font-weight: bold" value="Classification:" >
+                                </p:outputLabel>
+                                <p:selectOneMenu id="classification" 
+                                                 value="#{filmManagedBean.newFilm.classification.age}" 
+                                                 required="true" 
+                                                 requiredMessage="Classification is required.">
+                                    <f:selectItems 
+                                        value="#{classificationManagedBean.classificationsSelectItems}" >
+                                    </f:selectItems>
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="1" style="width: 100%" >
+                                <p:outputLabel
+                                    for="sypnosis" style="font-weight: bold" value="Sypnosis"  >
+                                </p:outputLabel>
+                                <p:inputTextarea maxlength="255" styleClass="unresizable" 
+                                                 style="resize: inherit" id="sypnosis" 
+                                                 value="#{filmManagedBean.newFilm.sypnosis}" 
+                                                 title="Sypnosis" required="true" 
+                                                 requiredMessage="Sypnosis is required." 
+                                                 rows="5" cols="73" >
+                                </p:inputTextarea>
+                                <p:watermark for="sypnosis" value="Maximun 255 characteres." ></p:watermark>
+                            </h:panelGrid>   
+
+                            <h:panelGrid columns="1" >
+                                <p:outputLabel
+                                    for="genres" style="font-weight: bold" value="Genres" >
+                                </p:outputLabel>
+                                <p:pickList id="genres" value="#{filmManagedBean.genresDualListModel}" 
+                                            var="genre" itemLabel="#{genre.genre}" 
+                                            itemValue="#{genre}" required="true"
+                                            requiredMessage="Select at least one genre." >
+                                    <f:facet name="sourceCaption">Available</f:facet>
+                                    <f:facet name="targetCaption">Selected</f:facet>
+                                    <p:column style="width:25%">
+                                        <h:outputText value="#{genre}" ></h:outputText>
+                                    </p:column>
+
+                                    <p:column style="width:75%;">
+                                        <h:outputText value="#{theme.displayName}" ></h:outputText>
+                                    </p:column>
+                                </p:pickList>
+                            </h:panelGrid>
+                            <p:message for="genres" display="icon" ></p:message>
+
+                            <h:panelGrid columns="1" style="width: 100%">
+                                <p:outputLabel
+                                    for="directors" style="font-weight: bold" value="Directors"  >
+                                </p:outputLabel>
+                                <p:inputTextarea maxlength="500" styleClass="unresizable" 
+                                                 style="resize: inherit" id="directors" 
+                                                 value="#{filmManagedBean.newFilm.fullNamesDirectors}" 
+                                                 title="Directors" required="true" 
+                                                 requiredMessage="Type at least one director." 
+                                                 rows="5" cols="73" >
+                                </p:inputTextarea>
+                                <p:watermark
+                                    for="directors" value="Full name directors separated by semicolon." >
+                                </p:watermark>
+                            </h:panelGrid>
+                            <p:message for="directors" display="icon" ></p:message>
+
+                            <h:panelGrid columns="2" >
+                                <p:outputLabel
+                                    for="image" style="font-weight: bold" value="Image Path:" >
+                                </p:outputLabel>
+                                <p:inputText id="image" value="#{filmManagedBean.newFilm.image}" 
+                                             title="Image Path" required="true" size="60"
+                                             requiredMessage="Image path is required." >
+                                </p:inputText>
+                                <p:watermark for="image" value="Image path" ></p:watermark>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                        <p:spacer height="30" ></p:spacer>
+
+                        <p:commandButton actionListener="#{filmManagedBean.saveFilm}"
+                                         update="growl" value="Save Film" >
+                        </p:commandButton>
+                        <p:commandButton action="#{filmManagedBean.backToUpdatedFilmsList()}"
+                                         value="Back to Films List" >
+                        </p:commandButton>
+                    </p:panel>
+                </center>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

@@ -1,6 +1,8 @@
 package co.edu.udea.profarq.labuno.controller;
 
 import co.edu.udea.profarq.labuno.business.FilmManagerSessionBean;
+import co.edu.udea.profarq.labuno.model.entity.Classification;
+import co.edu.udea.profarq.labuno.model.entity.Country;
 import co.edu.udea.profarq.labuno.model.entity.Director;
 import co.edu.udea.profarq.labuno.model.entity.Film;
 import co.edu.udea.profarq.labuno.model.entity.FilmPK;
@@ -11,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.StringTokenizer;
 import javax.ejb.EJB;
 import javax.faces.event.ActionEvent;
 import org.primefaces.model.DualListModel;
@@ -28,6 +31,7 @@ public class FilmManagedBean implements Serializable {
     private static final DateFormat RELEASE_DATE_FORMATER = new SimpleDateFormat("dd/MM/yyyy");
 
     public static final String BACK_TO_FILMS_LIST_PAGE_FLOW = "BACK_FILMS_LIST";
+    public static final String BACK_TO_UPDATED_FILMS_LIST_PAGE_FLOW = "BACK_UPDATED_FILMS_LIST";
     public static final String CREATE_BILLBOARD_PAGE_FLOW = "CREATE_BILLBOARD";
     public static final String CREATE_FILM_PAGE_FLOW = "CREATE_FILM";
     public static final String SHOW_FILM_PAGE_FLOW = "SHOW_FILM";
@@ -39,16 +43,10 @@ public class FilmManagedBean implements Serializable {
     private Film selectedFilm;
     private Film newFilm;
     private List<Film> filmsList;
-    private DualListModel<Genre> genresDualList;
+    private DualListModel<Genre> genresDualListModel;
 
     public FilmManagedBean() {
         super();
-    }
-
-    private void createDualListModel() {
-        List<Genre> source = this.genreManagedBean.getGenresList();
-        this.setGenresDualList(new DualListModel<>(source,
-                this.newFilm.getGenreList()));
     }
 
     public void deleteFilm(ActionEvent actionEvent) {
@@ -56,6 +54,23 @@ public class FilmManagedBean implements Serializable {
             if (this.filmManagerSessionBean.delete(this.getSelectedFilm())) {
                 this.refreshPage();
             }
+        }
+    }
+
+    public void saveFilm(ActionEvent actionEvent) {
+        if ((this.getNewFilm() != null)
+                && (this.getNewFilm().getFilmPK() != null)) {
+            List<Director> directorsList = new ArrayList<>();
+            StringTokenizer stringTokenizer = new StringTokenizer(
+                    this.getNewFilm().getFullNamesDirectors(), ";");
+
+            while (stringTokenizer.hasMoreElements()) {
+                directorsList.add(new Director(
+                        stringTokenizer.nextToken().trim()));
+            }
+            // this.getNewFilm().setDirectorList(directorsList);
+
+            this.filmManagerSessionBean.save(this.getNewFilm());
         }
     }
 
@@ -82,6 +97,11 @@ public class FilmManagedBean implements Serializable {
         return (String.format("%.1f Minutos", minutes));
     }
 
+    public String formatFilmReleaseDate(Date filmReleaseDate) {
+
+        return (RELEASE_DATE_FORMATER.format(filmReleaseDate));
+    }
+
     public String formatGenresList(List<Genre> genresList) {
         StringBuilder genresFormat = new StringBuilder();
 
@@ -97,11 +117,6 @@ public class FilmManagedBean implements Serializable {
         }
 
         return (genresFormat.toString());
-    }
-
-    public String formatFilmReleaseDate(Date filmReleaseDate) {
-
-        return (RELEASE_DATE_FORMATER.format(filmReleaseDate));
     }
 
     public Film getSelectedFilm() {
@@ -133,15 +148,17 @@ public class FilmManagedBean implements Serializable {
         this.newFilm = newFilm;
     }
 
-    public DualListModel<Genre> getGenresDualList() {
-        return genresDualList;
+    public DualListModel<Genre> getGenresDualListModel() {
+
+        return (this.genresDualListModel);
     }
 
-    public void setGenresDualList(DualListModel<Genre> genresDualList) {
-        this.genresDualList = genresDualList;
+    public void setGenresDualListModel(DualListModel<Genre> genresDualListModel) {
+        this.genresDualListModel = genresDualListModel;
     }
 
     public GenreManagedBean getGenreManagedBean() {
+
         return (this.genreManagedBean);
     }
 
@@ -154,6 +171,12 @@ public class FilmManagedBean implements Serializable {
         return (BACK_TO_FILMS_LIST_PAGE_FLOW);
     }
 
+    public String backToUpdatedFilmsList() {
+        this.refreshPage();
+
+        return (BACK_TO_UPDATED_FILMS_LIST_PAGE_FLOW);
+    }
+
     public String createBillboard() {
 
         return (CREATE_BILLBOARD_PAGE_FLOW);
@@ -161,6 +184,8 @@ public class FilmManagedBean implements Serializable {
 
     public String createFilm() {
         this.newFilm = new Film(new FilmPK());
+        this.newFilm.setClassification(new Classification());
+        this.newFilm.setCountry(new Country());
         this.newFilm.setGenreList(new ArrayList<Genre>());
 
         this.createDualListModel();
@@ -176,6 +201,13 @@ public class FilmManagedBean implements Serializable {
     public String updateBillboards() {
 
         return (UPDATE_BILLBARDS_PAGE_FLOW);
+    }
+
+    private void createDualListModel() {
+        List<Genre> source = this.genreManagedBean.getGenresList();
+
+        this.setGenresDualListModel(new DualListModel<>(source,
+                this.newFilm.getGenreList()));
     }
 
     private void refreshPage() {

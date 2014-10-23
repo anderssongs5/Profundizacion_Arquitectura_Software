@@ -38,7 +38,7 @@ public class ClassificationManagedBean implements Serializable {
             for (int position = 0; position < classificationsList.size(); position++) {
                 Classification classification = classificationsList.get(position);
 
-                selectItems[position] = new SelectItem(classification,
+                selectItems[position] = new SelectItem(classification.getAge(),
                         this.formatClassification(classification));
             }
         }

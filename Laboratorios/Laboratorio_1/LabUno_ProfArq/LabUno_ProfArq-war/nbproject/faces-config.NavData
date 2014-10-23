@@ -2,10 +2,10 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="addMovie.xhtml" x="478" y="343" zoom="true"/>
-        <Node id="addInfoBillboard.xhtml" x="660" y="90" zoom="true"/>
-        <Node id="filmViewerPage.xhtml" x="201" y="343" zoom="true"/>
-        <Node id="billbardsListPage.xhtml" x="76" y="37" zoom="true"/>
+        <Node id="createBillboard.xhtml" x="661" y="252" zoom="true"/>
+        <Node id="filmViewerPage.xhtml" x="299" y="384" zoom="true"/>
+        <Node id="billbardsListPage.xhtml" x="74" y="-3" zoom="true"/>
+        <Node id="createFilm.xhtml" x="32" y="303" zoom="true"/>
         <Node id="filmsListPage.xhtml" x="321" y="128" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>

@@ -36,7 +36,7 @@ public class CountryManagedBean implements Serializable {
 
             for (int position = 0; position < countriesList.size(); position++) {
                 Country country = countriesList.get(position);
-                selectItems[position] = new SelectItem(country,
+                selectItems[position] = new SelectItem(country.getIsoCode(),
                         String.format("[%s] %s",
                                 country.getIsoCode(),
                                 country.getCountry()));
