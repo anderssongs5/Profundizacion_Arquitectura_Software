@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement()
 public class Languages implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 4329603222238797010L;
+
     @Id()
     @Basic(optional = false)
     @NotNull()

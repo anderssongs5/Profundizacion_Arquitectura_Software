@@ -19,6 +19,8 @@ import javax.validation.constraints.Size;
 @Embeddable()
 public class FilmPK implements Serializable {
 
+    private static final long serialVersionUID = 765146826240837471L;
+
     @Basic(optional = false)
     @NotNull()
     @Size(min = 1, max = 150)

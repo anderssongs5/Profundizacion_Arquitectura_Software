@@ -16,6 +16,8 @@ import javax.validation.constraints.Size;
 @Embeddable()
 public class VideoFormatPK implements Serializable {
 
+    private static final long serialVersionUID = -3580535537158550469L;
+
     @Basic(optional = false)
     @NotNull()
     @Size(min = 1, max = 2)

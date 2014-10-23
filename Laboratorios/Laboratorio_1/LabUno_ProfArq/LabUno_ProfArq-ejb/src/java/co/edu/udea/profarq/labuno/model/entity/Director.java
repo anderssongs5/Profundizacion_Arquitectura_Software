@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement()
 public class Director implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -2807521417238241788L;
+
     @Id()
     @Basic(optional = false)
     @NotNull

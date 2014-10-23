@@ -3,6 +3,7 @@ package co.edu.udea.profarq.labuno.controller;
 import co.edu.udea.profarq.labuno.business.BillboardManagerSessionBean;
 import co.edu.udea.profarq.labuno.model.entity.Billboard;
 import co.edu.udea.profarq.labuno.model.entity.Film;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 
@@ -12,7 +13,9 @@ import javax.ejb.EJB;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-public class BillboardManagedBean {
+public class BillboardManagedBean implements Serializable {
+
+    private static final long serialVersionUID = 4143438520136358109L;
 
     @EJB()
     private BillboardManagerSessionBean billboardManagerSessionBean;

@@ -3,14 +3,17 @@ package co.edu.udea.profarq.labuno.controller;
 import co.edu.udea.profarq.labuno.business.FilmManagerSessionBean;
 import co.edu.udea.profarq.labuno.model.entity.Director;
 import co.edu.udea.profarq.labuno.model.entity.Film;
+import co.edu.udea.profarq.labuno.model.entity.FilmPK;
 import co.edu.udea.profarq.labuno.model.entity.Genre;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.event.ActionEvent;
+import org.primefaces.model.DualListModel;
 
 /**
  *
@@ -20,21 +23,32 @@ import javax.faces.event.ActionEvent;
  */
 public class FilmManagedBean implements Serializable {
 
-    private static final long serialVersionUID = 2350741601449118720L;
+    private static final long serialVersionUID = -2928802982092664648L;
+
     private static final DateFormat RELEASE_DATE_FORMATER = new SimpleDateFormat("dd/MM/yyyy");
 
     public static final String BACK_TO_FILMS_LIST_PAGE_FLOW = "BACK_FILMS_LIST";
     public static final String CREATE_BILLBOARD_PAGE_FLOW = "CREATE_BILLBOARD";
+    public static final String CREATE_FILM_PAGE_FLOW = "CREATE_FILM";
     public static final String SHOW_FILM_PAGE_FLOW = "SHOW_FILM";
     public static final String UPDATE_BILLBARDS_PAGE_FLOW = "UPDATE_BILLBOARDS";
 
     @EJB()
     private FilmManagerSessionBean filmManagerSessionBean;
+    private GenreManagedBean genreManagedBean;
     private Film selectedFilm;
+    private Film newFilm;
     private List<Film> filmsList;
+    private DualListModel<Genre> genresDualList;
 
     public FilmManagedBean() {
         super();
+    }
+
+    private void createDualListModel() {
+        List<Genre> source = this.genreManagedBean.getGenresList();
+        this.setGenresDualList(new DualListModel<>(source,
+                this.newFilm.getGenreList()));
     }
 
     public void deleteFilm(ActionEvent actionEvent) {
@@ -111,6 +125,30 @@ public class FilmManagedBean implements Serializable {
         this.filmsList = filmsList;
     }
 
+    public Film getNewFilm() {
+        return newFilm;
+    }
+
+    public void setNewFilm(Film newFilm) {
+        this.newFilm = newFilm;
+    }
+
+    public DualListModel<Genre> getGenresDualList() {
+        return genresDualList;
+    }
+
+    public void setGenresDualList(DualListModel<Genre> genresDualList) {
+        this.genresDualList = genresDualList;
+    }
+
+    public GenreManagedBean getGenreManagedBean() {
+        return (this.genreManagedBean);
+    }
+
+    public void setGenreManagedBean(GenreManagedBean genreManagedBean) {
+        this.genreManagedBean = genreManagedBean;
+    }
+
     public String backToFilmsList() {
 
         return (BACK_TO_FILMS_LIST_PAGE_FLOW);
@@ -119,6 +157,15 @@ public class FilmManagedBean implements Serializable {
     public String createBillboard() {
 
         return (CREATE_BILLBOARD_PAGE_FLOW);
+    }
+
+    public String createFilm() {
+        this.newFilm = new Film(new FilmPK());
+        this.newFilm.setGenreList(new ArrayList<Genre>());
+
+        this.createDualListModel();
+
+        return (CREATE_FILM_PAGE_FLOW);
     }
 
     public String showFilm() {

@@ -1,6 +1,7 @@
 package co.edu.udea.profarq.labuno.business;
 
 import co.edu.udea.profarq.labuno.model.entity.VideoFormat;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -15,7 +16,9 @@ import javax.persistence.PersistenceContext;
  */
 @LocalBean()
 @Stateless()
-public class VideoFormatManagerSessionBean {
+public class VideoFormatManagerSessionBean implements Serializable {
+
+    private static final long serialVersionUID = 5745425374594567736L;
 
     @PersistenceContext(unitName = "LabUno_ProfArq-ejbPU")
     private EntityManager entityManager;

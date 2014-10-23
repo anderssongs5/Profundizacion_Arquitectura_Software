@@ -16,6 +16,8 @@ import javax.validation.constraints.Size;
 @Embeddable()
 public class TheaterPK implements Serializable {
 
+    private static final long serialVersionUID = -3012794963923005736L;
+
     @Basic(optional = false)
     @NotNull()
     @Size(min = 1, max = 5)

@@ -1,6 +1,7 @@
 package co.edu.udea.profarq.labuno.business;
 
 import co.edu.udea.profarq.labuno.model.entity.Film;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -15,7 +16,9 @@ import javax.persistence.PersistenceContext;
  */
 @LocalBean()
 @Stateless()
-public class FilmManagerSessionBean {
+public class FilmManagerSessionBean implements Serializable {
+
+    private static final long serialVersionUID = 808837768356773194L;
 
     @PersistenceContext(unitName = "LabUno_ProfArq-ejbPU")
     private EntityManager entityManager;

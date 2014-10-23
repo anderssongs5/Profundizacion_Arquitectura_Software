@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement()
 public class Genre implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -3784319612665499259L;
+
     @Id()
     @Basic(optional = false)
     @NotNull()
@@ -112,7 +113,6 @@ public class Genre implements Serializable {
     @Override()
     public String toString() {
 
-        return ("co.edu.udea.profarq.labuno.model.entity.Genre[ genre="
-                + this.genre + " ]");
+        return (this.genre);
     }
 }

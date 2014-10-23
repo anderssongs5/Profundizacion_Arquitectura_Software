@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement()
 public class City implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -1988360239057143359L;
+
     @Id()
     @Basic(optional = false)
     @NotNull()

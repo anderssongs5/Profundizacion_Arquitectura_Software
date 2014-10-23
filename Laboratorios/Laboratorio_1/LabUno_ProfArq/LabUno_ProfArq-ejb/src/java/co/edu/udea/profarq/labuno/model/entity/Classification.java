@@ -32,7 +32,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement()
 public class Classification implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -5717166818896004940L;
+
     @Id()
     @Basic(optional = false)
     @NotNull()

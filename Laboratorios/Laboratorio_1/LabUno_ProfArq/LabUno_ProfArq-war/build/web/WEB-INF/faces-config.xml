@@ -16,6 +16,12 @@
         </managed-property>
     </managed-bean>
     <managed-bean>
+        <description>Bean for management the data related with Genre Entity</description>
+        <managed-bean-name>genreManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.labuno.controller.GenreManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
         <description>Bean for management the data related with the Video Format Entity.</description>
         <managed-bean-name>videoFormatManagedBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.profarq.labuno.controller.VideoFormatManagedBean</managed-bean-class>
@@ -49,7 +55,12 @@
         <description>Bean for management the data related with the Film Entity.</description>
         <managed-bean-name>filmManagedBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.profarq.labuno.controller.FilmManagedBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
+        <managed-bean-scope>session</managed-bean-scope>        
+        <managed-property>
+            <description>This property is for injecting the Genre Managed Bean.</description>
+            <property-name>genreManagedBean</property-name>
+            <value>#{genreManagedBean}</value>
+        </managed-property>
     </managed-bean>
     <navigation-rule>
         <from-view-id>/filmsListPage.xhtml</from-view-id>
@@ -58,7 +69,15 @@
             <to-view-id>/filmViewerPage.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-outcome>CREATE_FILM</from-outcome>
+            <to-view-id>/addMovie.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>CREATE_BILLBOARD</from-outcome>
+            <to-view-id>/addInfoBillboard.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>UPDATE_BILLBOARDS</from-outcome>
             <to-view-id>/billbardsListPage.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>

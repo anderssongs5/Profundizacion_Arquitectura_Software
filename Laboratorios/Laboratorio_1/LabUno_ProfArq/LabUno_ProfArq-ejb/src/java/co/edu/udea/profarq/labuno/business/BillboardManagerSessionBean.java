@@ -2,6 +2,7 @@ package co.edu.udea.profarq.labuno.business;
 
 import co.edu.udea.profarq.labuno.model.entity.Billboard;
 import co.edu.udea.profarq.labuno.model.entity.Film;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -19,7 +20,9 @@ import javax.persistence.criteria.Root;
  */
 @LocalBean()
 @Stateless()
-public class BillboardManagerSessionBean {
+public class BillboardManagerSessionBean implements Serializable {
+
+    private static final long serialVersionUID = 2202708647974728283L;
 
     @PersistenceContext(unitName = "LabUno_ProfArq-ejbPU")
     private EntityManager entityManager;

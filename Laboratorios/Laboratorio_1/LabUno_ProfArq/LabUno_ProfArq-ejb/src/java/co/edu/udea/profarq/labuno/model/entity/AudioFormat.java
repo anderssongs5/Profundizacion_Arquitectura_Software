@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement()
 public class AudioFormat implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -4241838241889265605L;
+
     @EmbeddedId()
     protected AudioFormatPK audioFormatPK;
     @Size(max = 255)

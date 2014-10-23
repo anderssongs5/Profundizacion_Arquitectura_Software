@@ -38,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement()
 public class Theater implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 8117220518743955048L;
+
     @EmbeddedId()
     protected TheaterPK theaterPK;
     @Basic(optional = false)

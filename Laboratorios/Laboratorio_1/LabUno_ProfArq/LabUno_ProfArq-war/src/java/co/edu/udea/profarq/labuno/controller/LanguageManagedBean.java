@@ -2,6 +2,7 @@ package co.edu.udea.profarq.labuno.controller;
 
 import co.edu.udea.profarq.labuno.business.LanguageManagerSessionBean;
 import co.edu.udea.profarq.labuno.model.entity.Languages;
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -13,7 +14,9 @@ import javax.faces.model.SelectItem;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-public class LanguageManagedBean {
+public class LanguageManagedBean implements Serializable {
+
+    private static final long serialVersionUID = -1741073586122441355L;
 
     @EJB()
     private LanguageManagerSessionBean languageManagerSessionBean;

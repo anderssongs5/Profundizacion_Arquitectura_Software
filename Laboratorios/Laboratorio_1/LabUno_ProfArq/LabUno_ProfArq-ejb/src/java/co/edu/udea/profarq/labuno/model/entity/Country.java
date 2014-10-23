@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement()
 public class Country implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 7039550084280605267L;
+
     @Id()
     @Basic(optional = false)
     @NotNull()

@@ -24,13 +24,19 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "VIDEO_FORMAT")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "VideoFormat.findAll", query = "SELECT v FROM VideoFormat v"),
-    @NamedQuery(name = "VideoFormat.findByDimension", query = "SELECT v FROM VideoFormat v WHERE v.videoFormatPK.dimension = :dimension"),
-    @NamedQuery(name = "VideoFormat.findByMean", query = "SELECT v FROM VideoFormat v WHERE v.videoFormatPK.mean = :mean"),
-    @NamedQuery(name = "VideoFormat.findByDescription", query = "SELECT v FROM VideoFormat v WHERE v.description = :description")})
+    @NamedQuery(name = "VideoFormat.findAll",
+            query = "SELECT v FROM VideoFormat v"),
+    @NamedQuery(name = "VideoFormat.findByDimension",
+            query = "SELECT v FROM VideoFormat v WHERE v.videoFormatPK.dimension = :dimension"),
+    @NamedQuery(name = "VideoFormat.findByMean",
+            query = "SELECT v FROM VideoFormat v WHERE v.videoFormatPK.mean = :mean"),
+    @NamedQuery(name = "VideoFormat.findByDescription",
+            query = "SELECT v FROM VideoFormat v WHERE v.description = :description")})
 public class VideoFormat implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @EmbeddedId
+
+    private static final long serialVersionUID = 7164537914360909408L;
+
+    @EmbeddedId()
     protected VideoFormatPK videoFormatPK;
     @Size(max = 255)
     @Column(name = "DESCRIPTION")
@@ -98,5 +104,5 @@ public class VideoFormat implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.labuno.model.entity.VideoFormat[ videoFormatPK=" + videoFormatPK + " ]";
     }
-    
+
 }

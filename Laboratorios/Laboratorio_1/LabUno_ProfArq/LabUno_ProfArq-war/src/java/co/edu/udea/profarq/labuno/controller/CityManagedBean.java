@@ -2,6 +2,7 @@ package co.edu.udea.profarq.labuno.controller;
 
 import co.edu.udea.profarq.labuno.business.CityManagerSessionBean;
 import co.edu.udea.profarq.labuno.model.entity.City;
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -13,7 +14,9 @@ import javax.faces.model.SelectItem;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-public class CityManagedBean {
+public class CityManagedBean implements Serializable {
+
+    private static final long serialVersionUID = 6231326269621578226L;
 
     @EJB()
     private CityManagerSessionBean cityManagerSessionBean;

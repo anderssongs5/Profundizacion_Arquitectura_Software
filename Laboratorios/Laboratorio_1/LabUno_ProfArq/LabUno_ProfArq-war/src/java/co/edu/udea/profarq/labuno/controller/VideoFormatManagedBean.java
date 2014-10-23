@@ -2,6 +2,7 @@ package co.edu.udea.profarq.labuno.controller;
 
 import co.edu.udea.profarq.labuno.business.VideoFormatManagerSessionBean;
 import co.edu.udea.profarq.labuno.model.entity.VideoFormat;
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -13,7 +14,9 @@ import javax.faces.model.SelectItem;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-public class VideoFormatManagedBean {
+public class VideoFormatManagedBean implements Serializable {
+
+    private static final long serialVersionUID = -6496448230256742707L;
 
     @EJB()
     private VideoFormatManagerSessionBean videoFormatManagerSessionBean;

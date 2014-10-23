@@ -23,9 +23,11 @@
                                 value="Delete Film" >
                     </p:menuitem>
                     <p:menuitem action="#{filmManagedBean.createBillboard()}"
-                                icon="ui-icon-note" value="Create Billboard" >
+                        icon="ui-icon-note" value="Create Billboard" >
                     </p:menuitem>
-                    <p:menuitem icon="ui-icon-refresh" value="Update Billboards" ></p:menuitem>
+                    <p:menuitem action="#{filmManagedBean.updateBillboards()}"
+                                icon="ui-icon-refresh" value="Update Billboards" >
+                    </p:menuitem>
                 </p:contextMenu>
 
                 <p:dataTable id="filmsListDataTable"
@@ -64,12 +66,12 @@
 <!--                    <p:column filterBy="#{classificationManagedBean.formatClassification(film.classification)}"
                               filterMatchMode="in" headerText="Classification"
                               id="classificationColumn" >-->
-<!--                        <f:facet name="filter" >
-                            <p:selectCheckboxMenu label="Classification"
-                                                  onchange="PF('filmsTable').filter()" >
-                                <f:selectItems value="#{classificationManagedBean.classificationsSelectItems}" ></f:selectItems>
-                            </p:selectCheckboxMenu>
-                        </f:facet>-->
+                        <!--                        <f:facet name="filter" >
+                                                    <p:selectCheckboxMenu label="Classification"
+                                                                          onchange="PF('filmsTable').filter()" >
+                                                        <f:selectItems value="#{classificationManagedBean.classificationsSelectItems}" ></f:selectItems>
+                                                    </p:selectCheckboxMenu>
+                                                </f:facet>-->
                         <h:outputText value="#{classificationManagedBean.formatClassification(film.classification)}" ></h:outputText>
                     </p:column>
 
@@ -77,6 +79,10 @@
                         In total there are #{filmManagedBean.filmsList.size()} Films.
                     </f:facet>
                 </p:dataTable>
+
+                <p:commandButton action="#{filmManagedBean.createFilm()}"
+                                 value="Create New Film" >
+                </p:commandButton>
             </h:form>
         </f:view>
     </h:body>

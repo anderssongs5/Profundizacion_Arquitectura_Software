@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement()
 public class Status implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -5547662013468793536L;
+
     @Id()
     @Basic(optional = false)
     @NotNull()

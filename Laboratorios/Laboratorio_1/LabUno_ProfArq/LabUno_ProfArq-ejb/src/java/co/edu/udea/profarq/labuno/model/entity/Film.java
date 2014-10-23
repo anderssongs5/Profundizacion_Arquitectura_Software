@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -48,7 +49,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement()
 public class Film implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -6417161713676501094L;
+
     @EmbeddedId()
     protected FilmPK filmPK;
     @Basic(optional = false)
@@ -87,6 +89,8 @@ public class Film implements Serializable {
     @JoinColumn(name = "CLASSIFICATION", referencedColumnName = "AGE")
     @ManyToOne(optional = false)
     private Classification classification;
+    @Transient()
+    private String fullNamesDirectors;
 
     public Film() {
         super();
@@ -152,6 +156,15 @@ public class Film implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getFullNamesDirectors() {
+
+        return (this.fullNamesDirectors);
+    }
+
+    public void setFullNamesDirectors(String fullNamesDirectors) {
+        this.fullNamesDirectors = fullNamesDirectors;
     }
 
     @XmlTransient()

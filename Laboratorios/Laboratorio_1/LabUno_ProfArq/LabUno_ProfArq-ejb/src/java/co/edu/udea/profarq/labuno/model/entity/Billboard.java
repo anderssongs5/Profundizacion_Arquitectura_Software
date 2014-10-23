@@ -47,7 +47,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement()
 public class Billboard implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -5257078598115825942L;
+
     @EmbeddedId()
     protected BillboardPK billboardPK;
     @Column(name = "OUT_DATE")
