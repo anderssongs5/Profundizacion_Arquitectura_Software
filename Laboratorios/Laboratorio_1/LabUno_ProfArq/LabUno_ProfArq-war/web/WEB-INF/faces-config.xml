@@ -65,6 +65,10 @@
     <navigation-rule>
         <from-view-id>/filmsListPage.xhtml</from-view-id>
         <navigation-case>
+            <from-outcome>CREATE_BILLBOARD</from-outcome>
+            <to-view-id>/billboardCreatorPage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>SHOW_FILM</from-outcome>
             <to-view-id>/filmViewerPage.xhtml</to-view-id>
         </navigation-case>
@@ -75,10 +79,6 @@
         <navigation-case>
             <from-outcome>CREATE_FILM</from-outcome>
             <to-view-id>/filmCreatorPage.xhtml</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>CREATE_BILLBOARD</from-outcome>
-            <to-view-id>/billboardCreatorPage.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -98,7 +98,7 @@
     <navigation-rule>
         <from-view-id>/filmCreatorPage.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>BACK_UPDATED_FILMS_LIST</from-outcome>
+            <from-outcome>BACK_FILMS_LIST</from-outcome>
             <to-view-id>/filmsListPage.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>

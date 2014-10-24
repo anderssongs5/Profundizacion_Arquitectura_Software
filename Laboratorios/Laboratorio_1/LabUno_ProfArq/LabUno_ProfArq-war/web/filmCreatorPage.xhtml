@@ -55,10 +55,12 @@
                                 <p:outputLabel
                                     for="duration" style="font-weight: bold" value="Duration:" >
                                 </p:outputLabel>
-                                <p:inputText id="duration" type="number" size="10"
+                                <p:inputText id="duration" size="10"
                                              value="#{filmManagedBean.newFilm.duration}"
                                              title="Duration" required="true" 
+                                             maxlength="8"
                                              requiredMessage="Duration is required." >
+                                    <f:validateDoubleRange minimum="10000" maximum="18000000"/>
                                 </p:inputText>                                
                                 <p:watermark for="duration" value="Duration in milliseconds" ></p:watermark>
                             </h:panelGrid>
@@ -111,11 +113,11 @@
                                             requiredMessage="Select at least one genre." >
                                     <f:facet name="sourceCaption">Available</f:facet>
                                     <f:facet name="targetCaption">Selected</f:facet>
-                                    <p:column style="width:25%">
+                                    <p:column style="width:40%">
                                         <h:outputText value="#{genre}" ></h:outputText>
                                     </p:column>
 
-                                    <p:column style="width:75%;">
+                                    <p:column style="width:60%;">
                                         <h:outputText value="#{theme.displayName}" ></h:outputText>
                                     </p:column>
                                 </p:pickList>
@@ -155,7 +157,7 @@
                         <p:commandButton actionListener="#{filmManagedBean.saveFilm}"
                                          update="growl" value="Save Film" >
                         </p:commandButton>
-                        <p:commandButton action="#{filmManagedBean.backToUpdatedFilmsList()}"
+                        <p:commandButton process="@this" action="#{filmManagedBean.backToFilmsList()}"
                                          value="Back to Films List" >
                         </p:commandButton>
                     </p:panel>

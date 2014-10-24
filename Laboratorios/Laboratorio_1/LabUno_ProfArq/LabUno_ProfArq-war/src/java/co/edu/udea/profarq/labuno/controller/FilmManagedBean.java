@@ -35,7 +35,7 @@ public class FilmManagedBean implements Serializable {
     public static final String CREATE_BILLBOARD_PAGE_FLOW = "CREATE_BILLBOARD";
     public static final String CREATE_FILM_PAGE_FLOW = "CREATE_FILM";
     public static final String SHOW_FILM_PAGE_FLOW = "SHOW_FILM";
-    public static final String UPDATE_BILLBARDS_PAGE_FLOW = "UPDATE_BILLBOARDS";
+    public static final String UPDATE_BILLBOARDS_PAGE_FLOW = "UPDATE_BILLBOARDS";
 
     @EJB()
     private FilmManagerSessionBean filmManagerSessionBean;
@@ -125,7 +125,7 @@ public class FilmManagedBean implements Serializable {
     }
 
     public void setSelectedFilm(Film selectedFilm) {
-        this.selectedFilm = selectedFilm;
+         this.selectedFilm = selectedFilm;
     }
 
     public List<Film> getFilmsList() {
@@ -178,7 +178,7 @@ public class FilmManagedBean implements Serializable {
     }
 
     public String createBillboard() {
-
+        System.out.println(CREATE_BILLBOARD_PAGE_FLOW);
         return (CREATE_BILLBOARD_PAGE_FLOW);
     }
 
@@ -200,7 +200,7 @@ public class FilmManagedBean implements Serializable {
 
     public String updateBillboards() {
 
-        return (UPDATE_BILLBARDS_PAGE_FLOW);
+        return (UPDATE_BILLBOARDS_PAGE_FLOW);
     }
 
     private void createDualListModel() {

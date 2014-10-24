@@ -18,7 +18,7 @@
                 <h1 align="center">
                     <h:outputText value="Create Billboard" ></h:outputText>
                 </h1>
-                <p:growl id="msgs" showDetail="true"/>
+                <p:growl id="growl" showDetail="true"/>
                 <h:panelGrid columns="2" style="width: 100%" >
                     <p:panel id="videoFormat" header="Video Format" style="margin-top: 10px" >
                         <center>
@@ -77,10 +77,10 @@
                 </p:panel>
                 <p:spacer height="30" ></p:spacer>
 
-                <p:commandButton actionListener=""
+                <p:commandButton 
                                  update="growl" value="Save Billboard" >
                 </p:commandButton>
-                <p:commandButton action=""
+                <p:commandButton action="#{filmManagedBean.backToFilmsList()}"
                                  value="Back to Films List" >
                 </p:commandButton>
             </h:form>
