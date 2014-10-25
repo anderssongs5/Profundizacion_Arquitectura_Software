@@ -8,11 +8,21 @@
         <description>Bean for management the data related with the Billboard Entity.</description>
         <managed-bean-name>billboardManagedBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.profarq.labuno.controller.BillboardManagedBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
+        <managed-bean-scope>view</managed-bean-scope>
         <managed-property>
-            <description>This property is for injecting the Fill Managed Bean.</description>
+            <description>This property is for injecting the Film Managed Bean.</description>
             <property-name>filmManagedBean</property-name>
             <value>#{filmManagedBean}</value>
+        </managed-property>
+        <managed-property>
+            <description>This property is for injecting the City Managed Bean.</description>
+            <property-name>cityManagedBean</property-name>
+            <value>#{cityManagedBean}</value>
+        </managed-property>        
+        <managed-property>
+            <description>This property is for injecting the Theater Managed Bean.</description>
+            <property-name>theaterManagedBean</property-name>
+            <value>#{theaterManagedBean}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -109,4 +119,15 @@
             <to-view-id>/filmsListPage.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <description>Bean for management the data related with the Theater Entity.</description>
+        <managed-bean-name>theaterManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.labuno.controller.TheaterManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>statusManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.labuno.controller.StatusManagedBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
 </faces-config>

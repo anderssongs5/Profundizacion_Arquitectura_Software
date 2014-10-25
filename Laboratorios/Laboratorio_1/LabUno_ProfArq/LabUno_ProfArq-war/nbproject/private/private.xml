@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Andersson/Documents/GitHub/Profundizacion_Arquitectura_Software/Laboratorios/Laboratorio_1/LabUno_ProfArq/LabUno_ProfArq-war/src/java/co/edu/udea/profarq/labuno/controller/FilmManagedBean.java</file>
-            <file>file:/C:/Users/Andersson/Documents/GitHub/Profundizacion_Arquitectura_Software/Laboratorios/Laboratorio_1/LabUno_ProfArq/LabUno_ProfArq-war/web/WEB-INF/faces-config.xml</file>
-            <file>file:/C:/Users/Andersson/Documents/GitHub/Profundizacion_Arquitectura_Software/Laboratorios/Laboratorio_1/LabUno_ProfArq/LabUno_ProfArq-war/web/billboardCreatorPage.xhtml</file>
-            <file>file:/C:/Users/Andersson/Documents/GitHub/Profundizacion_Arquitectura_Software/Laboratorios/Laboratorio_1/LabUno_ProfArq/LabUno_ProfArq-war/web/filmsListPage.xhtml</file>
-            <file>file:/C:/Users/Andersson/Documents/GitHub/Profundizacion_Arquitectura_Software/Laboratorios/Laboratorio_1/LabUno_ProfArq/LabUno_ProfArq-war/web/filmCreatorPage.xhtml</file>
+            <file>file:/C:/Users/Tests/Documents/GitHub/Profundizacion_Arquitectura_Software/Laboratorios/Laboratorio_1/LabUno_ProfArq/LabUno_ProfArq-war/src/java/co/edu/udea/profarq/labuno/controller/StatusManagedBean.java</file>
+            <file>file:/C:/Users/Tests/Documents/GitHub/Profundizacion_Arquitectura_Software/Laboratorios/Laboratorio_1/LabUno_ProfArq/LabUno_ProfArq-war/src/java/co/edu/udea/profarq/labuno/controller/BillboardManagedBean.java</file>
+            <file>file:/C:/Users/Tests/Documents/GitHub/Profundizacion_Arquitectura_Software/Laboratorios/Laboratorio_1/LabUno_ProfArq/LabUno_ProfArq-war/web/billbardsListPage.xhtml</file>
         </group>
     </open-files>
 </project-private>

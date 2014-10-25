@@ -20,6 +20,7 @@ public class CityManagedBean implements Serializable {
 
     @EJB()
     private CityManagerSessionBean cityManagerSessionBean;
+    private List<City> citiesList;
     private SelectItem[] citiesSelectItems;
 
     public CityManagedBean() {
@@ -28,7 +29,7 @@ public class CityManagedBean implements Serializable {
 
     @PostConstruct()
     private void init() {
-        List<City> citiesList = this.cityManagerSessionBean.
+        this.citiesList = this.cityManagerSessionBean.
                 findAll();
         SelectItem[] selectItems = null;
 
@@ -44,6 +45,15 @@ public class CityManagedBean implements Serializable {
         }
 
         this.setCitiesSelectItems(selectItems);
+    }
+
+    public List<City> getCitiesList() {
+
+        return (this.citiesList);
+    }
+
+    public void setCitiesList(List<City> citiesList) {
+        this.citiesList = citiesList;
     }
 
     public SelectItem[] getCitiesSelectItems() {

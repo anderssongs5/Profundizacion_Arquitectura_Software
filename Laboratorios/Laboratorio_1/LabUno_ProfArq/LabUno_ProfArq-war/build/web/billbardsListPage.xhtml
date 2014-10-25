@@ -28,11 +28,45 @@
                             value="List of Billboards: #{billboardManagedBean.filmManagedBean.selectedFilm.filmPK.title}" >
                         </h:outputText>
                     </f:facet>
-
-                    <p:column headerText="Title" id="titleColumn" >
+                    <p:column headerText="City" id="cityColumn" >
                         <h:outputText
-                            value="#{billboard.billboardPK.filmTitle}" >
+                            value="[#{billboard.theater1.city.code}] #{billboard.theater1.city.city}" >
                         </h:outputText>
+                    </p:column>
+                    <p:column headerText="Theater Name" id="theaterColumn" >
+                        <h:outputText
+                            value="#{billboard.theater1.theaterPK.theater}" >
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Theater Address" id="theaterAddress" >
+                        <h:outputText
+                            value="#{billboard.theater1.address}" >
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Audio" id="audioLanguageColumn" >
+                        <h:outputText
+                            value="[#{billboard.audioFormat.languages1.isoCode}] #{billboard.audioFormat.languages1.languageName}" >
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Subtitle" id="subtitleLanguageColumn" >
+                        <h:outputText
+                            value="[#{billboard.audioFormat.languages.isoCode}] #{billboard.audioFormat.languages.languageName}" >
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Video Format" id="videoFormatColumn" >
+                        <h:outputText
+                            value="#{billboard.videoFormat1.videoFormat}" >
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Status" id="statusColumn" >
+                        <p:selectOneMenu id="statusSelectOneMenu"
+                                         value="#{billboard.status.status}" 
+                                         required="true" 
+                                         requiredMessage="The Status is required." >
+                            <f:selectItems
+                                value="#{statusManagedBean.statusSelectItems}" >
+                            </f:selectItems>
+                        </p:selectOneMenu>
                     </p:column>
 
                     <f:facet name="footer" >
@@ -41,8 +75,27 @@
                 </p:dataTable>
                 <p:spacer height="30" ></p:spacer>
 
+                <p:dataTable id="statusesTable"
+                             value="#{statusManagedBean.statusSelectItems}"
+                             var="status" style="width: 350px;" >
+                    <p:column style="width: 50px;" >
+                        <h:outputText
+                            value="#{status.value}:" >
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="width: 300px;" >
+                        <h:outputText
+                            value="#{status.label}" >
+                        </h:outputText>
+                    </p:column>
+                </p:dataTable>
+                <p:spacer height="30" ></p:spacer>
+
+                <p:commandButton actionListener="#{billboardManagedBean.updateBillboards}"
+                                 value="Update Billboards" >
+                </p:commandButton>
                 <p:commandButton action="#{filmManagedBean.backToFilmsList()}"
-                                 value="Back to Films List" >
+                                 process="@this" value="Back to Films List" >
                 </p:commandButton>
             </h:form>
         </f:view>

@@ -37,7 +37,7 @@ public class LanguageManagedBean implements Serializable {
 
             for (int position = 0; position < languagesList.size(); position++) {
                 Languages language = languagesList.get(position);
-                selectItems[position] = new SelectItem(language,
+                selectItems[position] = new SelectItem(language.getIsoCode(),
                         String.format("[%s] %s",
                                 language.getIsoCode(),
                                 language.getLanguageName()));

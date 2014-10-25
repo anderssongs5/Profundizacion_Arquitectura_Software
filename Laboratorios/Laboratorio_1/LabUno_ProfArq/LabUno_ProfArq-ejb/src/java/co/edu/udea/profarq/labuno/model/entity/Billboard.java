@@ -33,14 +33,12 @@ import javax.xml.bind.annotation.XmlRootElement;
             query = "SELECT b FROM Billboard b WHERE b.billboardPK.theaterCity = :theaterCity"),
     @NamedQuery(name = "Billboard.findByTheater",
             query = "SELECT b FROM Billboard b WHERE b.billboardPK.theater = :theater"),
-    @NamedQuery(name = "Billboard.findByVideoFormatDimension",
-            query = "SELECT b FROM Billboard b WHERE b.billboardPK.videoFormatDimension = :videoFormatDimension"),
-    @NamedQuery(name = "Billboard.findByVideoFormatMean",
-            query = "SELECT b FROM Billboard b WHERE b.billboardPK.videoFormatMean = :videoFormatMean"),
     @NamedQuery(name = "Billboard.findByAudioLanguage",
             query = "SELECT b FROM Billboard b WHERE b.billboardPK.audioLanguage = :audioLanguage"),
     @NamedQuery(name = "Billboard.findBySubtitleLanguage",
             query = "SELECT b FROM Billboard b WHERE b.billboardPK.subtitleLanguage = :subtitleLanguage"),
+    @NamedQuery(name = "Billboard.findByVideoFormat",
+            query = "SELECT b FROM Billboard b WHERE b.billboardPK.videoFormat = :videoFormat"),
     @NamedQuery(name = "Billboard.findByOutDate",
             query = "SELECT b FROM Billboard b WHERE b.outDate = :outDate")})
 @Table(name = "BILLBOARD")
@@ -54,14 +52,10 @@ public class Billboard implements Serializable {
     @Column(name = "OUT_DATE")
     @Temporal(TemporalType.DATE)
     private Date outDate;
-    @JoinColumns({
-        @JoinColumn(name = "VIDEO_FORMAT_DIMENSION",
-                referencedColumnName = "DIMENSION", insertable = false,
-                updatable = false),
-        @JoinColumn(name = "VIDEO_FORMAT_MEAN", referencedColumnName = "MEAN",
-                insertable = false, updatable = false)})
+    @JoinColumn(name = "VIDEO_FORMAT", referencedColumnName = "VIDEO_FORMAT",
+            insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private VideoFormat videoFormat;
+    private VideoFormat videoFormat1;
     @JoinColumns({
         @JoinColumn(name = "THEATER_CITY", referencedColumnName = "CITY_CODE",
                 insertable = false, updatable = false),
@@ -99,11 +93,11 @@ public class Billboard implements Serializable {
     }
 
     public Billboard(String filmTitle, Date filmReleaseDate, String theaterCity,
-            String theater, String videoFormatDimension, String videoFormatMean,
-            String audioLanguage, String subtitleLanguage) {
+            String theater, String audioLanguage, String subtitleLanguage,
+            String videoFormat) {
         this.billboardPK = new BillboardPK(filmTitle, filmReleaseDate,
-                theaterCity, theater, videoFormatDimension, videoFormatMean,
-                audioLanguage, subtitleLanguage);
+                theaterCity, theater, audioLanguage, subtitleLanguage,
+                videoFormat);
     }
 
     public BillboardPK getBillboardPK() {
@@ -124,13 +118,13 @@ public class Billboard implements Serializable {
         this.outDate = outDate;
     }
 
-    public VideoFormat getVideoFormat() {
+    public VideoFormat getVideoFormat1() {
 
-        return (this.videoFormat);
+        return (this.videoFormat1);
     }
 
-    public void setVideoFormat(VideoFormat videoFormat) {
-        this.videoFormat = videoFormat;
+    public void setVideoFormat1(VideoFormat videoFormat1) {
+        this.videoFormat1 = videoFormat1;
     }
 
     public Theater getTheater1() {
@@ -187,8 +181,7 @@ public class Billboard implements Serializable {
         }
 
         Billboard other = (Billboard) object;
-        if (((this.getBillboardPK() == null)
-                && (other.getBillboardPK() != null))
+        if (((this.getBillboardPK() == null) && (other.getBillboardPK() != null))
                 || ((this.getBillboardPK() != null)
                 && !(this.getBillboardPK().equals(other.getBillboardPK())))) {
 

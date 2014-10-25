@@ -125,7 +125,7 @@ public class FilmManagedBean implements Serializable {
     }
 
     public void setSelectedFilm(Film selectedFilm) {
-         this.selectedFilm = selectedFilm;
+        this.selectedFilm = selectedFilm;
     }
 
     public List<Film> getFilmsList() {
@@ -141,7 +141,8 @@ public class FilmManagedBean implements Serializable {
     }
 
     public Film getNewFilm() {
-        return newFilm;
+
+        return (this.newFilm);
     }
 
     public void setNewFilm(Film newFilm) {
@@ -178,7 +179,7 @@ public class FilmManagedBean implements Serializable {
     }
 
     public String createBillboard() {
-        System.out.println(CREATE_BILLBOARD_PAGE_FLOW);
+
         return (CREATE_BILLBOARD_PAGE_FLOW);
     }
 

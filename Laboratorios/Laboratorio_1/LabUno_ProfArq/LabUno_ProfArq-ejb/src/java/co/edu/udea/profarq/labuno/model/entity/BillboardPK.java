@@ -43,16 +43,6 @@ public class BillboardPK implements Serializable {
     private String theater;
     @Basic(optional = false)
     @NotNull()
-    @Size(min = 1, max = 2)
-    @Column(name = "VIDEO_FORMAT_DIMENSION")
-    private String videoFormatDimension;
-    @Basic(optional = false)
-    @NotNull()
-    @Size(min = 1, max = 15)
-    @Column(name = "VIDEO_FORMAT_MEAN")
-    private String videoFormatMean;
-    @Basic(optional = false)
-    @NotNull()
     @Size(min = 1, max = 3)
     @Column(name = "AUDIO_LANGUAGE")
     private String audioLanguage;
@@ -61,23 +51,26 @@ public class BillboardPK implements Serializable {
     @Size(min = 1, max = 3)
     @Column(name = "SUBTITLE_LANGUAGE")
     private String subtitleLanguage;
+    @Basic(optional = false)
+    @NotNull()
+    @Size(min = 1, max = 20)
+    @Column(name = "VIDEO_FORMAT")
+    private String videoFormat;
 
     public BillboardPK() {
         super();
     }
 
     public BillboardPK(String filmTitle, Date filmReleaseDate,
-            String theaterCity, String theater, String videoFormatDimension,
-            String videoFormatMean, String audioLanguage,
-            String subtitleLanguage) {
+            String theaterCity, String theater, String audioLanguage,
+            String subtitleLanguage, String videoFormat) {
         this.filmTitle = filmTitle;
         this.filmReleaseDate = filmReleaseDate;
         this.theaterCity = theaterCity;
         this.theater = theater;
-        this.videoFormatDimension = videoFormatDimension;
-        this.videoFormatMean = videoFormatMean;
         this.audioLanguage = audioLanguage;
         this.subtitleLanguage = subtitleLanguage;
+        this.videoFormat = videoFormat;
     }
 
     public String getFilmTitle() {
@@ -116,24 +109,6 @@ public class BillboardPK implements Serializable {
         this.theater = theater;
     }
 
-    public String getVideoFormatDimension() {
-
-        return (this.videoFormatDimension);
-    }
-
-    public void setVideoFormatDimension(String videoFormatDimension) {
-        this.videoFormatDimension = videoFormatDimension;
-    }
-
-    public String getVideoFormatMean() {
-
-        return (this.videoFormatMean);
-    }
-
-    public void setVideoFormatMean(String videoFormatMean) {
-        this.videoFormatMean = videoFormatMean;
-    }
-
     public String getAudioLanguage() {
 
         return (this.audioLanguage);
@@ -152,25 +127,32 @@ public class BillboardPK implements Serializable {
         this.subtitleLanguage = subtitleLanguage;
     }
 
+    public String getVideoFormat() {
+
+        return (this.videoFormat);
+    }
+
+    public void setVideoFormat(String videoFormat) {
+        this.videoFormat = videoFormat;
+    }
+
     @Override()
     public int hashCode() {
         int hash = 0;
 
-        hash += ((this.getFilmTitle() != null)
-                ? this.getFilmTitle().hashCode() : 0);
+        hash += ((this.getFilmTitle() != null) ? this.getFilmTitle().hashCode()
+                : 0);
         hash += ((this.getFilmReleaseDate() != null)
                 ? this.getFilmReleaseDate().hashCode() : 0);
         hash += ((this.getTheaterCity() != null)
                 ? this.getTheaterCity().hashCode() : 0);
         hash += ((this.getTheater() != null) ? this.getTheater().hashCode() : 0);
-        hash += ((this.getVideoFormatDimension() != null)
-                ? this.getVideoFormatDimension().hashCode() : 0);
-        hash += ((this.getVideoFormatMean() != null)
-                ? this.getVideoFormatMean().hashCode() : 0);
         hash += ((this.getAudioLanguage() != null)
                 ? this.getAudioLanguage().hashCode() : 0);
         hash += ((this.getSubtitleLanguage() != null)
                 ? this.getSubtitleLanguage().hashCode() : 0);
+        hash += ((this.getVideoFormat() != null)
+                ? this.getVideoFormat().hashCode() : 0);
 
         return (hash);
     }
@@ -199,8 +181,7 @@ public class BillboardPK implements Serializable {
             return (false);
         }
 
-        if (((this.getTheaterCity() == null)
-                && (other.getTheaterCity() != null))
+        if (((this.getTheaterCity() == null) && (other.getTheaterCity() != null))
                 || ((this.getTheaterCity() != null)
                 && !(this.getTheaterCity().equals(other.getTheaterCity())))) {
 
@@ -210,24 +191,6 @@ public class BillboardPK implements Serializable {
         if (((this.getTheater() == null) && (other.getTheater() != null))
                 || ((this.getTheater() != null)
                 && !(this.getTheater().equals(other.getTheater())))) {
-
-            return (false);
-        }
-
-        if (((this.getVideoFormatDimension() == null)
-                && (other.getVideoFormatDimension() != null))
-                || ((this.getVideoFormatDimension() != null)
-                && !(this.getVideoFormatDimension().equals(
-                        other.getVideoFormatDimension())))) {
-
-            return (false);
-        }
-
-        if (((this.getVideoFormatMean() == null)
-                && (other.getVideoFormatMean() != null))
-                || ((this.getVideoFormatMean() != null)
-                && !(this.getVideoFormatMean().equals(
-                        other.getVideoFormatMean())))) {
 
             return (false);
         }
@@ -250,6 +213,13 @@ public class BillboardPK implements Serializable {
             return (false);
         }
 
+        if (((this.getVideoFormat() == null) && (other.getVideoFormat() != null))
+                || ((this.getVideoFormat() != null)
+                && !(this.getVideoFormat().equals(other.getVideoFormat())))) {
+
+            return (false);
+        }
+
         return (true);
     }
 
@@ -259,9 +229,8 @@ public class BillboardPK implements Serializable {
         return ("co.edu.udea.profarq.labuno.model.entity.BillboardPK[ filmTitle="
                 + this.filmTitle + ", filmReleaseDate=" + this.filmReleaseDate
                 + ", theaterCity=" + this.theaterCity + ", theater="
-                + this.theater + ", videoFormatDimension="
-                + this.videoFormatDimension + ", videoFormatMean="
-                + this.videoFormatMean + ", audioLanguage=" + this.audioLanguage
-                + ", subtitleLanguage=" + this.subtitleLanguage + " ]");
+                + this.theater + ", audioLanguage=" + this.audioLanguage
+                + ", subtitleLanguage=" + this.subtitleLanguage
+                + ", videoFormat=" + this.videoFormat + " ]");
     }
 }

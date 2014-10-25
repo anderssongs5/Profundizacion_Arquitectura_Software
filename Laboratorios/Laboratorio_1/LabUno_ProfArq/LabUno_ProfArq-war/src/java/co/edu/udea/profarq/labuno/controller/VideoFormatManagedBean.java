@@ -37,10 +37,9 @@ public class VideoFormatManagedBean implements Serializable {
 
             for (int position = 0; position < videoFormatsList.size(); position++) {
                 VideoFormat videoFormat = videoFormatsList.get(position);
-                selectItems[position] = new SelectItem(videoFormat,
-                        String.format("%s %s",
-                                videoFormat.getVideoFormatPK().getDimension(),
-                                videoFormat.getVideoFormatPK().getMean()));
+                selectItems[position] = new SelectItem(
+                        videoFormat.getVideoFormat(),
+                        videoFormat.getVideoFormat());
             }
         }
 
@@ -55,5 +54,4 @@ public class VideoFormatManagedBean implements Serializable {
     public void setVideoFormatsSelectItems(SelectItem[] videoFormatsSelectItems) {
         this.videoFormatsSelectItems = videoFormatsSelectItems;
     }
-
 }

@@ -2,14 +2,16 @@ package co.edu.udea.profarq.labuno.model.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -20,89 +22,100 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "VIDEO_FORMAT")
-@XmlRootElement
+@Entity()
 @NamedQueries({
     @NamedQuery(name = "VideoFormat.findAll",
             query = "SELECT v FROM VideoFormat v"),
-    @NamedQuery(name = "VideoFormat.findByDimension",
-            query = "SELECT v FROM VideoFormat v WHERE v.videoFormatPK.dimension = :dimension"),
-    @NamedQuery(name = "VideoFormat.findByMean",
-            query = "SELECT v FROM VideoFormat v WHERE v.videoFormatPK.mean = :mean"),
+    @NamedQuery(name = "VideoFormat.findByVideoFormat",
+            query = "SELECT v FROM VideoFormat v WHERE v.videoFormat = :videoFormat"),
     @NamedQuery(name = "VideoFormat.findByDescription",
             query = "SELECT v FROM VideoFormat v WHERE v.description = :description")})
+@Table(name = "VIDEO_FORMAT")
+@XmlRootElement()
 public class VideoFormat implements Serializable {
 
     private static final long serialVersionUID = 7164537914360909408L;
 
-    @EmbeddedId()
-    protected VideoFormatPK videoFormatPK;
+    @Id()
+    @Basic(optional = false)
+    @NotNull()
+    @Size(min = 1, max = 20)
+    @Column(name = "VIDEO_FORMAT")
+    private String videoFormat;
     @Size(max = 255)
     @Column(name = "DESCRIPTION")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "videoFormat")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "videoFormat1")
     private List<Billboard> billboardList;
 
     public VideoFormat() {
+        super();
     }
 
-    public VideoFormat(VideoFormatPK videoFormatPK) {
-        this.videoFormatPK = videoFormatPK;
+    public VideoFormat(String videoFormat) {
+        this.videoFormat = videoFormat;
     }
 
-    public VideoFormat(String dimension, String mean) {
-        this.videoFormatPK = new VideoFormatPK(dimension, mean);
+    public String getVideoFormat() {
+
+        return (this.videoFormat);
     }
 
-    public VideoFormatPK getVideoFormatPK() {
-        return videoFormatPK;
-    }
-
-    public void setVideoFormatPK(VideoFormatPK videoFormatPK) {
-        this.videoFormatPK = videoFormatPK;
+    public void setVideoFormat(String videoFormat) {
+        this.videoFormat = videoFormat;
     }
 
     public String getDescription() {
-        return description;
+
+        return (this.description);
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Billboard> getBillboardList() {
-        return billboardList;
+
+        return (this.billboardList);
     }
 
     public void setBillboardList(List<Billboard> billboardList) {
         this.billboardList = billboardList;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (videoFormatPK != null ? videoFormatPK.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getVideoFormat() != null)
+                ? this.getVideoFormat().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof VideoFormat)) {
-            return false;
+
+            return (false);
         }
+
         VideoFormat other = (VideoFormat) object;
-        if ((this.videoFormatPK == null && other.videoFormatPK != null) || (this.videoFormatPK != null && !this.videoFormatPK.equals(other.videoFormatPK))) {
-            return false;
+        if (((this.getVideoFormat() == null) && (other.getVideoFormat() != null))
+                || ((this.getVideoFormat() != null)
+                && !(this.getVideoFormat().equals(other.getVideoFormat())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.labuno.model.entity.VideoFormat[ videoFormatPK=" + videoFormatPK + " ]";
-    }
 
+        return ("co.edu.udea.profarq.labuno.model.entity.VideoFormat[ videoFormat="
+                + this.videoFormat + " ]");
+    }
 }
