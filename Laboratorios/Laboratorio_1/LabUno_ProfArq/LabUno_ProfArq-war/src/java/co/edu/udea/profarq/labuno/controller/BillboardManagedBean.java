@@ -1,13 +1,14 @@
 package co.edu.udea.profarq.labuno.controller;
 
 import co.edu.udea.profarq.labuno.business.BillboardManagerSessionBean;
+import co.edu.udea.profarq.labuno.business.StatusManagerSessionBean;
 import co.edu.udea.profarq.labuno.model.entity.Billboard;
 import co.edu.udea.profarq.labuno.model.entity.BillboardPK;
 import co.edu.udea.profarq.labuno.model.entity.City;
-import co.edu.udea.profarq.labuno.model.entity.Film;
 import co.edu.udea.profarq.labuno.model.entity.Status;
 import co.edu.udea.profarq.labuno.model.entity.Theater;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +50,8 @@ public class BillboardManagedBean implements Serializable {
                 getFilmPK().getTitle());
 
         this.newBillboard = new Billboard(billboardPK);
-        this.newBillboard.setStatus(new Status("1"));
+        this.newBillboard.setStatus(new Status(
+                StatusManagerSessionBean.SOON_BILLBOARD));
 
         List<City> citiesFound = this.getCityManagedBean().getCitiesList();
         if (citiesFound != null) {
@@ -164,8 +166,22 @@ public class BillboardManagedBean implements Serializable {
 
     public void updateBillboards(ActionEvent actionEvent) {
         if (this.billboardsList != null) {
+            String statusCode;
             for (Billboard billboard : this.billboardsList) {
+                statusCode = billboard.getStatus().getStatus();
+                billboard.setStatus(new Status(statusCode));
 
+                switch (statusCode) {
+                    case StatusManagerSessionBean.ON_BILLBOARD:
+                    case StatusManagerSessionBean.SOON_BILLBOARD:
+                        billboard.setOutDate(null);
+                        break;
+
+                    case StatusManagerSessionBean.OUT_BILLBOARD:
+                        billboard.setOutDate(new Date());
+                }
+
+                billboard = this.billboardManagerSessionBean.update(billboard);
             }
         }
     }
@@ -173,10 +189,8 @@ public class BillboardManagedBean implements Serializable {
     private void refreshPage() {
         if ((this.filmManagedBean != null)
                 && (this.filmManagedBean.getSelectedFilm() != null)) {
-            Film selectedFilm = this.getFilmManagedBean().getSelectedFilm();
-
             this.billboardsList = this.billboardManagerSessionBean.findByFilm(
-                    selectedFilm);
+                    this.getFilmManagedBean().getSelectedFilm());
         }
     }
 }

@@ -39,6 +39,7 @@ public class FilmManagedBean implements Serializable {
 
     @EJB()
     private FilmManagerSessionBean filmManagerSessionBean;
+    private DirectorManagedBean directorManagedBean;
     private GenreManagedBean genreManagedBean;
     private Film selectedFilm;
     private Film newFilm;
@@ -63,12 +64,18 @@ public class FilmManagedBean implements Serializable {
             List<Director> directorsList = new ArrayList<>();
             StringTokenizer stringTokenizer = new StringTokenizer(
                     this.getNewFilm().getFullNamesDirectors(), ";");
+            Director director;
 
             while (stringTokenizer.hasMoreElements()) {
-                directorsList.add(new Director(
-                        stringTokenizer.nextToken().trim()));
+                director = new Director(stringTokenizer.nextToken().trim());
+                directorsList.add(director);
+
+                try {
+                    this.getDirectorManagedBean().save(director);
+                } catch (Exception e) {
+                }
             }
-            // this.getNewFilm().setDirectorList(directorsList);
+            this.getNewFilm().setDirectorList(directorsList);
 
             this.filmManagerSessionBean.save(this.getNewFilm());
         }
@@ -156,6 +163,15 @@ public class FilmManagedBean implements Serializable {
 
     public void setGenresDualListModel(DualListModel<Genre> genresDualListModel) {
         this.genresDualListModel = genresDualListModel;
+    }
+
+    public DirectorManagedBean getDirectorManagedBean() {
+
+        return (this.directorManagedBean);
+    }
+
+    public void setDirectorManagedBean(DirectorManagedBean directorManagedBean) {
+        this.directorManagedBean = directorManagedBean;
     }
 
     public GenreManagedBean getGenreManagedBean() {

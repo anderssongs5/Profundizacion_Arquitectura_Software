@@ -71,6 +71,11 @@
             <property-name>genreManagedBean</property-name>
             <value>#{genreManagedBean}</value>
         </managed-property>
+        <managed-property>
+            <description>This property is for injecting the Director Managed Bean.</description>
+            <property-name>directorManagedBean</property-name>
+            <value>#{directorManagedBean}</value>
+        </managed-property>
     </managed-bean>
     <navigation-rule>
         <from-view-id>/filmsListPage.xhtml</from-view-id>
@@ -129,5 +134,11 @@
         <managed-bean-name>statusManagedBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.profarq.labuno.controller.StatusManagedBean</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean for management the data related with the Director Entity.</description>
+        <managed-bean-name>directorManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.labuno.controller.DirectorManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 </faces-config>

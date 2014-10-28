@@ -38,7 +38,8 @@ public class StatusManagedBean implements Serializable {
             for (int position = 0; position < statusesList.size(); position++) {
                 Status status = statusesList.get(position);
                 selectItems[position] = new SelectItem(
-                        status.getStatus(), status.getDescription());
+                        status.getStatus(), status.getStatus(),
+                        status.getDescription());
             }
         }
 

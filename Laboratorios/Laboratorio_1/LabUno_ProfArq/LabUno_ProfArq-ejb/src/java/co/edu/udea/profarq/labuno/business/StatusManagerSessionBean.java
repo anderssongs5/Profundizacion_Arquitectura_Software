@@ -18,6 +18,10 @@ public class StatusManagerSessionBean {
 
     private static final long serialVersionUID = -4344873700627880508L;
 
+    public static final String SOON_BILLBOARD = "1";
+    public static final String ON_BILLBOARD = "2";
+    public static final String OUT_BILLBOARD = "3";
+
     @PersistenceContext(unitName = "LabUno_ProfArq-ejbPU")
     private EntityManager entityManager;
 

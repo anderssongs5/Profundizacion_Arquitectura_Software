@@ -33,5 +33,6 @@ public class DirectorManagerSessionBean implements Serializable {
 
     public void save(Director director) {
         this.entityManager.persist(director);
+        this.entityManager.flush();
     }
 }

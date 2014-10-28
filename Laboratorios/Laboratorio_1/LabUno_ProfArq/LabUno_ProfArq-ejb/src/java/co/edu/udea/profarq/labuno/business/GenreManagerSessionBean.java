@@ -7,7 +7,6 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 /**
  *
@@ -29,8 +28,8 @@ public class GenreManagerSessionBean implements Serializable {
     }
 
     public List<Genre> findAll() {
-        Query query = this.entityManager.createNamedQuery("Genre.findAll");
 
-        return (query.getResultList());
+        return (this.entityManager.createNamedQuery("Genre.findAll").
+                getResultList());
     }
 }

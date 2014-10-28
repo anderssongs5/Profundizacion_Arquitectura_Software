@@ -31,10 +31,6 @@ public class BillboardManagerSessionBean implements Serializable {
         super();
     }
 
-    public void save(Billboard billboard) {
-        this.entityManager.persist(billboard);
-    }
-
     public List<Billboard> findAll() {
 
         return (this.entityManager.createNamedQuery("Billboard.findAll")
@@ -43,20 +39,29 @@ public class BillboardManagerSessionBean implements Serializable {
 
     public List<Billboard> findByFilm(Film film) {
         CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
-        CriteriaQuery<Billboard> criteriaQuery = criteriaBuilder.createQuery(Billboard.class);
+        CriteriaQuery<Billboard> criteriaQuery = criteriaBuilder.createQuery(
+                Billboard.class);
         Root<Billboard> root = criteriaQuery.from(Billboard.class);
 
-//        ParameterExpression<String> filmNameParameterExpression = criteriaBuilder.parameter(String.class);
-//        criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("billboardPK").get("filmTitle"),
-//                film.getFilmPK().getTitle()));
-//        TypedQuery<Billboard> typedQuery = this.entityManager.createQuery(criteriaQuery);
-//        typedQuery.setParameter(filmNameParameterExpression, film.getFilmPK().getTitle());
         criteriaQuery.select(root).where(criteriaBuilder.and(
-                criteriaBuilder.equal(root.get("billboardPK").get("filmReleaseDate"),
+                criteriaBuilder.equal(root.get("billboardPK").
+                        get("filmReleaseDate"),
                         film.getFilmPK().getReleaseDate()),
                 criteriaBuilder.equal(root.get("billboardPK").get("filmTitle"),
                         film.getFilmPK().getTitle())));
 
         return (this.entityManager.createQuery(criteriaQuery).getResultList());
+    }
+
+    public void save(Billboard billboard) {
+        this.entityManager.persist(billboard);
+        this.entityManager.flush();
+    }
+
+    public Billboard update(Billboard billboard) {
+        billboard = this.entityManager.merge(billboard);
+        this.entityManager.flush();
+
+        return (billboard);
     }
 }

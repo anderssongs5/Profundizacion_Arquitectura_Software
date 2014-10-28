@@ -48,5 +48,6 @@ public class FilmManagerSessionBean implements Serializable {
 
     public void save(Film film) {
         this.entityManager.persist(film);
+        this.entityManager.flush();
     }
 }
