@@ -77,6 +77,10 @@ public class FilmManagedBean implements Serializable {
             }
             this.getNewFilm().setDirectorList(directorsList);
 
+            for (Object genreName : this.getGenresDualListModel().getTarget()) {
+                this.getNewFilm().getGenreList().add(new Genre((String) genreName));
+            }
+
             this.filmManagerSessionBean.save(this.getNewFilm());
         }
     }

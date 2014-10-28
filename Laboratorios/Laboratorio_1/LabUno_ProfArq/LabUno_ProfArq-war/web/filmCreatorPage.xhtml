@@ -157,8 +157,8 @@
                         <p:commandButton actionListener="#{filmManagedBean.saveFilm}"
                                          update="growl" value="Save Film" >
                         </p:commandButton>
-                        <p:commandButton process="@this" action="#{filmManagedBean.backToFilmsList()}"
-                                         value="Back to Films List" >
+                        <p:commandButton action="#{filmManagedBean.backToUpdatedFilmsList()}"      
+                                         process="@this" value="Back to Films List" >
                         </p:commandButton>
                     </p:panel>
                 </center>
