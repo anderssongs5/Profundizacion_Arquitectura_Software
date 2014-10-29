@@ -70,9 +70,9 @@ public class FilmManagedBean implements Serializable {
                 director = new Director(stringTokenizer.nextToken().trim());
                 directorsList.add(director);
 
-                try {
+                if (this.getDirectorManagedBean().find(director.getFullName())
+                        == null) {
                     this.getDirectorManagedBean().save(director);
-                } catch (Exception e) {
                 }
             }
             this.getNewFilm().setDirectorList(directorsList);

@@ -6,8 +6,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -41,13 +39,7 @@ public class Director implements Serializable {
     @Size(min = 1, max = 55)
     @Column(name = "FULL_NAME")
     private String fullName;
-    @JoinTable(name = "FILMS_DIRECTORS", joinColumns = {
-        @JoinColumn(name = "DIRECTOR_FULL_NAME",
-                referencedColumnName = "FULL_NAME")}, inverseJoinColumns = {
-                @JoinColumn(name = "FILM_TITLE", referencedColumnName = "TITLE"),
-                @JoinColumn(name = "FILM_RELEASE_DATE",
-                        referencedColumnName = "RELEASE_DATE")})
-    @ManyToMany()
+    @ManyToMany(mappedBy = "directorList")
     private List<Film> filmList;
 
     public Director() {

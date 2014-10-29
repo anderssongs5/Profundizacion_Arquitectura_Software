@@ -22,6 +22,11 @@ public class DirectorManagedBean implements Serializable {
         super();
     }
 
+    public Director find(Serializable directorPK) {
+
+        return (this.directorManagerSessionBean.find(directorPK));
+    }
+
     public void save(Director director) {
         this.directorManagerSessionBean.save(director);
     }

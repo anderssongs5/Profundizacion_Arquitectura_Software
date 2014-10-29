@@ -26,7 +26,7 @@ public class DirectorManagerSessionBean implements Serializable {
         super();
     }
 
-    public Director find(Object directorPK) {
+    public Director find(Serializable directorPK) {
 
         return (this.entityManager.find(Director.class, directorPK));
     }

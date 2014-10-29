@@ -79,7 +79,13 @@ public class Film implements Serializable {
                 @JoinColumn(name = "GENRE", referencedColumnName = "GENRE")})
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Genre> genreList;
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "filmList")
+    @JoinTable(name = "FILMS_DIRECTORS", joinColumns = {
+        @JoinColumn(name = "FILM_TITLE", referencedColumnName = "TITLE"),
+        @JoinColumn(name = "FILM_RELEASE_DATE",
+                referencedColumnName = "RELEASE_DATE")}, inverseJoinColumns = {
+                @JoinColumn(name = "DIRECTOR_FULL_NAME",
+                        referencedColumnName = "FULL_NAME")})
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Director> directorList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "film")
     private List<Billboard> billboardList;
