@@ -15,6 +15,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import org.primefaces.model.DualListModel;
 
@@ -82,7 +84,20 @@ public class FilmManagedBean implements Serializable {
             }
 
             this.filmManagerSessionBean.save(this.getNewFilm());
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage("Film Saved"));
+
+            this.recreateAttributes();
         }
+    }
+
+    private void recreateAttributes() {
+        this.newFilm = new Film(new FilmPK());
+        this.newFilm.setClassification(new Classification());
+        this.newFilm.setCountry(new Country());
+        this.newFilm.setGenreList(new ArrayList<Genre>());
+
+        this.createDualListModel();
     }
 
     public String formatDirectorsList(List<Director> directorsList) {
@@ -204,12 +219,7 @@ public class FilmManagedBean implements Serializable {
     }
 
     public String createFilm() {
-        this.newFilm = new Film(new FilmPK());
-        this.newFilm.setClassification(new Classification());
-        this.newFilm.setCountry(new Country());
-        this.newFilm.setGenreList(new ArrayList<Genre>());
-
-        this.createDualListModel();
+        this.recreateAttributes();
 
         return (CREATE_FILM_PAGE_FLOW);
     }

@@ -15,7 +15,7 @@
     <h:body>
         <f:view>
             <h:form>
-                <p:panel
+                <p:panel id="newBillboardPanel"
                     header="New Billboard For: #{billboardManagedBean.filmManagedBean.selectedFilm.filmPK.title}" >
                     <p:growl id="growl" showDetail="true" />
                     <h:panelGrid columns="2" style="width: 100%" >
@@ -24,7 +24,12 @@
                                 <h:panelGrid columns="2" cellpadding="10" >
                                     <h:outputText value="Format:" ></h:outputText>
                                     <p:selectOneMenu id="videoFormatSelectOneMenu"
-                                                     value="#{billboardManagedBean.newBillboard.billboardPK.videoFormat}" >
+                                                     value="#{billboardManagedBean.newBillboard.billboardPK.videoFormat}"
+                                                     required="true"
+                                                     requiredMessage="Format is required." >
+                                        <f:selectItem itemLabel="Select..." itemValue=""
+                                                      noSelectionOption="true" >                                          
+                                        </f:selectItem>
                                         <f:selectItems
                                             value="#{videoFormatManagedBean.videoFormatsSelectItems}" >
                                         </f:selectItems>
@@ -38,7 +43,9 @@
                                 <h:panelGrid columns="6" cellpadding="10" >
                                     <h:outputText value="Audio:" ></h:outputText>
                                     <p:selectOneMenu id="audioLanguageSelectOneMenu"
-                                                     value="#{billboardManagedBean.newBillboard.billboardPK.audioLanguage}" >
+                                                     value="#{billboardManagedBean.newBillboard.billboardPK.audioLanguage}" 
+                                                     required="true"
+                                                     requiredMessage="Audio is required." >
                                         <f:selectItem itemLabel="Select..." itemValue=""
                                                       noSelectionOption="true" >
                                         </f:selectItem>
@@ -48,9 +55,11 @@
                                     </p:selectOneMenu>
                                     <p:spacer width="50" height="0" ></p:spacer>
 
-                                    <h:outputText value="Subtitles:" ></h:outputText>
+                                    <h:outputText value="Subtitle:" ></h:outputText>
                                     <p:selectOneMenu id="subtitleLanguageSelectOneMenu"
-                                                     value="#{billboardManagedBean.newBillboard.billboardPK.subtitleLanguage}" >
+                                                     value="#{billboardManagedBean.newBillboard.billboardPK.subtitleLanguage}"
+                                                     required="true"
+                                                     requiredMessage="Subtitle is required." >
                                         <f:selectItem itemLabel="Select..." itemValue=""
                                                       noSelectionOption="true" >
                                         </f:selectItem>
@@ -68,7 +77,9 @@
                             <h:panelGrid columns="6" cellpadding="10" >                        
                                 <h:outputText value="City:" ></h:outputText>
                                 <p:selectOneMenu id="citiesSelectOneMenu"
-                                                 value="#{billboardManagedBean.newBillboard.billboardPK.theaterCity}" >
+                                                 value="#{billboardManagedBean.newBillboard.billboardPK.theaterCity}"
+                                                 required="true"
+                                                 requiredMessage="City is required." >
                                     <f:selectItem itemLabel="Select..." itemValue=""
                                                   noSelectionOption="true" >
                                     </f:selectItem>
@@ -83,7 +94,9 @@
 
                                 <h:outputText value="Theater:" ></h:outputText>
                                 <p:selectOneMenu id="teatherSelectOneMenu"
-                                                 value="#{billboardManagedBean.newBillboard.billboardPK.theater}" >
+                                                 value="#{billboardManagedBean.newBillboard.billboardPK.theater}"
+                                                 required="true"
+                                                 requiredMessage="Theater is required." >
                                     <f:selectItem itemLabel="Select..." itemValue=""
                                                   noSelectionOption="true" >
                                     </f:selectItem>
@@ -97,7 +110,8 @@
                     <p:spacer height="30" ></p:spacer>
 
                     <p:commandButton actionListener="#{billboardManagedBean.saveBillboard}"
-                                     update="growl" value="Save Billboard" >
+                                     update="growl" value="Save Billboard" >                        
+                            <f:ajax event="click" render="newBillboardPanel"></f:ajax>
                     </p:commandButton>
                     <p:commandButton action="#{billboardManagedBean.filmManagedBean.backToFilmsList()}"
                                      process="@this" value="Back to Films List" >

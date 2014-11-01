@@ -10,7 +10,7 @@
     </h:head>
     <h:body>
         <f:view>
-            <h:form>
+            <h:form id="createFilmForm">
                 <p:growl id="growl" showDetail="true" life="3000" ></p:growl>
                 <center>
                     <p:panel header="Create New Film" id="newMoviePanel" >
@@ -81,7 +81,7 @@
                                 </p:outputLabel>
                                 <p:selectOneMenu id="classification" 
                                                  value="#{filmManagedBean.newFilm.classification.age}" 
-                                                 required="true" 
+                                                 required="true"
                                                  requiredMessage="Classification is required.">
                                     <f:selectItems 
                                         value="#{classificationManagedBean.classificationsSelectItems}" >
@@ -108,7 +108,7 @@
                                     for="genres" style="font-weight: bold" value="Genres" >
                                 </p:outputLabel>
                                 <p:pickList id="genres" value="#{filmManagedBean.genresDualListModel}" 
-                                            var="genre" itemLabel="#{genre.genre}" 
+                                            var="genre"
                                             itemValue="#{genre}" required="true"
                                             requiredMessage="Select at least one genre." >
                                     <f:facet name="sourceCaption">Available</f:facet>
@@ -156,6 +156,7 @@
 
                         <p:commandButton actionListener="#{filmManagedBean.saveFilm}"
                                          update="growl" value="Save Film" >
+                            <f:ajax event="click" render="newMoviePanelGrid"></f:ajax>
                         </p:commandButton>
                         <p:commandButton action="#{filmManagedBean.backToUpdatedFilmsList()}"      
                                          process="@this" value="Back to Films List" >

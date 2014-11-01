@@ -2,11 +2,17 @@ package co.edu.udea.profarq.labuno.controller;
 
 import co.edu.udea.profarq.labuno.business.BillboardManagerSessionBean;
 import co.edu.udea.profarq.labuno.business.StatusManagerSessionBean;
+import co.edu.udea.profarq.labuno.model.entity.AudioFormat;
+import co.edu.udea.profarq.labuno.model.entity.AudioFormatPK;
 import co.edu.udea.profarq.labuno.model.entity.Billboard;
 import co.edu.udea.profarq.labuno.model.entity.BillboardPK;
 import co.edu.udea.profarq.labuno.model.entity.City;
+import co.edu.udea.profarq.labuno.model.entity.Film;
+import co.edu.udea.profarq.labuno.model.entity.FilmPK;
 import co.edu.udea.profarq.labuno.model.entity.Status;
 import co.edu.udea.profarq.labuno.model.entity.Theater;
+import co.edu.udea.profarq.labuno.model.entity.TheaterPK;
+import co.edu.udea.profarq.labuno.model.entity.VideoFormat;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 /**
@@ -161,7 +169,30 @@ public class BillboardManagedBean implements Serializable {
     }
 
     public void saveBillboard(ActionEvent actionEvent) {
+        String videoFormat = this.getNewBillboard().getBillboardPK().getVideoFormat();
+        String theaterCity = this.getNewBillboard().getBillboardPK().getTheaterCity();
+        String theater = this.getNewBillboard().getBillboardPK().getTheater();
+        String audioLanguage = this.getNewBillboard().getBillboardPK().getAudioLanguage();
+        String subtitleLanguage = this.getNewBillboard().getBillboardPK().getSubtitleLanguage();
+        String filmTitle = this.getNewBillboard().getBillboardPK().getFilmTitle();
+        Date filmReleaseDate = this.getNewBillboard().getBillboardPK().getFilmReleaseDate();
+
+        this.newBillboard.setVideoFormat1(new VideoFormat(videoFormat));
+        this.newBillboard.setTheater1(new Theater(new TheaterPK(theaterCity, theater)));
+        this.newBillboard.setAudioFormat(new AudioFormat(new AudioFormatPK(
+                audioLanguage, subtitleLanguage)));
+        this.newBillboard.setFilm(new Film(new FilmPK(filmTitle, filmReleaseDate)));
+
         this.billboardManagerSessionBean.save(this.getNewBillboard());
+
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage("Billboard Saved"));
+
+        this.recreateAttributes();
+    }
+
+    private void recreateAttributes() {
+        this.init();
     }
 
     public void updateBillboards(ActionEvent actionEvent) {
