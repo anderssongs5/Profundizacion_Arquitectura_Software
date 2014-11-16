@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Lab2_ProfArq/src" modelPluginID="Lab2_ProfArq"
+    modelName="Lab2_ProfArq" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>Lab2_ProfArq.ecore</foreignModel>
+  <genPackages prefix="Lab2_ProfArq" disposableProviderFactory="true" ecorePackage="Lab2_ProfArq.ecore#/">
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//Cinema">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Cinema/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Cinema/flicks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Cinema/managers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Cinema/sorts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Cinema/countries"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Cinema/classifications"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Cinema/cities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Cinema/statuses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Cinema/videoFormats"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Cinema/audioFormats"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Cinema/speeches"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//City">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//City/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//City/city"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//City/theaters"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//Classification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Classification/age"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//Country">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Country/isoCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Country/country"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//Status">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Status/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Status/description"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//Theater">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Theater/theater"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Theater/address"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Theater/billboards"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//Director">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Director/fullName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Director/movies"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//Film">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Film/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Film/synopsis"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Film/pseudonym"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Film/image"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Film/directors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Film/genres"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Film/country"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Film/classification"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Film/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Film/releaseDate"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//Billboard">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Billboard/status"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Billboard/audioFormat"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Billboard/videoFormat"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Billboard/motionPictures"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Billboard/outDate"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//AudioFormat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//AudioFormat/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//AudioFormat/languages"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//Language">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Language/isoCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Language/languageName"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//VideoFormat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//VideoFormat/videoFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//VideoFormat/description"/>
+    </genClasses>
+    <genClasses ecoreClass="Lab2_ProfArq.ecore#//Genre">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Genre/genre"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Lab2_ProfArq.ecore#//Genre/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Lab2_ProfArq.ecore#//Genre/films"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

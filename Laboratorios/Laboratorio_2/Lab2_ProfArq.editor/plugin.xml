@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Lab2_ProfArq -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="Lab2_ProfArq.presentation.Lab2_ProfArqModelWizardID"
+            name="%_UI_Lab2_ProfArqModelWizard_label"
+            class="Lab2_ProfArq.presentation.Lab2_ProfArqModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Lab2_ProfArqModelFile.gif">
+         <description>%_UI_Lab2_ProfArqModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Lab2_ProfArq -->
+      <editor
+            id="Lab2_ProfArq.presentation.Lab2_ProfArqEditorID"
+            name="%_UI_Lab2_ProfArqEditor_label"
+            icon="icons/full/obj16/Lab2_ProfArqModelFile.gif"
+            extensions="lab2_profarq"
+            class="Lab2_ProfArq.presentation.Lab2_ProfArqEditor"
+            contributorClass="Lab2_ProfArq.presentation.Lab2_ProfArqActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<co.edu.udea.lab2_profarq.model:Cinema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:co.edu.udea.lab2_profarq.model="http://co/edu/udea/lab2_profarq/model" name="Cinema UdeA">
+  <flicks title="The Hobbit: The Battle Of The Five Armies" synopsis="Bilbo y los enanos lograron entrar en Erebor y librar una feroz batalla contra el dragón Smaug, pero este logró salir airoso y ahora se dirige a la ciudad de Esgaroth para saldar cuentas con sus habitantes." pseudonym="El Hobbit: La Batalla De Los Cinco Ejércitos" image="THE_HOBBIT:_THE_BATTLE_OF_THE_FIVE_ARMIES.png" directors="//@managers.0" genres="//@sorts.0 //@sorts.1" country="//@countries.1" classification="//@classifications.3" duration="7800000" releaseDate="2014-10-18T00:00:00.000-0500"/>
+  <flicks title="The Hunger Games: Mockingjay Part 1" synopsis="En esta primera parte de Sinsajo, la heroína Katniss Everdeen, se convierte en el símbolo de la rebelión contra el Capitolio y una guerra se desata entre el gobierno y los distritos." pseudonym="Los Juegos Del Hambre: Sinsajo Parte 1" image="The_Hunger_Games:_Mockingjay_part_1.png" directors="//@managers.4" genres="//@sorts.8 //@sorts.9" country="//@countries.1" classification="//@classifications.0" duration="6600000" releaseDate="2014-11-20T00:00:00.000-0500"/>
+  <flicks title="Haunter" synopsis="Lisa es una adolescente atrapada en un viaje circular en el tiempo. Aunque siempre despierta en el mismo día, descubre unas “ligeras” variaciones en su rutina." pseudonym="Haunter" image="Haunter.png" directors="//@managers.5" genres="//@sorts.6 //@sorts.4" country="//@countries.2" classification="//@classifications.1" duration="5820000" releaseDate="2014-11-05T00:00:00.000-0500"/>
+  <managers fullName="Peter Jackson" movies="//@flicks.0"/>
+  <managers fullName="Lasse Hallström"/>
+  <managers fullName="Catherine Breillat"/>
+  <managers fullName="Sam Taylor-Johnson"/>
+  <managers fullName="Francis Lawrence" movies="//@flicks.1"/>
+  <managers fullName="Vincenzo Natali" movies="//@flicks.2"/>
+  <sorts genre="DRAMA" description="Películas que se centran principalmente en el desarrollo de un conflicto entre los protagonistas, o del protagonista con su entorno o consigo mismo." films="//@flicks.0"/>
+  <sorts genre="ACCIÓN" description="Películas cuyo argumento implica una interacción moral entre el &quot;bien&quot; y el &quot;mal&quot; llevada a su fin por la violencia o la fuerza física." films="//@flicks.0"/>
+  <sorts genre="BÉLICO" description="Películas de campos de batalla y posiciones que pertenecen a un tiempo de guerra."/>
+  <sorts genre="VIEJO OESTE" description="Películas del período colonial a la era moderna de los Estados Unidos de América, a menudo mitificándolos."/>
+  <sorts genre="TERROR" description="Películas realizadas con la intención de provocar tensión, miedo y/o el sobresalto en la audiencia." films="//@flicks.2"/>
+  <sorts genre="CIENCIA FICCIÓN" description="Películas presentan la progresión de lo desconocido a lo conocido por el descubrimiento de una serie de enigmas."/>
+  <sorts genre="FANTASÍA" description="Películas de mundos míticos que provienen únicamente de la imaginación de su autor." films="//@flicks.2"/>
+  <sorts genre="SUSPENSO" description="Películas realizadas con la intención de provocar tensión en el espectador."/>
+  <sorts genre="ANIMACIÓN" description="Películas compuestas de fotogramas dibujados a mano que, pasados rápidamente, producen ilusión de movimiento." films="//@flicks.1"/>
+  <sorts genre="COMEDIA" description="Películas realizadas con la intención de provocar humor, entretenimiento y/o risa en el espectador." films="//@flicks.1"/>
+  <countries isoCode="COL" country="Colombia"/>
+  <countries isoCode="USA" country="Estados Unidos"/>
+  <countries isoCode="FRA" country="Francia"/>
+  <countries isoCode="ESP" country="España"/>
+  <classifications age="12"/>
+  <classifications age="18"/>
+  <classifications age="21"/>
+  <classifications age="6"/>
+  <classifications age="00"/>
+  <cities code="05001" city="MEDELLÍN">
+    <theaters theater="UNICENTRO" address="Calle 30A N° 82A -26">
+      <billboards status="//@statuses.2" audioFormat="//@audioFormats.1" videoFormat="//@videoFormats.1" motionPictures="//@flicks.2" outDate="2014-11-13T00:00:00.000-0500"/>
+      <billboards status="//@statuses.1" audioFormat="//@audioFormats.2" videoFormat="//@videoFormats.0" motionPictures="//@flicks.0" outDate="2014-12-05T00:00:00.000-0500"/>
+    </theaters>
+    <theaters theater="LOS MOLINOS" address="Carrera 43 A N° 7 sur 170">
+      <billboards status="//@statuses.0" audioFormat="//@audioFormats.0" videoFormat="//@videoFormats.2" motionPictures="//@flicks.1" outDate="2015-01-02T00:00:00.000-0500"/>
+    </theaters>
+  </cities>
+  <cities code="76001" city="CALI">
+    <theaters theater="SANTA FE" address="Avenida Calle 26 N° 62-42">
+      <billboards status="//@statuses.0" audioFormat="//@audioFormats.0" videoFormat="//@videoFormats.3" motionPictures="//@flicks.1" outDate="2014-12-25T00:00:00.000-0500"/>
+    </theaters>
+  </cities>
+  <statuses status="1" description="Próximamente en Cartelera."/>
+  <statuses status="2" description="En Cartelera."/>
+  <statuses status="3" description="Retirada de la Cartelera."/>
+  <videoFormats videoFormat="2D 35 m.m." description="Formato de Video en 2D y en 35 m.m.Formato de Video en 2D y en 35 m.m."/>
+  <videoFormats videoFormat="2D Digital" description="Formato de Video en 2D y en Digital."/>
+  <videoFormats videoFormat="3D Digital" description="Formato de Video en 3D y en Digital."/>
+  <videoFormats videoFormat="3D IMAX" description="Formato de Video en 3D y en IMAX."/>
+  <audioFormats description="Formato de Audio hablado en Inglés y con subtítulos en Español." languages="//@speeches.1 //@speeches.4"/>
+  <audioFormats description="Formato de Audio hablado en Francés y con subtítulos en Español." languages="//@speeches.3 //@speeches.4"/>
+  <audioFormats description="Formato de Audio hablado en Español y sin subtítulos." languages="//@speeches.0 //@speeches.2"/>
+  <audioFormats description="Formato de Audio sin hablado y sin subtítulos." languages="//@speeches.2 //@speeches.5"/>
+  <speeches isoCode="ESP" languageName="Español, Castellano"/>
+  <speeches isoCode="ENG" languageName="Inglés"/>
+  <speeches isoCode="000" languageName="Ninguno"/>
+  <speeches isoCode="FRA" languageName="Francés"/>
+  <speeches isoCode="ESP" languageName="Español, Castellano"/>
+  <speeches isoCode="000" languageName="Ninguno"/>
+</co.edu.udea.lab2_profarq.model:Cinema>

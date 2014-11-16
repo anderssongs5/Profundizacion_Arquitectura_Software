@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Lab2_ProfArq -->
+      <package
+            uri="http://co/edu/udea/lab2_profarq/model"
+            class="Lab2_ProfArq.Lab2_ProfArqPackage"
+            genModel="model/Lab2_ProfArq.genmodel"/>
+   </extension>
+
+</plugin>

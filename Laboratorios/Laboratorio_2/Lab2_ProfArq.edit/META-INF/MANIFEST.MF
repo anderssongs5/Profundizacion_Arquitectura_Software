@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: Lab2_ProfArq.edit;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: Lab2_ProfArq.provider.Lab2_ProfArqEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: Lab2_ProfArq.provider
+Require-Bundle: org.eclipse.core.runtime,
+ Lab2_ProfArq;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport
+Bundle-ActivationPolicy: lazy
