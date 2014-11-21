@@ -1,6 +1,20 @@
+# GNU/Unix
+.*
+!.gitignore
+*~
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Package File
 *.class
 *.war
 *.ear
+
+# Laboratorios
 /Laboratorios/Laboratorio_1/LabUno_ProfArq/build/*.*
 /Laboratorios/Laboratorio_1/LabUno_ProfArq/dist/*.*
 /Laboratorios/Laboratorio_1/LabUno_ProfArq/LabUno_ProfArq-ejb/build/*.*
@@ -13,3 +27,8 @@
 /Laboratorios/Laboratorio_1/LabUno_ProfArq/build/
 /Laboratorios/Laboratorio_1/LabUno_ProfArq/LabUno_ProfArq-war/dist/
 /Laboratorios/Laboratorio_1/LabUno_ProfArq/LabUno_ProfArq-war/build/
+
+# RTFs
+/RTFs/RTF_1/Cinema_ProfArq/nbproject/private/
+/RTFs/RTF_1/Cinema_ProfArq/build/
+/RTFs/RTF_1/Cinema_ProfArq/dist/
