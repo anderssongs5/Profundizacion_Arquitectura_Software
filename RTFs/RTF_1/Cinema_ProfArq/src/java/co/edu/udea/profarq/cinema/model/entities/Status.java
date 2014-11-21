@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.cinema.model.entities;
 
 import java.io.Serializable;
@@ -23,15 +18,20 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
 @Entity
 @Table(name = "status")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Status.findAll", query = "SELECT s FROM Status s"),
-    @NamedQuery(name = "Status.findByStatus", query = "SELECT s FROM Status s WHERE s.status = :status"),
-    @NamedQuery(name = "Status.findByDescription", query = "SELECT s FROM Status s WHERE s.description = :description")})
+    @NamedQuery(name = "Status.findAll", 
+            query = "SELECT s FROM Status s"),
+    @NamedQuery(name = "Status.findByStatus",
+            query = "SELECT s FROM Status s WHERE s.status = :status"),
+    @NamedQuery(name = "Status.findByDescription", 
+            query = "SELECT s FROM Status s WHERE s.description = :description")})
 public class Status implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.cinema.model.entities;
 
 import java.io.Serializable;
@@ -17,10 +12,13 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
 @Embeddable
 public class FilmPK implements Serializable {
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 150)
@@ -84,5 +82,5 @@ public class FilmPK implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.FilmPK[ title=" + title + ", releaseDate=" + releaseDate + " ]";
     }
-    
+
 }

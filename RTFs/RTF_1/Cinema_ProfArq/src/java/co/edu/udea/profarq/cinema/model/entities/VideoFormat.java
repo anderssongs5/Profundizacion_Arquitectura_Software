@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.udea.profarq.cinema.model.entities;
 
 import java.io.Serializable;
@@ -23,16 +18,22 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tests
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
  */
 @Entity
 @Table(name = "video_format")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "VideoFormat.findAll", query = "SELECT v FROM VideoFormat v"),
-    @NamedQuery(name = "VideoFormat.findByVideoFormat", query = "SELECT v FROM VideoFormat v WHERE v.videoFormat = :videoFormat"),
-    @NamedQuery(name = "VideoFormat.findByDescription", query = "SELECT v FROM VideoFormat v WHERE v.description = :description")})
+    @NamedQuery(name = "VideoFormat.findAll",
+            query = "SELECT v FROM VideoFormat v"),
+    @NamedQuery(name = "VideoFormat.findByVideoFormat",
+            query = "SELECT v FROM VideoFormat v WHERE v.videoFormat = :videoFormat"),
+    @NamedQuery(name = "VideoFormat.findByDescription",
+            query = "SELECT v FROM VideoFormat v WHERE v.description = :description")})
 public class VideoFormat implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -102,5 +103,5 @@ public class VideoFormat implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.VideoFormat[ videoFormat=" + videoFormat + " ]";
     }
-    
+
 }
