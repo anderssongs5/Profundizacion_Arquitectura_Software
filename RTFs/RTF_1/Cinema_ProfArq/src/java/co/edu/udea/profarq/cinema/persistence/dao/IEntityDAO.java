@@ -2,6 +2,7 @@ package co.edu.udea.profarq.cinema.persistence.dao;
 
 import co.edu.udea.profarq.cinema.model.entities.IEntity;
 import co.edu.udea.profarq.cinema.persistence.exception.CinemaPersistenceException;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,8 +13,8 @@ import java.util.List;
  */
 public interface IEntityDAO {
 
-    @SuppressWarnings(value = {"rawtypes"})
-    public Long count(Class clazz) throws CinemaPersistenceException;
+//    @SuppressWarnings(value = {"rawtypes"})
+    public Long count(Class<IEntity> clazz) throws CinemaPersistenceException;
 
     public IEntity delete(IEntity entity)
             throws CinemaPersistenceException;
@@ -21,20 +22,19 @@ public interface IEntityDAO {
     public List<IEntity> executeNamedQuery(String namedQuery,
             String where, Object whereArg) throws CinemaPersistenceException;
 
-    @SuppressWarnings(value = {"rawtypes"})
-    public Object findAll(Class clazz) throws CinemaPersistenceException;
-
-    @SuppressWarnings(value = {"rawtypes"})
-    public Object findByAttributes(Class clazz, Object... attributesArgs)
+//    @SuppressWarnings(value = {"rawtypes"})
+    public List<IEntity> findAll(Class<IEntity> clazz)
             throws CinemaPersistenceException;
 
-    @SuppressWarnings(value = {"rawtypes"})
-    public IEntity find(Class clazz, Object key)
+//    @SuppressWarnings(value = {"rawtypes"})
+    public List<IEntity> findByAttributes(Class<IEntity> clazz,
+            Object... attributesArgs) throws CinemaPersistenceException;
+
+//    @SuppressWarnings(value = {"rawtypes"})
+    public IEntity find(Class<IEntity> clazz, Serializable primaryKey)
             throws CinemaPersistenceException;
 
-    public Object save(IEntity entity)
-            throws CinemaPersistenceException;
+    public Serializable save(IEntity entity) throws CinemaPersistenceException;
 
-    public IEntity update(IEntity entity)
-            throws CinemaPersistenceException;
+    public IEntity update(IEntity entity) throws CinemaPersistenceException;
 }

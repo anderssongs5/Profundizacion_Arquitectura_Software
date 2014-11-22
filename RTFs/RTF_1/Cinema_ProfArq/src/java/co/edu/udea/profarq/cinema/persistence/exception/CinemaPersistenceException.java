@@ -8,6 +8,8 @@ package co.edu.udea.profarq.cinema.persistence.exception;
  */
 public class CinemaPersistenceException extends Throwable {
 
+    private static final long serialVersionUID = -5374465792698424350L;
+
     public CinemaPersistenceException() {
         super();
     }

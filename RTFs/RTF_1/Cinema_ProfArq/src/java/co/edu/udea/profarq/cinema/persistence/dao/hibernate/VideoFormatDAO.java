@@ -18,6 +18,7 @@ public class VideoFormatDAO extends AbstractEntityDAO
     @Override()
     public List<VideoFormat> findAll() throws CinemaPersistenceException {
         List<VideoFormat> videoFormatsList = new ArrayList<>();
+//        super.findAll(VideoFormat.class);
 
         return (videoFormatsList);
     }
