@@ -28,7 +28,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Genre.findAll", query = "SELECT g FROM Genre g"),
     @NamedQuery(name = "Genre.findByGenre", query = "SELECT g FROM Genre g WHERE g.genre = :genre"),
     @NamedQuery(name = "Genre.findByDescription", query = "SELECT g FROM Genre g WHERE g.description = :description")})
-public class Genre implements Serializable {
+public class Genre implements IEntity, Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -74,6 +75,12 @@ public class Genre implements Serializable {
         this.filmList = filmList;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getGenre());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -98,5 +105,4 @@ public class Genre implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.Genre[ genre=" + genre + " ]";
     }
-    
 }

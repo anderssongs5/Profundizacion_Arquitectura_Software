@@ -16,48 +16,52 @@ import javax.validation.constraints.Size;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Embeddable
+@Embeddable()
 public class BillboardPK implements Serializable {
+
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 150)
     @Column(name = "film_title")
     private String filmTitle;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Column(name = "film_release_date")
     @Temporal(TemporalType.DATE)
     private Date filmReleaseDate;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 5)
     @Column(name = "theater_city")
     private String theaterCity;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 55)
     @Column(name = "theater")
     private String theater;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 3)
     @Column(name = "audio_language")
     private String audioLanguage;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 3)
     @Column(name = "subtitle_language")
     private String subtitleLanguage;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 20)
     @Column(name = "video_format")
     private String videoFormat;
 
     public BillboardPK() {
+        super();
     }
 
-    public BillboardPK(String filmTitle, Date filmReleaseDate, String theaterCity, String theater, String audioLanguage, String subtitleLanguage, String videoFormat) {
+    public BillboardPK(String filmTitle, Date filmReleaseDate,
+            String theaterCity, String theater, String audioLanguage,
+            String subtitleLanguage, String videoFormat) {
         this.filmTitle = filmTitle;
         this.filmReleaseDate = filmReleaseDate;
         this.theaterCity = theaterCity;
@@ -68,7 +72,8 @@ public class BillboardPK implements Serializable {
     }
 
     public String getFilmTitle() {
-        return filmTitle;
+
+        return (this.filmTitle);
     }
 
     public void setFilmTitle(String filmTitle) {
@@ -76,7 +81,8 @@ public class BillboardPK implements Serializable {
     }
 
     public Date getFilmReleaseDate() {
-        return filmReleaseDate;
+
+        return (this.filmReleaseDate);
     }
 
     public void setFilmReleaseDate(Date filmReleaseDate) {
@@ -84,7 +90,8 @@ public class BillboardPK implements Serializable {
     }
 
     public String getTheaterCity() {
-        return theaterCity;
+
+        return (this.theaterCity);
     }
 
     public void setTheaterCity(String theaterCity) {
@@ -92,7 +99,8 @@ public class BillboardPK implements Serializable {
     }
 
     public String getTheater() {
-        return theater;
+
+        return (this.theater);
     }
 
     public void setTheater(String theater) {
@@ -100,7 +108,8 @@ public class BillboardPK implements Serializable {
     }
 
     public String getAudioLanguage() {
-        return audioLanguage;
+
+        return (this.audioLanguage);
     }
 
     public void setAudioLanguage(String audioLanguage) {
@@ -108,7 +117,8 @@ public class BillboardPK implements Serializable {
     }
 
     public String getSubtitleLanguage() {
-        return subtitleLanguage;
+
+        return (this.subtitleLanguage);
     }
 
     public void setSubtitleLanguage(String subtitleLanguage) {
@@ -116,60 +126,86 @@ public class BillboardPK implements Serializable {
     }
 
     public String getVideoFormat() {
-        return videoFormat;
+
+        return (this.videoFormat);
     }
 
     public void setVideoFormat(String videoFormat) {
         this.videoFormat = videoFormat;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (filmTitle != null ? filmTitle.hashCode() : 0);
-        hash += (filmReleaseDate != null ? filmReleaseDate.hashCode() : 0);
-        hash += (theaterCity != null ? theaterCity.hashCode() : 0);
-        hash += (theater != null ? theater.hashCode() : 0);
-        hash += (audioLanguage != null ? audioLanguage.hashCode() : 0);
-        hash += (subtitleLanguage != null ? subtitleLanguage.hashCode() : 0);
-        hash += (videoFormat != null ? videoFormat.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getFilmTitle() != null)
+                ? this.getFilmTitle().hashCode() : 0);
+        hash += ((this.getFilmReleaseDate() != null)
+                ? this.getFilmReleaseDate().hashCode() : 0);
+        hash += ((this.getTheaterCity() != null)
+                ? this.getTheaterCity().hashCode() : 0);
+        hash += ((this.getTheater() != null)
+                ? this.getTheater().hashCode() : 0);
+        hash += ((this.getAudioLanguage() != null)
+                ? this.getAudioLanguage().hashCode() : 0);
+        hash += ((this.getSubtitleLanguage() != null)
+                ? this.getSubtitleLanguage().hashCode() : 0);
+        hash += ((this.getVideoFormat() != null)
+                ? this.getVideoFormat().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof BillboardPK)) {
-            return false;
+
+            return (false);
         }
+
         BillboardPK other = (BillboardPK) object;
         if ((this.filmTitle == null && other.filmTitle != null) || (this.filmTitle != null && !this.filmTitle.equals(other.filmTitle))) {
-            return false;
+
+            return (false);
         }
+
         if ((this.filmReleaseDate == null && other.filmReleaseDate != null) || (this.filmReleaseDate != null && !this.filmReleaseDate.equals(other.filmReleaseDate))) {
-            return false;
+
+            return (false);
         }
+
         if ((this.theaterCity == null && other.theaterCity != null) || (this.theaterCity != null && !this.theaterCity.equals(other.theaterCity))) {
-            return false;
+
+            return (false);
         }
+
         if ((this.theater == null && other.theater != null) || (this.theater != null && !this.theater.equals(other.theater))) {
-            return false;
+
+            return (false);
         }
+
         if ((this.audioLanguage == null && other.audioLanguage != null) || (this.audioLanguage != null && !this.audioLanguage.equals(other.audioLanguage))) {
-            return false;
+
+            return (false);
         }
+
         if ((this.subtitleLanguage == null && other.subtitleLanguage != null) || (this.subtitleLanguage != null && !this.subtitleLanguage.equals(other.subtitleLanguage))) {
-            return false;
+
+            return (false);
         }
+
         if ((this.videoFormat == null && other.videoFormat != null) || (this.videoFormat != null && !this.videoFormat.equals(other.videoFormat))) {
-            return false;
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
     @Override
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.BillboardPK[ filmTitle=" + filmTitle + ", filmReleaseDate=" + filmReleaseDate + ", theaterCity=" + theaterCity + ", theater=" + theater + ", audioLanguage=" + audioLanguage + ", subtitleLanguage=" + subtitleLanguage + ", videoFormat=" + videoFormat + " ]";
     }
-    
+
 }

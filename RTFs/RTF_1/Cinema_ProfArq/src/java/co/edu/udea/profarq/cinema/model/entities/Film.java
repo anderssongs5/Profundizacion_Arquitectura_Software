@@ -38,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Film.findBySypnosis", query = "SELECT f FROM Film f WHERE f.sypnosis = :sypnosis"),
     @NamedQuery(name = "Film.findByPseudonym", query = "SELECT f FROM Film f WHERE f.pseudonym = :pseudonym"),
     @NamedQuery(name = "Film.findByImage", query = "SELECT f FROM Film f WHERE f.image = :image")})
-public class Film implements Serializable {
+public class Film implements IEntity, Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected FilmPK filmPK;
@@ -182,6 +183,12 @@ public class Film implements Serializable {
         this.billboardList = billboardList;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getFilmPK());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -206,5 +213,4 @@ public class Film implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.Film[ filmPK=" + filmPK + " ]";
     }
-    
 }

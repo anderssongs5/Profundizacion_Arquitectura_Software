@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Billboard.findBySubtitleLanguage", query = "SELECT b FROM Billboard b WHERE b.billboardPK.subtitleLanguage = :subtitleLanguage"),
     @NamedQuery(name = "Billboard.findByVideoFormat", query = "SELECT b FROM Billboard b WHERE b.billboardPK.videoFormat = :videoFormat"),
     @NamedQuery(name = "Billboard.findByOutDate", query = "SELECT b FROM Billboard b WHERE b.outDate = :outDate")})
-public class Billboard implements Serializable {
+public class Billboard implements IEntity, Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected BillboardPK billboardPK;
@@ -130,6 +131,12 @@ public class Billboard implements Serializable {
         this.audioFormat = audioFormat;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getBillboardPK());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -154,5 +161,4 @@ public class Billboard implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.Billboard[ billboardPK=" + billboardPK + " ]";
     }
-    
 }

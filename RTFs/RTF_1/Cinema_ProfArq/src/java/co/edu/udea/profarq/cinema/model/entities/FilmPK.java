@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Embeddable
+@Embeddable()
 public class FilmPK implements Serializable {
 
     @Basic(optional = false)

@@ -22,9 +22,9 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
+@Entity()
 @Table(name = "video_format")
-@XmlRootElement
+@XmlRootElement()
 @NamedQueries({
     @NamedQuery(name = "VideoFormat.findAll",
             query = "SELECT v FROM VideoFormat v"),
@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT v FROM VideoFormat v WHERE v.videoFormat = :videoFormat"),
     @NamedQuery(name = "VideoFormat.findByDescription",
             query = "SELECT v FROM VideoFormat v WHERE v.description = :description")})
-public class VideoFormat implements Serializable {
+public class VideoFormat implements IEntity, Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -79,6 +79,12 @@ public class VideoFormat implements Serializable {
         this.billboardList = billboardList;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getVideoFormat());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -103,5 +109,4 @@ public class VideoFormat implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.VideoFormat[ videoFormat=" + videoFormat + " ]";
     }
-
 }

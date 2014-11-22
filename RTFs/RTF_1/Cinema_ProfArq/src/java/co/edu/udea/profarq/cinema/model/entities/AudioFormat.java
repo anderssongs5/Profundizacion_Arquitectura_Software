@@ -22,15 +22,20 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
+@Entity()
 @Table(name = "audio_format")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AudioFormat.findAll", query = "SELECT a FROM AudioFormat a"),
-    @NamedQuery(name = "AudioFormat.findByAudioLanguage", query = "SELECT a FROM AudioFormat a WHERE a.audioFormatPK.audioLanguage = :audioLanguage"),
-    @NamedQuery(name = "AudioFormat.findBySubtitleLanguage", query = "SELECT a FROM AudioFormat a WHERE a.audioFormatPK.subtitleLanguage = :subtitleLanguage"),
-    @NamedQuery(name = "AudioFormat.findByDescription", query = "SELECT a FROM AudioFormat a WHERE a.description = :description")})
-public class AudioFormat implements Serializable {
+    @NamedQuery(name = "AudioFormat.findAll",
+            query = "SELECT a FROM AudioFormat a"),
+    @NamedQuery(name = "AudioFormat.findByAudioLanguage",
+            query = "SELECT a FROM AudioFormat a WHERE a.audioFormatPK.audioLanguage = :audioLanguage"),
+    @NamedQuery(name = "AudioFormat.findBySubtitleLanguage",
+            query = "SELECT a FROM AudioFormat a WHERE a.audioFormatPK.subtitleLanguage = :subtitleLanguage"),
+    @NamedQuery(name = "AudioFormat.findByDescription",
+            query = "SELECT a FROM AudioFormat a WHERE a.description = :description")})
+public class AudioFormat implements IEntity, Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected AudioFormatPK audioFormatPK;
@@ -39,10 +44,12 @@ public class AudioFormat implements Serializable {
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "audioFormat")
     private List<Billboard> billboardList;
-    @JoinColumn(name = "audio_language", referencedColumnName = "iso_code", insertable = false, updatable = false)
+    @JoinColumn(name = "audio_language", referencedColumnName = "iso_code",
+            insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Languages languages;
-    @JoinColumn(name = "subtitle_language", referencedColumnName = "iso_code", insertable = false, updatable = false)
+    @JoinColumn(name = "subtitle_language", referencedColumnName = "iso_code",
+            insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Languages languages1;
 
@@ -98,6 +105,12 @@ public class AudioFormat implements Serializable {
         this.languages1 = languages1;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getAudioFormatPK());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -105,7 +118,7 @@ public class AudioFormat implements Serializable {
         return hash;
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof AudioFormat)) {
@@ -122,5 +135,4 @@ public class AudioFormat implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.AudioFormat[ audioFormatPK=" + audioFormatPK + " ]";
     }
-    
 }

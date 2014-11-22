@@ -28,7 +28,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Classification.findAll", query = "SELECT c FROM Classification c"),
     @NamedQuery(name = "Classification.findByAge", query = "SELECT c FROM Classification c WHERE c.age = :age")})
-public class Classification implements Serializable {
+public class Classification implements IEntity, Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -63,6 +64,12 @@ public class Classification implements Serializable {
         this.filmList = filmList;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getAge());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -87,5 +94,4 @@ public class Classification implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.Classification[ age=" + age + " ]";
     }
-    
 }

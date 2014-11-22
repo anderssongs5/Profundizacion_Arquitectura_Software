@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Languages.findAll", query = "SELECT l FROM Languages l"),
     @NamedQuery(name = "Languages.findByIsoCode", query = "SELECT l FROM Languages l WHERE l.isoCode = :isoCode"),
     @NamedQuery(name = "Languages.findByLanguageName", query = "SELECT l FROM Languages l WHERE l.languageName = :languageName")})
-public class Languages implements Serializable {
+public class Languages implements IEntity, Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -93,6 +94,12 @@ public class Languages implements Serializable {
         this.audioFormatList1 = audioFormatList1;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getLanguageName());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -117,5 +124,4 @@ public class Languages implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.Languages[ isoCode=" + isoCode + " ]";
     }
-    
 }

@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "City.findAll", query = "SELECT c FROM City c"),
     @NamedQuery(name = "City.findByCode", query = "SELECT c FROM City c WHERE c.code = :code"),
     @NamedQuery(name = "City.findByCity", query = "SELECT c FROM City c WHERE c.city = :city")})
-public class City implements Serializable {
+public class City implements IEntity, Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -82,6 +83,12 @@ public class City implements Serializable {
         this.theaterList = theaterList;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getCode());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -106,5 +113,4 @@ public class City implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.City[ code=" + code + " ]";
     }
-    
 }

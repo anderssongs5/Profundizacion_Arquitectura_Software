@@ -26,13 +26,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "status")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Status.findAll", 
+    @NamedQuery(name = "Status.findAll",
             query = "SELECT s FROM Status s"),
     @NamedQuery(name = "Status.findByStatus",
             query = "SELECT s FROM Status s WHERE s.status = :status"),
-    @NamedQuery(name = "Status.findByDescription", 
+    @NamedQuery(name = "Status.findByDescription",
             query = "SELECT s FROM Status s WHERE s.description = :description")})
-public class Status implements Serializable {
+public class Status implements IEntity, Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -78,6 +79,12 @@ public class Status implements Serializable {
         this.billboardList = billboardList;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getStatus());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -102,5 +109,4 @@ public class Status implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.Status[ status=" + status + " ]";
     }
-    
 }

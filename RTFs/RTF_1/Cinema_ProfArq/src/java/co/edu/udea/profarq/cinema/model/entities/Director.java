@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Director.findAll", query = "SELECT d FROM Director d"),
     @NamedQuery(name = "Director.findByFullName", query = "SELECT d FROM Director d WHERE d.fullName = :fullName")})
-public class Director implements Serializable {
+public class Director implements IEntity, Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -68,6 +69,12 @@ public class Director implements Serializable {
         this.filmList = filmList;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getFullName());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -92,5 +99,4 @@ public class Director implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.Director[ fullName=" + fullName + " ]";
     }
-    
 }

@@ -32,11 +32,11 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT t FROM Theater t"),
     @NamedQuery(name = "Theater.findByCityCode",
             query = "SELECT t FROM Theater t WHERE t.theaterPK.cityCode = :cityCode"),
-    @NamedQuery(name = "Theater.findByTheater", 
+    @NamedQuery(name = "Theater.findByTheater",
             query = "SELECT t FROM Theater t WHERE t.theaterPK.theater = :theater"),
-    @NamedQuery(name = "Theater.findByAddress", 
+    @NamedQuery(name = "Theater.findByAddress",
             query = "SELECT t FROM Theater t WHERE t.address = :address")})
-public class Theater implements Serializable {
+public class Theater implements IEntity, Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
@@ -101,6 +101,12 @@ public class Theater implements Serializable {
         this.city = city;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getTheaterPK());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -125,5 +131,4 @@ public class Theater implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.Theater[ theaterPK=" + theaterPK + " ]";
     }
-
 }

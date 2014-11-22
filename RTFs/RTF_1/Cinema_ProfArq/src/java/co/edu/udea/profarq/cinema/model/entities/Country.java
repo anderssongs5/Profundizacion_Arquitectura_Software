@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Country.findAll", query = "SELECT c FROM Country c"),
     @NamedQuery(name = "Country.findByIsoCode", query = "SELECT c FROM Country c WHERE c.isoCode = :isoCode"),
     @NamedQuery(name = "Country.findByCountry", query = "SELECT c FROM Country c WHERE c.country = :country")})
-public class Country implements Serializable {
+public class Country implements IEntity, Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -82,6 +83,12 @@ public class Country implements Serializable {
         this.filmList = filmList;
     }
 
+    @Override()
+    public Serializable getPrimaryKey() {
+
+        return (this.getIsoCode());
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -106,5 +113,4 @@ public class Country implements Serializable {
     public String toString() {
         return "co.edu.udea.profarq.cinema.model.entities.Country[ isoCode=" + isoCode + " ]";
     }
-    
 }
