@@ -23,8 +23,6 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Neiber Padierna P&eacute;rez
  */
 @Entity()
-@Table(name = "audio_format")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "AudioFormat.findAll",
             query = "SELECT a FROM AudioFormat a"),
@@ -34,10 +32,12 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT a FROM AudioFormat a WHERE a.audioFormatPK.subtitleLanguage = :subtitleLanguage"),
     @NamedQuery(name = "AudioFormat.findByDescription",
             query = "SELECT a FROM AudioFormat a WHERE a.description = :description")})
+@Table(name = "audio_format")
+@XmlRootElement()
 public class AudioFormat implements IEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @EmbeddedId
+    private static final long serialVersionUID = 1127840158072365826L;
+    @EmbeddedId()
     protected AudioFormatPK audioFormatPK;
     @Size(max = 255)
     @Column(name = "description")
@@ -54,6 +54,7 @@ public class AudioFormat implements IEntity, Serializable {
     private Languages languages1;
 
     public AudioFormat() {
+        super();
     }
 
     public AudioFormat(AudioFormatPK audioFormatPK) {

@@ -16,6 +16,7 @@ import javax.validation.constraints.Size;
 @Embeddable()
 public class AudioFormatPK implements Serializable {
 
+    private static final long serialVersionUID = -1170094832974498454L;
     @Basic(optional = false)
     @NotNull()
     @Size(min = 1, max = 3)

@@ -23,29 +23,34 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "director")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Director.findAll", query = "SELECT d FROM Director d"),
-    @NamedQuery(name = "Director.findByFullName", query = "SELECT d FROM Director d WHERE d.fullName = :fullName")})
+    @NamedQuery(name = "Director.findAll",
+            query = "SELECT d FROM Director d"),
+    @NamedQuery(name = "Director.findByFullName",
+            query = "SELECT d FROM Director d WHERE d.fullName = :fullName")})
+@Table(name = "director")
+@XmlRootElement()
 public class Director implements IEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
+    private static final long serialVersionUID = -3608758315142538465L;
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 55)
     @Column(name = "full_name")
     private String fullName;
     @JoinTable(name = "films_directors", joinColumns = {
-        @JoinColumn(name = "director_full_name", referencedColumnName = "full_name")}, inverseJoinColumns = {
-        @JoinColumn(name = "film_title", referencedColumnName = "title"),
-        @JoinColumn(name = "film_release_date", referencedColumnName = "release_date")})
-    @ManyToMany
+        @JoinColumn(name = "director_full_name",
+                referencedColumnName = "full_name")}, inverseJoinColumns = {
+                @JoinColumn(name = "film_title", referencedColumnName = "title"),
+                @JoinColumn(name = "film_release_date",
+                        referencedColumnName = "release_date")})
+    @ManyToMany()
     private List<Film> filmList;
 
     public Director() {
+        super();
     }
 
     public Director(String fullName) {

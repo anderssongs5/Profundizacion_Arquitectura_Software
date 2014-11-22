@@ -22,24 +22,27 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "country")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Country.findAll", query = "SELECT c FROM Country c"),
-    @NamedQuery(name = "Country.findByIsoCode", query = "SELECT c FROM Country c WHERE c.isoCode = :isoCode"),
-    @NamedQuery(name = "Country.findByCountry", query = "SELECT c FROM Country c WHERE c.country = :country")})
+    @NamedQuery(name = "Country.findAll",
+            query = "SELECT c FROM Country c"),
+    @NamedQuery(name = "Country.findByIsoCode",
+            query = "SELECT c FROM Country c WHERE c.isoCode = :isoCode"),
+    @NamedQuery(name = "Country.findByCountry",
+            query = "SELECT c FROM Country c WHERE c.country = :country")})
+@Table(name = "country")
+@XmlRootElement()
 public class Country implements IEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
+    private static final long serialVersionUID = -6419898328561689220L;
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 3)
     @Column(name = "iso_code")
     private String isoCode;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 55)
     @Column(name = "country")
     private String country;
@@ -47,6 +50,7 @@ public class Country implements IEntity, Serializable {
     private List<Film> filmList;
 
     public Country() {
+        super();
     }
 
     public Country(String isoCode) {

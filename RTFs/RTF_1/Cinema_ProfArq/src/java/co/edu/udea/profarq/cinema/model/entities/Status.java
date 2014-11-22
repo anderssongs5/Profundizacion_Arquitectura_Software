@@ -22,9 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "status")
-@XmlRootElement
+@Entity()
 @NamedQueries({
     @NamedQuery(name = "Status.findAll",
             query = "SELECT s FROM Status s"),
@@ -32,12 +30,14 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT s FROM Status s WHERE s.status = :status"),
     @NamedQuery(name = "Status.findByDescription",
             query = "SELECT s FROM Status s WHERE s.description = :description")})
+@Table(name = "status")
+@XmlRootElement()
 public class Status implements IEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
+    private static final long serialVersionUID = 1018450144858817296L;
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 1)
     @Column(name = "status")
     private String status;
@@ -48,6 +48,7 @@ public class Status implements IEntity, Serializable {
     private List<Billboard> billboardList;
 
     public Status() {
+        super();
     }
 
     public Status(String status) {

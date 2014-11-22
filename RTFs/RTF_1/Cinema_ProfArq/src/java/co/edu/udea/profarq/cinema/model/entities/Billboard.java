@@ -21,50 +21,70 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "billboard")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Billboard.findAll", query = "SELECT b FROM Billboard b"),
-    @NamedQuery(name = "Billboard.findByFilmTitle", query = "SELECT b FROM Billboard b WHERE b.billboardPK.filmTitle = :filmTitle"),
-    @NamedQuery(name = "Billboard.findByFilmReleaseDate", query = "SELECT b FROM Billboard b WHERE b.billboardPK.filmReleaseDate = :filmReleaseDate"),
-    @NamedQuery(name = "Billboard.findByTheaterCity", query = "SELECT b FROM Billboard b WHERE b.billboardPK.theaterCity = :theaterCity"),
-    @NamedQuery(name = "Billboard.findByTheater", query = "SELECT b FROM Billboard b WHERE b.billboardPK.theater = :theater"),
-    @NamedQuery(name = "Billboard.findByAudioLanguage", query = "SELECT b FROM Billboard b WHERE b.billboardPK.audioLanguage = :audioLanguage"),
-    @NamedQuery(name = "Billboard.findBySubtitleLanguage", query = "SELECT b FROM Billboard b WHERE b.billboardPK.subtitleLanguage = :subtitleLanguage"),
-    @NamedQuery(name = "Billboard.findByVideoFormat", query = "SELECT b FROM Billboard b WHERE b.billboardPK.videoFormat = :videoFormat"),
-    @NamedQuery(name = "Billboard.findByOutDate", query = "SELECT b FROM Billboard b WHERE b.outDate = :outDate")})
+    @NamedQuery(name = "Billboard.findAll",
+            query = "SELECT b FROM Billboard b"),
+    @NamedQuery(name = "Billboard.findByFilmTitle",
+            query = "SELECT b FROM Billboard b WHERE b.billboardPK.filmTitle = :filmTitle"),
+    @NamedQuery(name = "Billboard.findByFilmReleaseDate",
+            query = "SELECT b FROM Billboard b WHERE b.billboardPK.filmReleaseDate = :filmReleaseDate"),
+    @NamedQuery(name = "Billboard.findByTheaterCity",
+            query = "SELECT b FROM Billboard b WHERE b.billboardPK.theaterCity = :theaterCity"),
+    @NamedQuery(name = "Billboard.findByTheater",
+            query = "SELECT b FROM Billboard b WHERE b.billboardPK.theater = :theater"),
+    @NamedQuery(name = "Billboard.findByAudioLanguage",
+            query = "SELECT b FROM Billboard b WHERE b.billboardPK.audioLanguage = :audioLanguage"),
+    @NamedQuery(name = "Billboard.findBySubtitleLanguage",
+            query = "SELECT b FROM Billboard b WHERE b.billboardPK.subtitleLanguage = :subtitleLanguage"),
+    @NamedQuery(name = "Billboard.findByVideoFormat",
+            query = "SELECT b FROM Billboard b WHERE b.billboardPK.videoFormat = :videoFormat"),
+    @NamedQuery(name = "Billboard.findByOutDate",
+            query = "SELECT b FROM Billboard b WHERE b.outDate = :outDate")})
+@Table(name = "billboard")
+@XmlRootElement()
 public class Billboard implements IEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @EmbeddedId
+    private static final long serialVersionUID = 1112906809898191479L;
+    @EmbeddedId()
     protected BillboardPK billboardPK;
     @Column(name = "out_date")
     @Temporal(TemporalType.DATE)
     private Date outDate;
-    @JoinColumn(name = "video_format", referencedColumnName = "video_format", insertable = false, updatable = false)
+    @JoinColumn(name = "video_format", referencedColumnName = "video_format",
+            insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private VideoFormat videoFormat1;
     @JoinColumns({
-        @JoinColumn(name = "theater_city", referencedColumnName = "city_code", insertable = false, updatable = false),
-        @JoinColumn(name = "theater", referencedColumnName = "theater", insertable = false, updatable = false)})
+        @JoinColumn(name = "theater_city", referencedColumnName = "city_code",
+                insertable = false, updatable = false),
+        @JoinColumn(name = "theater", referencedColumnName = "theater",
+                insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Theater theater1;
     @JoinColumn(name = "status", referencedColumnName = "status")
     @ManyToOne(optional = false)
     private Status status;
     @JoinColumns({
-        @JoinColumn(name = "film_title", referencedColumnName = "title", insertable = false, updatable = false),
-        @JoinColumn(name = "film_release_date", referencedColumnName = "release_date", insertable = false, updatable = false)})
+        @JoinColumn(name = "film_title", referencedColumnName = "title",
+                insertable = false, updatable = false),
+        @JoinColumn(name = "film_release_date",
+                referencedColumnName = "release_date", insertable = false,
+                updatable = false)})
     @ManyToOne(optional = false)
     private Film film;
     @JoinColumns({
-        @JoinColumn(name = "audio_language", referencedColumnName = "audio_language", insertable = false, updatable = false),
-        @JoinColumn(name = "subtitle_language", referencedColumnName = "subtitle_language", insertable = false, updatable = false)})
+        @JoinColumn(name = "audio_language",
+                referencedColumnName = "audio_language", insertable = false,
+                updatable = false),
+        @JoinColumn(name = "subtitle_language",
+                referencedColumnName = "subtitle_language",
+                insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private AudioFormat audioFormat;
 
     public Billboard() {
+        super();
     }
 
     public Billboard(BillboardPK billboardPK) {

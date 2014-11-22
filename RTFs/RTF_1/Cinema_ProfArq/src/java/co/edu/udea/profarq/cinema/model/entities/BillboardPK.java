@@ -19,6 +19,7 @@ import javax.validation.constraints.Size;
 @Embeddable()
 public class BillboardPK implements Serializable {
 
+    private static final long serialVersionUID = 7102874025440721171L;
     @Basic(optional = false)
     @NotNull()
     @Size(min = 1, max = 150)

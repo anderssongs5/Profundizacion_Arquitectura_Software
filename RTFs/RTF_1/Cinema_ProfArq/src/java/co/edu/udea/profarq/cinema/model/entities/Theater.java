@@ -24,9 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "theater")
-@XmlRootElement
+@Entity()
 @NamedQueries({
     @NamedQuery(name = "Theater.findAll",
             query = "SELECT t FROM Theater t"),
@@ -36,23 +34,27 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT t FROM Theater t WHERE t.theaterPK.theater = :theater"),
     @NamedQuery(name = "Theater.findByAddress",
             query = "SELECT t FROM Theater t WHERE t.address = :address")})
+@Table(name = "theater")
+@XmlRootElement()
 public class Theater implements IEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @EmbeddedId
+    private static final long serialVersionUID = -4613326253431874990L;
+    @EmbeddedId()
     protected TheaterPK theaterPK;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 55)
     @Column(name = "address")
     private String address;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "theater1")
     private List<Billboard> billboardList;
-    @JoinColumn(name = "city_code", referencedColumnName = "code", insertable = false, updatable = false)
+    @JoinColumn(name = "city_code", referencedColumnName = "code",
+            insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private City city;
 
     public Theater() {
+        super();
     }
 
     public Theater(TheaterPK theaterPK) {

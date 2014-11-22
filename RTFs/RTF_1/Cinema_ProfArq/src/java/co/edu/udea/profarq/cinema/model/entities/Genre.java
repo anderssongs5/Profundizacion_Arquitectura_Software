@@ -21,19 +21,22 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "genre")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Genre.findAll", query = "SELECT g FROM Genre g"),
-    @NamedQuery(name = "Genre.findByGenre", query = "SELECT g FROM Genre g WHERE g.genre = :genre"),
-    @NamedQuery(name = "Genre.findByDescription", query = "SELECT g FROM Genre g WHERE g.description = :description")})
+    @NamedQuery(name = "Genre.findAll",
+            query = "SELECT g FROM Genre g"),
+    @NamedQuery(name = "Genre.findByGenre", 
+            query = "SELECT g FROM Genre g WHERE g.genre = :genre"),
+    @NamedQuery(name = "Genre.findByDescription", 
+            query = "SELECT g FROM Genre g WHERE g.description = :description")})
+@Table(name = "genre")
+@XmlRootElement()
 public class Genre implements IEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
+    private static final long serialVersionUID = -2629203044466058108L;
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 25)
     @Column(name = "genre")
     private String genre;
@@ -44,6 +47,7 @@ public class Genre implements IEntity, Serializable {
     private List<Film> filmList;
 
     public Genre() {
+        super();
     }
 
     public Genre(String genre) {

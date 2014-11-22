@@ -19,18 +19,20 @@ import javax.validation.constraints.Size;
 @Embeddable()
 public class FilmPK implements Serializable {
 
+    private static final long serialVersionUID = -2752664990515277338L;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 150)
     @Column(name = "title")
     private String title;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Column(name = "release_date")
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
 
     public FilmPK() {
+        super();
     }
 
     public FilmPK(String title, Date releaseDate) {

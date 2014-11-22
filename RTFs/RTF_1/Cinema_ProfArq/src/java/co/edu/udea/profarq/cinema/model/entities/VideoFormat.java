@@ -23,8 +23,6 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Neiber Padierna P&eacute;rez
  */
 @Entity()
-@Table(name = "video_format")
-@XmlRootElement()
 @NamedQueries({
     @NamedQuery(name = "VideoFormat.findAll",
             query = "SELECT v FROM VideoFormat v"),
@@ -32,12 +30,14 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT v FROM VideoFormat v WHERE v.videoFormat = :videoFormat"),
     @NamedQuery(name = "VideoFormat.findByDescription",
             query = "SELECT v FROM VideoFormat v WHERE v.description = :description")})
+@Table(name = "video_format")
+@XmlRootElement()
 public class VideoFormat implements IEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
+    private static final long serialVersionUID = 1138109329322819178L;
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 20)
     @Column(name = "video_format")
     private String videoFormat;
@@ -48,6 +48,7 @@ public class VideoFormat implements IEntity, Serializable {
     private List<Billboard> billboardList;
 
     public VideoFormat() {
+        super();
     }
 
     public VideoFormat(String videoFormat) {

@@ -16,18 +16,20 @@ import javax.validation.constraints.Size;
 @Embeddable()
 public class TheaterPK implements Serializable {
 
+    private static final long serialVersionUID = -1209518005074183224L;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 5)
     @Column(name = "city_code")
     private String cityCode;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 55)
     @Column(name = "theater")
     private String theater;
 
     public TheaterPK() {
+        super();
     }
 
     public TheaterPK(String cityCode, String theater) {

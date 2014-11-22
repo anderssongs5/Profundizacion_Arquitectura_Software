@@ -22,18 +22,20 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "classification")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Classification.findAll", query = "SELECT c FROM Classification c"),
-    @NamedQuery(name = "Classification.findByAge", query = "SELECT c FROM Classification c WHERE c.age = :age")})
+    @NamedQuery(name = "Classification.findAll",
+            query = "SELECT c FROM Classification c"),
+    @NamedQuery(name = "Classification.findByAge",
+            query = "SELECT c FROM Classification c WHERE c.age = :age")})
+@Table(name = "classification")
+@XmlRootElement()
 public class Classification implements IEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
+    private static final long serialVersionUID = -5621457783265796664L;
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 2)
     @Column(name = "age")
     private String age;
@@ -41,6 +43,7 @@ public class Classification implements IEntity, Serializable {
     private List<Film> filmList;
 
     public Classification() {
+        super();
     }
 
     public Classification(String age) {

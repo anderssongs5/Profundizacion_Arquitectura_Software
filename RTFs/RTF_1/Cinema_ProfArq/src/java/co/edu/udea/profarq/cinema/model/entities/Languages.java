@@ -22,24 +22,27 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "languages")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "Languages.findAll", query = "SELECT l FROM Languages l"),
-    @NamedQuery(name = "Languages.findByIsoCode", query = "SELECT l FROM Languages l WHERE l.isoCode = :isoCode"),
-    @NamedQuery(name = "Languages.findByLanguageName", query = "SELECT l FROM Languages l WHERE l.languageName = :languageName")})
+    @NamedQuery(name = "Languages.findAll",
+            query = "SELECT l FROM Languages l"),
+    @NamedQuery(name = "Languages.findByIsoCode",
+            query = "SELECT l FROM Languages l WHERE l.isoCode = :isoCode"),
+    @NamedQuery(name = "Languages.findByLanguageName",
+            query = "SELECT l FROM Languages l WHERE l.languageName = :languageName")})
+@Table(name = "languages")
+@XmlRootElement()
 public class Languages implements IEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
+    private static final long serialVersionUID = 1212128454682676913L;
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 3)
     @Column(name = "iso_code")
     private String isoCode;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 25)
     @Column(name = "language_name")
     private String languageName;
@@ -49,6 +52,7 @@ public class Languages implements IEntity, Serializable {
     private List<AudioFormat> audioFormatList1;
 
     public Languages() {
+        super();
     }
 
     public Languages(String isoCode) {

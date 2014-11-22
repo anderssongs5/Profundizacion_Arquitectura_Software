@@ -22,24 +22,27 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Miguel &Aacute;ngel Ossa Ruiz
  * @author Neiber Padierna P&eacute;rez
  */
-@Entity
-@Table(name = "city")
-@XmlRootElement
+@Entity()
 @NamedQueries({
-    @NamedQuery(name = "City.findAll", query = "SELECT c FROM City c"),
-    @NamedQuery(name = "City.findByCode", query = "SELECT c FROM City c WHERE c.code = :code"),
-    @NamedQuery(name = "City.findByCity", query = "SELECT c FROM City c WHERE c.city = :city")})
+    @NamedQuery(name = "City.findAll",
+            query = "SELECT c FROM City c"),
+    @NamedQuery(name = "City.findByCode",
+            query = "SELECT c FROM City c WHERE c.code = :code"),
+    @NamedQuery(name = "City.findByCity",
+            query = "SELECT c FROM City c WHERE c.city = :city")})
+@Table(name = "city")
+@XmlRootElement()
 public class City implements IEntity, Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
+    private static final long serialVersionUID = 1057250203265266812L;
+    @Id()
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 5)
     @Column(name = "code")
     private String code;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 35)
     @Column(name = "city")
     private String city;
@@ -47,6 +50,7 @@ public class City implements IEntity, Serializable {
     private List<Theater> theaterList;
 
     public City() {
+        super();
     }
 
     public City(String code) {
