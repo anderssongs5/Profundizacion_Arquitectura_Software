@@ -42,6 +42,7 @@
             <config-files>
                 <config-file>web/WEB-INF/dispatcher-servlet.xml</config-file>
                 <config-file>web/WEB-INF/applicationContext.xml</config-file>
+                <config-file>web/WEB-INF/spring-config/CinemaSpringConfig.xml</config-file>
             </config-files>
             <config-file-groups/>
         </spring-data>
