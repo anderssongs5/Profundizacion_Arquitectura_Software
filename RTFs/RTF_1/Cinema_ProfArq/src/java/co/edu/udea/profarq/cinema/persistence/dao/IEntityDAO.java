@@ -13,7 +13,6 @@ import java.util.List;
  */
 public interface IEntityDAO {
 
-//    @SuppressWarnings(value = {"rawtypes"})
     public Long count(Class<IEntity> clazz) throws CinemaPersistenceException;
 
     public IEntity delete(IEntity entity)
@@ -22,15 +21,11 @@ public interface IEntityDAO {
     public List<IEntity> executeNamedQuery(String namedQuery,
             String where, Object whereArg) throws CinemaPersistenceException;
 
-//    @SuppressWarnings(value = {"rawtypes"})
-    public List<IEntity> findAll(Class<IEntity> clazz)
-            throws CinemaPersistenceException;
+    public List<IEntity> findAll(Class clazz) throws CinemaPersistenceException;
 
-//    @SuppressWarnings(value = {"rawtypes"})
     public List<IEntity> findByAttributes(Class<IEntity> clazz,
             Object... attributesArgs) throws CinemaPersistenceException;
 
-//    @SuppressWarnings(value = {"rawtypes"})
     public IEntity find(Class<IEntity> clazz, Serializable primaryKey)
             throws CinemaPersistenceException;
 

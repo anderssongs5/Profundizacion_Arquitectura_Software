@@ -99,7 +99,7 @@ abstract class AbstractEntityDAO implements IEntityDAO {
 
     @Override()
     @SuppressWarnings(value = {"rawtypes", "unchecked"})
-    public List<IEntity> findAll(Class<IEntity> clazz)
+    public List<IEntity> findAll(Class clazz)
             throws CinemaPersistenceException {
         List<IEntity> entities = null;
 

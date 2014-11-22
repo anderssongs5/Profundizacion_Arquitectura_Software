@@ -1,8 +1,8 @@
 package co.edu.udea.profarq.cinema.persistence.dao;
 
 import co.edu.udea.profarq.cinema.model.entities.Film;
+import co.edu.udea.profarq.cinema.model.entities.FilmPK;
 import co.edu.udea.profarq.cinema.persistence.exception.CinemaPersistenceException;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -17,5 +17,5 @@ public interface IFilmDAO {
 
     public List<Film> findAll() throws CinemaPersistenceException;
 
-    public Serializable save(Film film) throws CinemaPersistenceException;
+    public FilmPK save(Film film) throws CinemaPersistenceException;
 }

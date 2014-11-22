@@ -1,9 +1,7 @@
 package co.edu.udea.profarq.cinema.persistence.dao;
 
-import co.edu.udea.profarq.cinema.model.entities.Billboard;
 import co.edu.udea.profarq.cinema.model.entities.Director;
 import co.edu.udea.profarq.cinema.persistence.exception.CinemaPersistenceException;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,10 +12,9 @@ import java.util.List;
  */
 public interface IDirectorDAO {
 
-    public List<Billboard> findAll() throws CinemaPersistenceException;
+    public List<Director> findAll() throws CinemaPersistenceException;
 
-    public Director find(Serializable directorPK)
-            throws CinemaPersistenceException;
+    public Director find(String directorPK) throws CinemaPersistenceException;
 
-    public Director save(Director director) throws CinemaPersistenceException;
+    public String save(Director director) throws CinemaPersistenceException;
 }
