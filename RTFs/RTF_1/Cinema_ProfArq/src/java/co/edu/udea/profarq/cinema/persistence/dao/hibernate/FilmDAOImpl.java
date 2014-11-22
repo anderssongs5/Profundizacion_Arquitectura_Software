@@ -48,4 +48,12 @@ public class FilmDAOImpl extends AbstractEntityDAO implements IFilmDAO {
 
         return ((filmPK != null) ? (FilmPK) filmPK : null);
     }
+
+    @Override
+    public Film find(FilmPK film) throws CinemaPersistenceException {
+
+        IEntity filmFound = super.find(Film.class, film);
+
+        return ((film != null) ? (Film) filmFound : null);
+    }
 }

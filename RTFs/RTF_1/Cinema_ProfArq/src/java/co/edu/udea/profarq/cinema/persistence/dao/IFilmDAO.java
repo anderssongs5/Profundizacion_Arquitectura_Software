@@ -16,6 +16,8 @@ public interface IFilmDAO {
     public Film delete(Film film) throws CinemaPersistenceException;
 
     public List<Film> findAll() throws CinemaPersistenceException;
+    
+    public Film find(FilmPK film) throws CinemaPersistenceException;
 
     public FilmPK save(Film film) throws CinemaPersistenceException;
 }

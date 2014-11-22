@@ -21,7 +21,8 @@ public interface IEntityDAO {
     public List<IEntity> executeNamedQuery(String namedQuery,
             String where, Object whereArg) throws CinemaPersistenceException;
 
-    public List<IEntity> findAll(Class clazz) throws CinemaPersistenceException;
+    public List<IEntity> findAll(Class<IEntity> clazz)
+            throws CinemaPersistenceException;
 
     public List<IEntity> findByAttributes(Class<IEntity> clazz,
             Object... attributesArgs) throws CinemaPersistenceException;
