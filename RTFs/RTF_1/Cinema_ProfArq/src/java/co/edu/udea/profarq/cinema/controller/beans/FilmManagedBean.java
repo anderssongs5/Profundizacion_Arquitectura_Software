@@ -147,7 +147,7 @@ public class FilmManagedBean implements Serializable {
 
     public FilmManagerBean getFilmManagerSessionBean() {
 
-        return filmManagerSessionBean;
+        return (this.filmManagerSessionBean);
     }
 
     public void setFilmManagerSessionBean(

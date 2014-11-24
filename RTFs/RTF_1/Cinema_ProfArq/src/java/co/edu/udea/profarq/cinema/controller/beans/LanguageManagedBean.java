@@ -45,7 +45,7 @@ public class LanguageManagedBean implements Serializable {
 
     public LanguageManagerBean getLanguageManagerSessionBean() {
         
-        return languageManagerSessionBean;
+        return (this.languageManagerSessionBean);
     }
 
     public void setLanguageManagerSessionBean(

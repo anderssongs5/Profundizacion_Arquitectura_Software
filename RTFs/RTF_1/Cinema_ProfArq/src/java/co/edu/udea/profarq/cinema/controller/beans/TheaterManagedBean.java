@@ -24,7 +24,7 @@ public class TheaterManagedBean implements Serializable {
 
     public TheaterManagerBean getTheaterManagerSessionBean() {
         
-        return theaterManagerSessionBean;
+        return (this.theaterManagerSessionBean);
     }
 
     public void setTheaterManagerSessionBean(
@@ -37,7 +37,7 @@ public class TheaterManagedBean implements Serializable {
             this.refreshPage();
         }
 
-        return theatersList;
+        return (this.theatersList);
     }
 
     public void setTheatersList(List<Theater> theatersList) {

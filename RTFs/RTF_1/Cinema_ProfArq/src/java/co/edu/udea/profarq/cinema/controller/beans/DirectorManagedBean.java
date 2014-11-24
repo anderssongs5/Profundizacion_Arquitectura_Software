@@ -22,7 +22,7 @@ public class DirectorManagedBean implements Serializable {
 
     public DirectorManagerBean getDirectorManagerSessionBean() {
 
-        return directorManagerSessionBean;
+        return (this.directorManagerSessionBean);
     }
 
     public void setDirectorManagerSessionBean(

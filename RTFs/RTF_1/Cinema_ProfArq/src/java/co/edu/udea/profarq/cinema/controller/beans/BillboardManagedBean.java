@@ -70,7 +70,7 @@ public class BillboardManagedBean implements Serializable {
 
     public BillboardManagerBean getBillboardManagerSessionBean() {
 
-        return billboardManagerSessionBean;
+        return (this.billboardManagerSessionBean);
     }
 
     public void setBillboardManagerSessionBean(
@@ -177,19 +177,26 @@ public class BillboardManagedBean implements Serializable {
     }
 
     public void saveBillboard(ActionEvent actionEvent) {
-        String videoFormat = this.getNewBillboard().getBillboardPK().getVideoFormat();
-        String theaterCity = this.getNewBillboard().getBillboardPK().getTheaterCity();
+        String videoFormat = this.getNewBillboard().getBillboardPK()
+                .getVideoFormat();
+        String theaterCity = this.getNewBillboard().getBillboardPK()
+                .getTheaterCity();
         String theater = this.getNewBillboard().getBillboardPK().getTheater();
-        String audioLanguage = this.getNewBillboard().getBillboardPK().getAudioLanguage();
-        String subtitleLanguage = this.getNewBillboard().getBillboardPK().getSubtitleLanguage();
+        String audioLanguage = this.getNewBillboard().getBillboardPK()
+                .getAudioLanguage();
+        String subtitleLanguage = this.getNewBillboard().getBillboardPK()
+                .getSubtitleLanguage();
         String filmTitle = this.getNewBillboard().getBillboardPK().getFilmTitle();
-        Date filmReleaseDate = this.getNewBillboard().getBillboardPK().getFilmReleaseDate();
+        Date filmReleaseDate = this.getNewBillboard().getBillboardPK()
+                .getFilmReleaseDate();
 
         this.newBillboard.setVideoFormat1(new VideoFormat(videoFormat));
-        this.newBillboard.setTheater1(new Theater(new TheaterPK(theaterCity, theater)));
+        this.newBillboard.setTheater1(new Theater(new TheaterPK(theaterCity,
+                theater)));
         this.newBillboard.setAudioFormat(new AudioFormat(new AudioFormatPK(
                 audioLanguage, subtitleLanguage)));
-        this.newBillboard.setFilm(new Film(new FilmPK(filmTitle, filmReleaseDate)));
+        this.newBillboard.setFilm(new Film(new FilmPK(filmTitle,
+                filmReleaseDate)));
 
 //        this.billboardManagerSessionBean.save(this.getNewBillboard());
         FacesContext.getCurrentInstance().addMessage(null,

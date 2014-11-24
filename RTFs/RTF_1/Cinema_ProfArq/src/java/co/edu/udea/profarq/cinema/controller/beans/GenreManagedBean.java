@@ -24,7 +24,7 @@ public class GenreManagedBean implements Serializable {
 
     public GenreManagerBean getGenreManagerSessionBean() {
 
-        return genreManagerSessionBean;
+        return (this.genreManagerSessionBean);
     }
 
     public void setGenreManagerSessionBean(

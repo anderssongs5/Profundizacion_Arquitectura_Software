@@ -44,7 +44,7 @@ public class VideoFormatManagedBean implements Serializable {
 
     public VideoFormatManagerBean getVideoFormatManagerSessionBean() {
 
-        return videoFormatManagerSessionBean;
+        return (this.videoFormatManagerSessionBean);
     }
 
     public void setVideoFormatManagerSessionBean(

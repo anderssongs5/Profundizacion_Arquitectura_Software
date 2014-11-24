@@ -44,7 +44,7 @@ public class StatusManagedBean implements Serializable {
 
     public StatusManagerBean getStatusManagerSessionBean() {
 
-        return statusManagerSessionBean;
+        return (this.statusManagerSessionBean);
     }
 
     public void setStatusManagerSessionBean(

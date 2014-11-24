@@ -46,7 +46,7 @@ public class CityManagedBean implements Serializable {
 
     public CityManagerBean getCityManagerSessionBean() {
 
-        return cityManagerSessionBean;
+        return (this.cityManagerSessionBean);
     }
 
     public void setCityManagerSessionBean(

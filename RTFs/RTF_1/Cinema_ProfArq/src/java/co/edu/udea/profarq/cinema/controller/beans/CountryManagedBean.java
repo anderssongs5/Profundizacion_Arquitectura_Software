@@ -44,7 +44,7 @@ public class CountryManagedBean implements Serializable {
 
     public CountryManagerBean getCountryManagerSessionBean() {
         
-        return countryManagerSessionBean;
+        return (this.countryManagerSessionBean);
     }
 
     public void setCountryManagerSessionBean(

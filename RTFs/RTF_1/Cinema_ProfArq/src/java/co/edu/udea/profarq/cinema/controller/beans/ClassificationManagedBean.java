@@ -45,7 +45,7 @@ public class ClassificationManagedBean implements Serializable {
 
     public ClassificationManagerBean getClassificationManagerSessionBean() {
 
-        return classificationManagerSessionBean;
+        return (this.classificationManagerSessionBean);
     }
 
     public void setClassificationManagerSessionBean(
