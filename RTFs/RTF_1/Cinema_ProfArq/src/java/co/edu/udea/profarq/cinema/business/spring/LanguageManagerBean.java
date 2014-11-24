@@ -25,7 +25,7 @@ public class LanguageManagerBean implements Serializable {
 
     public ILanguageDAO getLanguageDAO() {
 
-        return languageDAO;
+        return (this.languageDAO);
     }
 
     public void setLanguageDAO(ILanguageDAO languageDAO) {

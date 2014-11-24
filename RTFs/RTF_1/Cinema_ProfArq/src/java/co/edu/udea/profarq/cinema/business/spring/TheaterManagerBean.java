@@ -25,7 +25,7 @@ public class TheaterManagerBean implements Serializable {
 
     public ITheaterDAO getTheaterDAO() {
 
-        return theaterDAO;
+        return (this.theaterDAO);
     }
 
     public void setTheaterDAO(ITheaterDAO theaterDAO) {

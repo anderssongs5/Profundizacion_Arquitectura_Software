@@ -25,7 +25,7 @@ public class ClassificationManagerBean implements Serializable {
 
     public IClassificationDAO getClassificationDAO() {
 
-        return classificationDAO;
+        return (this.classificationDAO);
     }
 
     public void setClassificationDAO(IClassificationDAO classificationDAO) {

@@ -25,7 +25,7 @@ public class VideoFormatManagerBean implements Serializable {
 
     public IVideoFormatDAO getVideoFormatDAO() {
 
-        return videoFormatDAO;
+        return (this.videoFormatDAO);
     }
 
     public void setVideoFormatDAO(IVideoFormatDAO videoFormatDAO) {

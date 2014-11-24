@@ -27,7 +27,7 @@ public class StatusManagerBean {
 
     public IStatusDAO getStatusDAO() {
 
-        return statusDAO;
+        return (this.statusDAO);
     }
 
     public void setStatusDAO(IStatusDAO statusDAO) {

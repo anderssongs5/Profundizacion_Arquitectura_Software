@@ -25,7 +25,7 @@ public class CityManagerBean implements Serializable {
 
     public ICityDAO getCityDAO() {
 
-        return cityDAO;
+        return (this.cityDAO);
     }
 
     public void setCityDAO(ICityDAO cityDAO) {

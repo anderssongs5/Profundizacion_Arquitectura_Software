@@ -25,7 +25,7 @@ public class CountryManagerBean implements Serializable {
 
     public ICountryDAO getCountryDAO() {
 
-        return countryDAO;
+        return (this.countryDAO);
     }
 
     public void setCountryDAO(ICountryDAO countryDAO) {

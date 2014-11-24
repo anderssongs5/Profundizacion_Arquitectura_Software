@@ -26,7 +26,7 @@ public class BillboardManagerBean implements Serializable {
 
     public IBillboardDAO getBillboardDAO() {
 
-        return billboardDAO;
+        return (this.billboardDAO);
     }
 
     public void setBillboardDAO(IBillboardDAO billboardDAO) {

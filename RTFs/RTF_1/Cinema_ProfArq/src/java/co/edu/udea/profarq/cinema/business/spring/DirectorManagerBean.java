@@ -24,7 +24,7 @@ public class DirectorManagerBean implements Serializable {
 
     public IDirectorDAO getDirectorDAO() {
 
-        return directorDAO;
+        return (this.directorDAO);
     }
 
     public void setDirectorDAO(IDirectorDAO directorDAO) {

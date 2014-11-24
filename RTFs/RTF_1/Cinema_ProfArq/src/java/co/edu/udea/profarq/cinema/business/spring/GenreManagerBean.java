@@ -25,7 +25,7 @@ public class GenreManagerBean implements Serializable {
 
     public IGenreDAO getGenreDAO() {
 
-        return genreDAO;
+        return (this.genreDAO);
     }
 
     public void setGenreDAO(IGenreDAO genreDAO) {

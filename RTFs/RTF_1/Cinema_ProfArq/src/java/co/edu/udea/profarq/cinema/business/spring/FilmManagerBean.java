@@ -25,7 +25,7 @@ public class FilmManagerBean implements Serializable {
 
     public IFilmDAO getFilmDAO() {
 
-        return filmDAO;
+        return (this.filmDAO);
     }
 
     public void setFilmDAO(IFilmDAO filmDAO) {
