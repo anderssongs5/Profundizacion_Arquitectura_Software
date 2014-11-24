@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT c FROM Classification c"),
     @NamedQuery(name = "Classification.findByAge",
             query = "SELECT c FROM Classification c WHERE c.age = :age")})
-@Table(name = "classification")
+@Table(name = "CLASSIFICATION")
 @XmlRootElement()
 public class Classification implements IEntity, Serializable {
 
@@ -51,16 +51,18 @@ public class Classification implements IEntity, Serializable {
     }
 
     public String getAge() {
-        return age;
+
+        return (this.age);
     }
 
     public void setAge(String age) {
         this.age = age;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Film> getFilmList() {
-        return filmList;
+
+        return (this.filmList);
     }
 
     public void setFilmList(List<Film> filmList) {
@@ -73,28 +75,38 @@ public class Classification implements IEntity, Serializable {
         return (this.getAge());
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (age != null ? age.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getAge() != null) ? this.getAge().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Classification)) {
-            return false;
+
+            return (false);
         }
+
         Classification other = (Classification) object;
-        if ((this.age == null && other.age != null) || (this.age != null && !this.age.equals(other.age))) {
-            return false;
+        if (((this.getAge() == null) && (other.getAge() != null))
+                || ((this.getAge() != null)
+                && !(this.getAge().equals(other.getAge())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.Classification[ age=" + age + " ]";
+
+        return ("co.edu.udea.profarq.cinema.model.entities.Classification[ age="
+                + this.getAge() + " ]");
     }
 }

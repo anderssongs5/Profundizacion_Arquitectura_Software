@@ -38,7 +38,8 @@ public class TheaterPK implements Serializable {
     }
 
     public String getCityCode() {
-        return cityCode;
+
+        return (this.cityCode);
     }
 
     public void setCityCode(String cityCode) {
@@ -46,40 +47,56 @@ public class TheaterPK implements Serializable {
     }
 
     public String getTheater() {
-        return theater;
+
+        return (this.theater);
     }
 
     public void setTheater(String theater) {
         this.theater = theater;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (cityCode != null ? cityCode.hashCode() : 0);
-        hash += (theater != null ? theater.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getCityCode() != null) ? this.getCityCode().hashCode()
+                : 0);
+        hash += ((this.getTheater() != null) ? this.getTheater().hashCode()
+                : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof TheaterPK)) {
-            return false;
+
+            return (false);
         }
+
         TheaterPK other = (TheaterPK) object;
-        if ((this.cityCode == null && other.cityCode != null) || (this.cityCode != null && !this.cityCode.equals(other.cityCode))) {
-            return false;
+        if (((this.getCityCode() == null) && (other.getCityCode() != null))
+                || ((this.getCityCode() != null)
+                && !(this.getCityCode().equals(other.getCityCode())))) {
+
+            return (false);
         }
-        if ((this.theater == null && other.theater != null) || (this.theater != null && !this.theater.equals(other.theater))) {
-            return false;
+
+        if (((this.getTheater() == null) && (other.getTheater() != null))
+                || ((this.getTheater() != null)
+                && !(this.getTheater().equals(other.getTheater())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.TheaterPK[ cityCode=" + cityCode + ", theater=" + theater + " ]";
-    }
 
+        return ("co.edu.udea.profarq.cinema.model.entities.TheaterPK[ cityCode="
+                + this.getCityCode() + ", theater=" + this.getTheater() + " ]");
+    }
 }

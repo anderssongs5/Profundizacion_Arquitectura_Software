@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT d FROM Director d"),
     @NamedQuery(name = "Director.findByFullName",
             query = "SELECT d FROM Director d WHERE d.fullName = :fullName")})
-@Table(name = "director")
+@Table(name = "DIRECTOR")
 @XmlRootElement()
 public class Director implements IEntity, Serializable {
 
@@ -58,16 +58,18 @@ public class Director implements IEntity, Serializable {
     }
 
     public String getFullName() {
-        return fullName;
+
+        return (this.fullName);
     }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Film> getFilmList() {
-        return filmList;
+
+        return (this.filmList);
     }
 
     public void setFilmList(List<Film> filmList) {
@@ -80,28 +82,39 @@ public class Director implements IEntity, Serializable {
         return (this.getFullName());
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (fullName != null ? fullName.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getFullName() != null) ? this.getFullName().hashCode()
+                : 0);
+
+        return (hash);
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Director)) {
-            return false;
+
+            return (false);
         }
+
         Director other = (Director) object;
-        if ((this.fullName == null && other.fullName != null) || (this.fullName != null && !this.fullName.equals(other.fullName))) {
-            return false;
+        if (((this.getFullName() == null) && (other.getFullName() != null))
+                || ((this.getFullName() != null)
+                && !(this.getFullName().equals(other.getFullName())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.Director[ fullName=" + fullName + " ]";
+
+        return ("co.edu.udea.profarq.cinema.model.entities.Director[ fullName="
+                + this.getFullName() + " ]");
     }
 }

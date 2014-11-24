@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlRootElement;
             query = "SELECT b FROM Billboard b WHERE b.billboardPK.videoFormat = :videoFormat"),
     @NamedQuery(name = "Billboard.findByOutDate",
             query = "SELECT b FROM Billboard b WHERE b.outDate = :outDate")})
-@Table(name = "billboard")
+@Table(name = "BILLBOARD")
 @XmlRootElement()
 public class Billboard implements IEntity, Serializable {
 
@@ -91,12 +91,17 @@ public class Billboard implements IEntity, Serializable {
         this.billboardPK = billboardPK;
     }
 
-    public Billboard(String filmTitle, Date filmReleaseDate, String theaterCity, String theater, String audioLanguage, String subtitleLanguage, String videoFormat) {
-        this.billboardPK = new BillboardPK(filmTitle, filmReleaseDate, theaterCity, theater, audioLanguage, subtitleLanguage, videoFormat);
+    public Billboard(String filmTitle, Date filmReleaseDate, String theaterCity,
+            String theater, String audioLanguage, String subtitleLanguage,
+            String videoFormat) {
+        this.billboardPK = new BillboardPK(filmTitle, filmReleaseDate,
+                theaterCity, theater, audioLanguage, subtitleLanguage,
+                videoFormat);
     }
 
     public BillboardPK getBillboardPK() {
-        return billboardPK;
+
+        return (this.billboardPK);
     }
 
     public void setBillboardPK(BillboardPK billboardPK) {
@@ -104,7 +109,8 @@ public class Billboard implements IEntity, Serializable {
     }
 
     public Date getOutDate() {
-        return outDate;
+
+        return (this.outDate);
     }
 
     public void setOutDate(Date outDate) {
@@ -112,7 +118,8 @@ public class Billboard implements IEntity, Serializable {
     }
 
     public VideoFormat getVideoFormat1() {
-        return videoFormat1;
+
+        return (this.videoFormat1);
     }
 
     public void setVideoFormat1(VideoFormat videoFormat1) {
@@ -120,7 +127,8 @@ public class Billboard implements IEntity, Serializable {
     }
 
     public Theater getTheater1() {
-        return theater1;
+
+        return (this.theater1);
     }
 
     public void setTheater1(Theater theater1) {
@@ -128,7 +136,8 @@ public class Billboard implements IEntity, Serializable {
     }
 
     public Status getStatus() {
-        return status;
+
+        return (this.status);
     }
 
     public void setStatus(Status status) {
@@ -136,7 +145,8 @@ public class Billboard implements IEntity, Serializable {
     }
 
     public Film getFilm() {
-        return film;
+
+        return (this.film);
     }
 
     public void setFilm(Film film) {
@@ -144,7 +154,8 @@ public class Billboard implements IEntity, Serializable {
     }
 
     public AudioFormat getAudioFormat() {
-        return audioFormat;
+
+        return (this.audioFormat);
     }
 
     public void setAudioFormat(AudioFormat audioFormat) {
@@ -157,28 +168,39 @@ public class Billboard implements IEntity, Serializable {
         return (this.getBillboardPK());
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (billboardPK != null ? billboardPK.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getBillboardPK() != null)
+                ? this.getBillboardPK().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Billboard)) {
-            return false;
+
+            return (false);
         }
+
         Billboard other = (Billboard) object;
-        if ((this.billboardPK == null && other.billboardPK != null) || (this.billboardPK != null && !this.billboardPK.equals(other.billboardPK))) {
-            return false;
+        if (((this.getBillboardPK() == null) && (other.getBillboardPK() != null))
+                || ((this.getBillboardPK() != null)
+                && !(this.getBillboardPK().equals(other.getBillboardPK())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.Billboard[ billboardPK=" + billboardPK + " ]";
+
+        return ("co.edu.udea.profarq.cinema.model.entities.Billboard[ billboardPK="
+                + this.getBillboardPK() + " ]");
     }
 }

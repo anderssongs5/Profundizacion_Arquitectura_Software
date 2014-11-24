@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT f FROM Film f WHERE f.pseudonym = :pseudonym"),
     @NamedQuery(name = "Film.findByImage",
             query = "SELECT f FROM Film f WHERE f.image = :image")})
-@Table(name = "film")
+@Table(name = "FILM")
 @XmlRootElement()
 public class Film implements IEntity, Serializable {
 
@@ -113,7 +113,8 @@ public class Film implements IEntity, Serializable {
     }
 
     public FilmPK getFilmPK() {
-        return filmPK;
+
+        return (this.filmPK);
     }
 
     public void setFilmPK(FilmPK filmPK) {
@@ -121,7 +122,8 @@ public class Film implements IEntity, Serializable {
     }
 
     public String getSypnosis() {
-        return sypnosis;
+
+        return (this.sypnosis);
     }
 
     public void setSypnosis(String sypnosis) {
@@ -129,7 +131,8 @@ public class Film implements IEntity, Serializable {
     }
 
     public String getPseudonym() {
-        return pseudonym;
+
+        return (this.pseudonym);
     }
 
     public void setPseudonym(String pseudonym) {
@@ -137,7 +140,8 @@ public class Film implements IEntity, Serializable {
     }
 
     public String getDuration() {
-        return duration;
+
+        return (this.duration);
     }
 
     public void setDuration(String duration) {
@@ -145,7 +149,8 @@ public class Film implements IEntity, Serializable {
     }
 
     public String getImage() {
-        return image;
+
+        return (this.image);
     }
 
     public void setImage(String image) {
@@ -154,16 +159,18 @@ public class Film implements IEntity, Serializable {
 
     @XmlTransient()
     public List<Director> getDirectorList() {
-        return directorList;
+
+        return (this.directorList);
     }
 
     public void setDirectorList(List<Director> directorList) {
         this.directorList = directorList;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Genre> getGenreList() {
-        return genreList;
+
+        return (this.genreList);
     }
 
     public void setGenreList(List<Genre> genreList) {
@@ -171,7 +178,8 @@ public class Film implements IEntity, Serializable {
     }
 
     public Country getCountry() {
-        return country;
+
+        return (this.country);
     }
 
     public void setCountry(Country country) {
@@ -179,16 +187,18 @@ public class Film implements IEntity, Serializable {
     }
 
     public Classification getClassification() {
-        return classification;
+
+        return (this.classification);
     }
 
     public void setClassification(Classification classification) {
         this.classification = classification;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Billboard> getBillboardList() {
-        return billboardList;
+
+        return (this.billboardList);
     }
 
     public void setBillboardList(List<Billboard> billboardList) {
@@ -197,7 +207,7 @@ public class Film implements IEntity, Serializable {
 
     public String getFullNamesDirectors() {
 
-        return fullNamesDirectors;
+        return (this.fullNamesDirectors);
     }
 
     public void setFullNamesDirectors(String fullNamesDirectors) {
@@ -210,28 +220,38 @@ public class Film implements IEntity, Serializable {
         return (this.getFilmPK());
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (filmPK != null ? filmPK.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getFilmPK() != null) ? this.getFilmPK().hashCode() : 0);
+
+        return (hash);
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Film)) {
-            return false;
+
+            return (false);
         }
+
         Film other = (Film) object;
-        if ((this.filmPK == null && other.filmPK != null) || (this.filmPK != null && !this.filmPK.equals(other.filmPK))) {
-            return false;
+        if (((this.getFilmPK() == null) && (other.getFilmPK() != null))
+                || ((this.getFilmPK() != null)
+                && !(this.getFilmPK().equals(other.getFilmPK())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.Film[ filmPK=" + filmPK + " ]";
+
+        return ("co.edu.udea.profarq.cinema.model.entities.Film[ filmPK="
+                + this.getFilmPK() + " ]");
     }
 }

@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT v FROM VideoFormat v WHERE v.videoFormat = :videoFormat"),
     @NamedQuery(name = "VideoFormat.findByDescription",
             query = "SELECT v FROM VideoFormat v WHERE v.description = :description")})
-@Table(name = "video_format")
+@Table(name = "VIDEO_FORMAT")
 @XmlRootElement()
 public class VideoFormat implements IEntity, Serializable {
 
@@ -56,7 +56,8 @@ public class VideoFormat implements IEntity, Serializable {
     }
 
     public String getVideoFormat() {
-        return videoFormat;
+
+        return (this.videoFormat);
     }
 
     public void setVideoFormat(String videoFormat) {
@@ -64,16 +65,18 @@ public class VideoFormat implements IEntity, Serializable {
     }
 
     public String getDescription() {
-        return description;
+
+        return (this.description);
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Billboard> getBillboardList() {
-        return billboardList;
+
+        return (this.billboardList);
     }
 
     public void setBillboardList(List<Billboard> billboardList) {
@@ -86,28 +89,39 @@ public class VideoFormat implements IEntity, Serializable {
         return (this.getVideoFormat());
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (videoFormat != null ? videoFormat.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getVideoFormat() != null)
+                ? this.getVideoFormat().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof VideoFormat)) {
-            return false;
+
+            return (false);
         }
+
         VideoFormat other = (VideoFormat) object;
-        if ((this.videoFormat == null && other.videoFormat != null) || (this.videoFormat != null && !this.videoFormat.equals(other.videoFormat))) {
-            return false;
+        if (((this.getVideoFormat() == null) && (other.getVideoFormat() != null))
+                || ((this.getVideoFormat() != null)
+                && !(this.getVideoFormat().equals(other.getVideoFormat())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.VideoFormat[ videoFormat=" + videoFormat + " ]";
+
+        return ("co.edu.udea.profarq.cinema.model.entities.VideoFormat[ videoFormat="
+                + this.getVideoFormat() + " ]");
     }
 }

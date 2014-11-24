@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT s FROM Status s WHERE s.status = :status"),
     @NamedQuery(name = "Status.findByDescription",
             query = "SELECT s FROM Status s WHERE s.description = :description")})
-@Table(name = "status")
+@Table(name = "STATUS")
 @XmlRootElement()
 public class Status implements IEntity, Serializable {
 
@@ -56,7 +56,8 @@ public class Status implements IEntity, Serializable {
     }
 
     public String getStatus() {
-        return status;
+
+        return (this.status);
     }
 
     public void setStatus(String status) {
@@ -64,16 +65,18 @@ public class Status implements IEntity, Serializable {
     }
 
     public String getDescription() {
-        return description;
+
+        return (this.description);
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Billboard> getBillboardList() {
-        return billboardList;
+
+        return (this.billboardList);
     }
 
     public void setBillboardList(List<Billboard> billboardList) {
@@ -86,28 +89,38 @@ public class Status implements IEntity, Serializable {
         return (this.getStatus());
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (status != null ? status.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getStatus() != null) ? this.getStatus().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Status)) {
-            return false;
+
+            return (false);
         }
+
         Status other = (Status) object;
-        if ((this.status == null && other.status != null) || (this.status != null && !this.status.equals(other.status))) {
-            return false;
+        if (((this.getStatus() == null) && (other.getStatus() != null))
+                || ((this.getStatus() != null)
+                && !(this.getStatus().equals(other.getStatus())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.Status[ status=" + status + " ]";
+
+        return ("co.edu.udea.profarq.cinema.model.entities.Status[ status="
+                + this.getStatus() + " ]");
     }
 }

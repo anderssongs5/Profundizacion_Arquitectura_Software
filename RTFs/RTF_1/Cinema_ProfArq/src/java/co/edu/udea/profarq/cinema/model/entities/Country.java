@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT c FROM Country c WHERE c.isoCode = :isoCode"),
     @NamedQuery(name = "Country.findByCountry",
             query = "SELECT c FROM Country c WHERE c.country = :country")})
-@Table(name = "country")
+@Table(name = "COUNTRY")
 @XmlRootElement()
 public class Country implements IEntity, Serializable {
 
@@ -63,7 +63,8 @@ public class Country implements IEntity, Serializable {
     }
 
     public String getIsoCode() {
-        return isoCode;
+
+        return (this.isoCode);
     }
 
     public void setIsoCode(String isoCode) {
@@ -71,16 +72,18 @@ public class Country implements IEntity, Serializable {
     }
 
     public String getCountry() {
-        return country;
+
+        return (this.country);
     }
 
     public void setCountry(String country) {
         this.country = country;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Film> getFilmList() {
-        return filmList;
+
+        return (this.filmList);
     }
 
     public void setFilmList(List<Film> filmList) {
@@ -93,28 +96,39 @@ public class Country implements IEntity, Serializable {
         return (this.getIsoCode());
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (isoCode != null ? isoCode.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getIsoCode() != null) ? this.getIsoCode().hashCode()
+                : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Country)) {
+
             return false;
         }
+
         Country other = (Country) object;
-        if ((this.isoCode == null && other.isoCode != null) || (this.isoCode != null && !this.isoCode.equals(other.isoCode))) {
-            return false;
+        if (((this.getIsoCode() == null) && (other.getIsoCode() != null))
+                || ((this.getIsoCode() != null)
+                && !(this.getIsoCode().equals(other.getIsoCode())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.Country[ isoCode=" + isoCode + " ]";
+
+        return ("co.edu.udea.profarq.cinema.model.entities.Country[ isoCode="
+                + this.getIsoCode() + " ]");
     }
 }

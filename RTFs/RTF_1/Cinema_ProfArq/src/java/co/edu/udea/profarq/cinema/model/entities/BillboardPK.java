@@ -166,37 +166,54 @@ public class BillboardPK implements Serializable {
         }
 
         BillboardPK other = (BillboardPK) object;
-        if ((this.filmTitle == null && other.filmTitle != null) || (this.filmTitle != null && !this.filmTitle.equals(other.filmTitle))) {
+        if (((this.getFilmTitle() == null) && (other.getFilmTitle() != null))
+                || ((this.getFilmTitle() != null)
+                && !(this.getFilmTitle().equals(other.getFilmTitle())))) {
 
             return (false);
         }
 
-        if ((this.filmReleaseDate == null && other.filmReleaseDate != null) || (this.filmReleaseDate != null && !this.filmReleaseDate.equals(other.filmReleaseDate))) {
+        if (((this.getFilmReleaseDate() == null)
+                && (other.getFilmReleaseDate() != null))
+                || ((this.getFilmReleaseDate() != null)
+                && !(this.getFilmReleaseDate().equals(other.getFilmReleaseDate())))) {
 
             return (false);
         }
 
-        if ((this.theaterCity == null && other.theaterCity != null) || (this.theaterCity != null && !this.theaterCity.equals(other.theaterCity))) {
+        if (((this.getTheaterCity() == null) && (other.getTheaterCity() != null))
+                || ((this.getTheaterCity() != null)
+                && !(this.getTheaterCity().equals(other.getTheaterCity())))) {
 
             return (false);
         }
 
-        if ((this.theater == null && other.theater != null) || (this.theater != null && !this.theater.equals(other.theater))) {
+        if (((this.getTheater() == null) && (other.getTheater() != null))
+                || ((this.getTheater() != null)
+                && !(this.getTheater().equals(other.getTheater())))) {
 
             return (false);
         }
 
-        if ((this.audioLanguage == null && other.audioLanguage != null) || (this.audioLanguage != null && !this.audioLanguage.equals(other.audioLanguage))) {
+        if (((this.getAudioLanguage() == null)
+                && (other.getAudioLanguage() != null))
+                || ((this.getAudioLanguage() != null)
+                && !(this.getAudioLanguage().equals(other.getAudioLanguage())))) {
 
             return (false);
         }
 
-        if ((this.subtitleLanguage == null && other.subtitleLanguage != null) || (this.subtitleLanguage != null && !this.subtitleLanguage.equals(other.subtitleLanguage))) {
+        if (((this.getSubtitleLanguage() == null)
+                && (other.getSubtitleLanguage() != null))
+                || ((this.getSubtitleLanguage() != null)
+                && !(this.getSubtitleLanguage().equals(other.getSubtitleLanguage())))) {
 
             return (false);
         }
 
-        if ((this.videoFormat == null && other.videoFormat != null) || (this.videoFormat != null && !this.videoFormat.equals(other.videoFormat))) {
+        if (((this.getVideoFormat() == null) && (other.getVideoFormat() != null))
+                || ((this.getVideoFormat() != null)
+                && !(this.getVideoFormat().equals(other.getVideoFormat())))) {
 
             return (false);
         }
@@ -204,9 +221,15 @@ public class BillboardPK implements Serializable {
         return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.BillboardPK[ filmTitle=" + filmTitle + ", filmReleaseDate=" + filmReleaseDate + ", theaterCity=" + theaterCity + ", theater=" + theater + ", audioLanguage=" + audioLanguage + ", subtitleLanguage=" + subtitleLanguage + ", videoFormat=" + videoFormat + " ]";
-    }
 
+        return ("co.edu.udea.profarq.cinema.model.entities.BillboardPK[ filmTitle="
+                + this.getFilmTitle() + ", filmReleaseDate="
+                + this.getFilmReleaseDate() + ", theaterCity="
+                + this.getTheaterCity() + ", theater=" + this.getTheater()
+                + ", audioLanguage=" + this.getAudioLanguage()
+                + ", subtitleLanguage=" + this.getSubtitleLanguage()
+                + ", videoFormat=" + this.getVideoFormat() + " ]");
+    }
 }

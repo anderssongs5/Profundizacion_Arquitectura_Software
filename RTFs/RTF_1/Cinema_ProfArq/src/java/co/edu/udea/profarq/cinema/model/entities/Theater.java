@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT t FROM Theater t WHERE t.theaterPK.theater = :theater"),
     @NamedQuery(name = "Theater.findByAddress",
             query = "SELECT t FROM Theater t WHERE t.address = :address")})
-@Table(name = "theater")
+@Table(name = "THEATER")
 @XmlRootElement()
 public class Theater implements IEntity, Serializable {
 
@@ -71,7 +71,8 @@ public class Theater implements IEntity, Serializable {
     }
 
     public TheaterPK getTheaterPK() {
-        return theaterPK;
+
+        return (this.theaterPK);
     }
 
     public void setTheaterPK(TheaterPK theaterPK) {
@@ -79,16 +80,18 @@ public class Theater implements IEntity, Serializable {
     }
 
     public String getAddress() {
-        return address;
+
+        return (this.address);
     }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Billboard> getBillboardList() {
-        return billboardList;
+
+        return (this.billboardList);
     }
 
     public void setBillboardList(List<Billboard> billboardList) {
@@ -96,7 +99,8 @@ public class Theater implements IEntity, Serializable {
     }
 
     public City getCity() {
-        return city;
+
+        return (this.city);
     }
 
     public void setCity(City city) {
@@ -109,28 +113,39 @@ public class Theater implements IEntity, Serializable {
         return (this.getTheaterPK());
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (theaterPK != null ? theaterPK.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getTheaterPK() != null) ? this.getTheaterPK().hashCode()
+                : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Theater)) {
-            return false;
+
+            return (false);
         }
+
         Theater other = (Theater) object;
-        if ((this.theaterPK == null && other.theaterPK != null) || (this.theaterPK != null && !this.theaterPK.equals(other.theaterPK))) {
-            return false;
+        if (((this.getTheaterPK() == null) && (other.getTheaterPK() != null))
+                || ((this.getTheaterPK() != null)
+                && !(this.getTheaterPK().equals(other.getTheaterPK())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.Theater[ theaterPK=" + theaterPK + " ]";
+
+        return ("co.edu.udea.profarq.cinema.model.entities.Theater[ theaterPK="
+                + this.getTheaterPK() + " ]");
     }
 }

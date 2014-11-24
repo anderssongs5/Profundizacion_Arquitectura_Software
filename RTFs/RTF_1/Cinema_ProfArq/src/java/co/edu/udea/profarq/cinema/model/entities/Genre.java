@@ -25,11 +25,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Genre.findAll",
             query = "SELECT g FROM Genre g"),
-    @NamedQuery(name = "Genre.findByGenre", 
+    @NamedQuery(name = "Genre.findByGenre",
             query = "SELECT g FROM Genre g WHERE g.genre = :genre"),
-    @NamedQuery(name = "Genre.findByDescription", 
+    @NamedQuery(name = "Genre.findByDescription",
             query = "SELECT g FROM Genre g WHERE g.description = :description")})
-@Table(name = "genre")
+@Table(name = "GENRE")
 @XmlRootElement()
 public class Genre implements IEntity, Serializable {
 
@@ -55,7 +55,8 @@ public class Genre implements IEntity, Serializable {
     }
 
     public String getGenre() {
-        return genre;
+
+        return (this.genre);
     }
 
     public void setGenre(String genre) {
@@ -63,16 +64,18 @@ public class Genre implements IEntity, Serializable {
     }
 
     public String getDescription() {
-        return description;
+
+        return (this.description);
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Film> getFilmList() {
-        return filmList;
+
+        return (this.filmList);
     }
 
     public void setFilmList(List<Film> filmList) {
@@ -85,28 +88,38 @@ public class Genre implements IEntity, Serializable {
         return (this.getGenre());
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (genre != null ? genre.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getGenre() != null) ? this.getGenre().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Genre)) {
-            return false;
+
+            return (false);
         }
+
         Genre other = (Genre) object;
-        if ((this.genre == null && other.genre != null) || (this.genre != null && !this.genre.equals(other.genre))) {
-            return false;
+        if (((this.getGenre() == null) && (other.getGenre() != null))
+                || ((this.getGenre() != null)
+                && !(this.getGenre().equals(other.getGenre())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.Genre[ genre=" + genre + " ]";
+
+        return ("co.edu.udea.profarq.cinema.model.entities.Genre[ genre="
+                + this.getGenre() + " ]");
     }
 }

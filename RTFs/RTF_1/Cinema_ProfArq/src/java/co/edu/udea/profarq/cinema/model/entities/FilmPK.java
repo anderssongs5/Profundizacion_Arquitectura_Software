@@ -41,7 +41,8 @@ public class FilmPK implements Serializable {
     }
 
     public String getTitle() {
-        return title;
+
+        return (this.title);
     }
 
     public void setTitle(String title) {
@@ -49,40 +50,56 @@ public class FilmPK implements Serializable {
     }
 
     public Date getReleaseDate() {
-        return releaseDate;
+
+        return (this.releaseDate);
     }
 
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (title != null ? title.hashCode() : 0);
-        hash += (releaseDate != null ? releaseDate.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getTitle() != null) ? this.getTitle().hashCode() : 0);
+        hash += ((this.getReleaseDate() != null)
+                ? this.getReleaseDate().hashCode() : 0);
+
+        return (hash);
     }
 
-    @Override
+    @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof FilmPK)) {
-            return false;
+
+            return (false);
         }
+
         FilmPK other = (FilmPK) object;
-        if ((this.title == null && other.title != null) || (this.title != null && !this.title.equals(other.title))) {
-            return false;
+        if (((this.getTitle() == null) && (other.getTitle() != null))
+                || ((this.getTitle() != null)
+                && !(this.getTitle().equals(other.getTitle())))) {
+
+            return (false);
         }
-        if ((this.releaseDate == null && other.releaseDate != null) || (this.releaseDate != null && !this.releaseDate.equals(other.releaseDate))) {
-            return false;
+
+        if (((this.getReleaseDate() == null) && (other.getReleaseDate() != null))
+                || ((this.getReleaseDate() != null)
+                && !(this.getReleaseDate().equals(other.getReleaseDate())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.FilmPK[ title=" + title + ", releaseDate=" + releaseDate + " ]";
-    }
 
+        return ("co.edu.udea.profarq.cinema.model.entities.FilmPK[ title="
+                + this.getTitle() + ", releaseDate=" + this.getReleaseDate()
+                + " ]");
+    }
 }

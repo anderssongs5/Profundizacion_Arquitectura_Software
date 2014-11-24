@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
             query = "SELECT a FROM AudioFormat a WHERE a.audioFormatPK.subtitleLanguage = :subtitleLanguage"),
     @NamedQuery(name = "AudioFormat.findByDescription",
             query = "SELECT a FROM AudioFormat a WHERE a.description = :description")})
-@Table(name = "audio_format")
+@Table(name = "AUDIO_FORMAT")
 @XmlRootElement()
 public class AudioFormat implements IEntity, Serializable {
 
@@ -66,7 +66,8 @@ public class AudioFormat implements IEntity, Serializable {
     }
 
     public AudioFormatPK getAudioFormatPK() {
-        return audioFormatPK;
+
+        return (this.audioFormatPK);
     }
 
     public void setAudioFormatPK(AudioFormatPK audioFormatPK) {
@@ -74,16 +75,18 @@ public class AudioFormat implements IEntity, Serializable {
     }
 
     public String getDescription() {
-        return description;
+
+        return (this.description);
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @XmlTransient
+    @XmlTransient()
     public List<Billboard> getBillboardList() {
-        return billboardList;
+
+        return (this.billboardList);
     }
 
     public void setBillboardList(List<Billboard> billboardList) {
@@ -91,7 +94,8 @@ public class AudioFormat implements IEntity, Serializable {
     }
 
     public Languages getLanguages() {
-        return languages;
+
+        return (this.languages);
     }
 
     public void setLanguages(Languages languages) {
@@ -99,7 +103,8 @@ public class AudioFormat implements IEntity, Serializable {
     }
 
     public Languages getLanguages1() {
-        return languages1;
+
+        return (this.languages1);
     }
 
     public void setLanguages1(Languages languages1) {
@@ -112,28 +117,40 @@ public class AudioFormat implements IEntity, Serializable {
         return (this.getAudioFormatPK());
     }
 
-    @Override
+    @Override()
     public int hashCode() {
         int hash = 0;
-        hash += (audioFormatPK != null ? audioFormatPK.hashCode() : 0);
-        return hash;
+
+        hash += ((this.getAudioFormatPK() != null)
+                ? this.getAudioFormatPK().hashCode() : 0);
+
+        return (hash);
     }
 
     @Override()
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof AudioFormat)) {
-            return false;
+
+            return (false);
         }
+
         AudioFormat other = (AudioFormat) object;
-        if ((this.audioFormatPK == null && other.audioFormatPK != null) || (this.audioFormatPK != null && !this.audioFormatPK.equals(other.audioFormatPK))) {
-            return false;
+        if (((this.getAudioFormatPK() == null)
+                && (other.getAudioFormatPK() != null))
+                || ((this.getAudioFormatPK() != null)
+                && !(this.getAudioFormatPK().equals(other.getAudioFormatPK())))) {
+
+            return (false);
         }
-        return true;
+
+        return (true);
     }
 
-    @Override
+    @Override()
     public String toString() {
-        return "co.edu.udea.profarq.cinema.model.entities.AudioFormat[ audioFormatPK=" + audioFormatPK + " ]";
+
+        return ("co.edu.udea.profarq.cinema.model.entities.AudioFormat[ audioFormatPK="
+                + this.getAudioFormatPK() + " ]");
     }
 }
