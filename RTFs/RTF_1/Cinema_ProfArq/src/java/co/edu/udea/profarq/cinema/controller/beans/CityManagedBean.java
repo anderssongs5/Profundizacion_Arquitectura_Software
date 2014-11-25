@@ -17,7 +17,7 @@ public class CityManagedBean implements Serializable {
 
     private static final long serialVersionUID = 6231326269621578226L;
 
-    private CityManagerBean cityManagerSessionBean;
+    private CityManagerBean cityManagerBean;
     private List<City> citiesList;
     private SelectItem[] citiesSelectItems;
 
@@ -44,14 +44,14 @@ public class CityManagedBean implements Serializable {
 //        this.setCitiesSelectItems(selectItems);
     }
 
-    public CityManagerBean getCityManagerSessionBean() {
+    public CityManagerBean getCityManagerBean() {
 
-        return (this.cityManagerSessionBean);
+        return (this.cityManagerBean);
     }
 
-    public void setCityManagerSessionBean(
-            CityManagerBean cityManagerSessionBean) {
-        this.cityManagerSessionBean = cityManagerSessionBean;
+    public void setCityManagerBean(
+            CityManagerBean cityManagerBean) {
+        this.cityManagerBean = cityManagerBean;
     }
 
     public List<City> getCitiesList() {

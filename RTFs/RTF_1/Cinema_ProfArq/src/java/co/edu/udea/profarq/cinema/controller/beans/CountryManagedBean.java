@@ -15,7 +15,7 @@ public class CountryManagedBean implements Serializable {
 
     private static final long serialVersionUID = 8310135132300100199L;
 
-    private CountryManagerBean countryManagerSessionBean;
+    private CountryManagerBean countryManagerBean;
     private SelectItem[] contriesSelectItems;
 
     public CountryManagedBean() {
@@ -42,14 +42,14 @@ public class CountryManagedBean implements Serializable {
 //        this.setContriesSelectItems(selectItems);
     }
 
-    public CountryManagerBean getCountryManagerSessionBean() {
+    public CountryManagerBean getCountryManagerBean() {
         
-        return (this.countryManagerSessionBean);
+        return (this.countryManagerBean);
     }
 
-    public void setCountryManagerSessionBean(
-            CountryManagerBean countryManagerSessionBean) {
-        this.countryManagerSessionBean = countryManagerSessionBean;
+    public void setCountryManagerBean(
+            CountryManagerBean countryManagerBean) {
+        this.countryManagerBean = countryManagerBean;
     }
 
     public SelectItem[] getContriesSelectItems() {

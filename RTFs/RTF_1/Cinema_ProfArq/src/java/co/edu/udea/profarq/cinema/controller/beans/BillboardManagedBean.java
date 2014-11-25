@@ -33,7 +33,7 @@ public class BillboardManagedBean implements Serializable {
 
     private static final long serialVersionUID = 4143438520136358109L;
 
-    private BillboardManagerBean billboardManagerSessionBean;
+    private BillboardManagerBean billboardManagerBean;
     private CityManagedBean cityManagedBean;
     private FilmManagedBean filmManagedBean;
     private TheaterManagedBean theaterManagedBean;
@@ -68,14 +68,14 @@ public class BillboardManagedBean implements Serializable {
         }
     }
 
-    public BillboardManagerBean getBillboardManagerSessionBean() {
+    public BillboardManagerBean getBillboardManagerBean() {
 
-        return (this.billboardManagerSessionBean);
+        return (this.billboardManagerBean);
     }
 
-    public void setBillboardManagerSessionBean(
-            BillboardManagerBean billboardManagerSessionBean) {
-        this.billboardManagerSessionBean = billboardManagerSessionBean;
+    public void setBillboardManagerBean(
+            BillboardManagerBean billboardManagerBean) {
+        this.billboardManagerBean = billboardManagerBean;
     }
 
     public CityManagedBean getCityManagedBean() {

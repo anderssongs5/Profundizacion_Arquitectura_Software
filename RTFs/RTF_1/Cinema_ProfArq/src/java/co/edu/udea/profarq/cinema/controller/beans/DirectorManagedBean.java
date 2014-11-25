@@ -14,20 +14,20 @@ public class DirectorManagedBean implements Serializable {
 
     private static final long serialVersionUID = 2495933381372360074L;
 
-    private DirectorManagerBean directorManagerSessionBean;
+    private DirectorManagerBean directorManagerBean;
 
     public DirectorManagedBean() {
         super();
     }
 
-    public DirectorManagerBean getDirectorManagerSessionBean() {
+    public DirectorManagerBean getDirectorManagerBean() {
 
-        return (this.directorManagerSessionBean);
+        return (this.directorManagerBean);
     }
 
-    public void setDirectorManagerSessionBean(
-            DirectorManagerBean directorManagerSessionBean) {
-        this.directorManagerSessionBean = directorManagerSessionBean;
+    public void setDirectorManagerBean(
+            DirectorManagerBean directorManagerBean) {
+        this.directorManagerBean = directorManagerBean;
     }
 
     public Director find(String directorPK) {

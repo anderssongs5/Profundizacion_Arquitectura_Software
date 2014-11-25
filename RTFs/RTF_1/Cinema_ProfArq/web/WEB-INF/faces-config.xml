@@ -38,8 +38,8 @@
 
         <!-- Spring Beans -->
         <managed-property>
-            <property-name>billboardManagerSessionBean</property-name>
-            <value>#{billboardManagerSessionBean}</value>
+            <property-name>billboardManagerBean</property-name>
+            <value>#{billboardManagerBean}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -62,8 +62,8 @@
 
         <!-- Spring Beans -->
         <managed-property>
-            <property-name>filmManagerSessionBean</property-name>
-            <value>#{filmManagerSessionBean}</value>
+            <property-name>filmManagerBean</property-name>
+            <value>#{filmManagerBean}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -76,8 +76,8 @@
 
         <!-- Spring Beans -->
         <managed-property>
-            <property-name>genreManagerSessionBean</property-name>
-            <value>#{genreManagerSessionBean}</value>
+            <property-name>genreManagerBean</property-name>
+            <value>#{genreManagerBean}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -90,8 +90,8 @@
 
         <!-- Spring Beans -->
         <managed-property>
-            <property-name>directorManagerSessionBean</property-name>
-            <value>#{directorManagerSessionBean}</value>
+            <property-name>directorManagerBean</property-name>
+            <value>#{directorManagerBean}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -104,8 +104,8 @@
 
         <!-- Spring Beans -->
         <managed-property>
-            <property-name>cityManagerSessionBean</property-name>
-            <value>#{cityManagerSessionBean}</value>
+            <property-name>cityManagerBean</property-name>
+            <value>#{cityManagerBean}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -118,8 +118,8 @@
 
         <!-- Spring Beans -->
         <managed-property>
-            <property-name>theaterManagerSessionBean</property-name>
-            <value>#{theaterManagerSessionBean}</value>
+            <property-name>theaterManagerBean</property-name>
+            <value>#{theaterManagerBean}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -132,8 +132,8 @@
 
         <!-- Spring Beans -->
         <managed-property>
-            <property-name>videoFormatManagerSessionBean</property-name>
-            <value>#{videoFormatManagerSessionBean}</value>
+            <property-name>videoFormatManagerBean</property-name>
+            <value>#{videoFormatManagerBean}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -146,8 +146,8 @@
 
         <!-- Spring Beans -->
         <managed-property>
-            <property-name>classificationManagerSessionBean</property-name>
-            <value>#{classificationManagerSessionBean}</value>
+            <property-name>classificationManagerBean</property-name>
+            <value>#{classificationManagerBean}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -160,8 +160,8 @@
 
         <!-- Spring Beans -->
         <managed-property>
-            <property-name>countryManagerSessionBean</property-name>
-            <value>#{countryManagerSessionBean}</value>
+            <property-name>countryManagerBean</property-name>
+            <value>#{countryManagerBean}</value>
         </managed-property>
     </managed-bean> 
     <managed-bean>
@@ -174,8 +174,8 @@
 
         <!-- Spring Beans -->
         <managed-property>
-            <property-name>languageManagerSessionBean</property-name>
-            <value>#{languageManagerSessionBean}</value>
+            <property-name>languageManagerBean</property-name>
+            <value>#{languageManagerBean}</value>
         </managed-property>
     </managed-bean>
     <managed-bean>
@@ -187,8 +187,8 @@
 
         <!-- Spring Beans -->
         <managed-property>
-            <property-name>statusManagerSessionBean</property-name>
-            <value>#{statusManagerSessionBean}</value>
+            <property-name>statusManagerBean</property-name>
+            <value>#{statusManagerBean}</value>
         </managed-property>
     </managed-bean>
 

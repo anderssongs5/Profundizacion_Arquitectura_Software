@@ -15,21 +15,21 @@ public class TheaterManagedBean implements Serializable {
 
     private static final long serialVersionUID = -8724406385889168684L;
 
-    private TheaterManagerBean theaterManagerSessionBean;
+    private TheaterManagerBean theaterManagerBean;
     private List<Theater> theatersList;
 
     public TheaterManagedBean() {
         super();
     }
 
-    public TheaterManagerBean getTheaterManagerSessionBean() {
+    public TheaterManagerBean getTheaterManagerBean() {
         
-        return (this.theaterManagerSessionBean);
+        return (this.theaterManagerBean);
     }
 
-    public void setTheaterManagerSessionBean(
-            TheaterManagerBean theaterManagerSessionBean) {
-        this.theaterManagerSessionBean = theaterManagerSessionBean;
+    public void setTheaterManagerBean(
+            TheaterManagerBean theaterManagerBean) {
+        this.theaterManagerBean = theaterManagerBean;
     }
 
     public List<Theater> getTheatersList() {

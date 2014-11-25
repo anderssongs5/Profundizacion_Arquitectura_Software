@@ -15,7 +15,7 @@ public class LanguageManagedBean implements Serializable {
 
     private static final long serialVersionUID = -1741073586122441355L;
 
-    private LanguageManagerBean languageManagerSessionBean;
+    private LanguageManagerBean languageManagerBean;
     private SelectItem[] languagesSelectItems;
 
     public LanguageManagedBean() {
@@ -43,14 +43,14 @@ public class LanguageManagedBean implements Serializable {
 //        this.setLanguagesSelectItems(selectItems);
     }
 
-    public LanguageManagerBean getLanguageManagerSessionBean() {
+    public LanguageManagerBean getLanguageManagerBean() {
         
-        return (this.languageManagerSessionBean);
+        return (this.languageManagerBean);
     }
 
-    public void setLanguageManagerSessionBean(
-            LanguageManagerBean languageManagerSessionBean) {
-        this.languageManagerSessionBean = languageManagerSessionBean;
+    public void setLanguageManagerBean(
+            LanguageManagerBean languageManagerBean) {
+        this.languageManagerBean = languageManagerBean;
     }
 
     public SelectItem[] getLanguagesSelectItems() {

@@ -15,7 +15,7 @@ public class StatusManagedBean implements Serializable {
 
     private static final long serialVersionUID = 6107535119484435328L;
 
-    private StatusManagerBean statusManagerSessionBean;
+    private StatusManagerBean statusManagerBean;
     private SelectItem[] statusSelectItems;
 
     public StatusManagedBean() {
@@ -42,14 +42,14 @@ public class StatusManagedBean implements Serializable {
 //        this.setStatusSelectItems(selectItems);
     }
 
-    public StatusManagerBean getStatusManagerSessionBean() {
+    public StatusManagerBean getStatusManagerBean() {
 
-        return (this.statusManagerSessionBean);
+        return (this.statusManagerBean);
     }
 
-    public void setStatusManagerSessionBean(
-            StatusManagerBean statusManagerSessionBean) {
-        this.statusManagerSessionBean = statusManagerSessionBean;
+    public void setStatusManagerBean(
+            StatusManagerBean statusManagerBean) {
+        this.statusManagerBean = statusManagerBean;
     }
 
     public SelectItem[] getStatusSelectItems() {

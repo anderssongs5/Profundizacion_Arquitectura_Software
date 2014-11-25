@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import org.primefaces.model.DualListModel;
 
@@ -36,7 +38,7 @@ public class FilmManagedBean implements Serializable {
     public static final String SHOW_FILM_PAGE_FLOW = "SHOW_FILM";
     public static final String UPDATE_BILLBOARDS_PAGE_FLOW = "UPDATE_BILLBOARDS";
 
-    private FilmManagerBean filmManagerSessionBean;
+    private FilmManagerBean filmManagerBean;
     private DirectorManagedBean directorManagedBean;
     private GenreManagedBean genreManagedBean;
     private Film selectedFilm;
@@ -51,11 +53,13 @@ public class FilmManagedBean implements Serializable {
     public void deleteFilm(ActionEvent actionEvent) {
         if (this.getSelectedFilm() != null) {
             try {
-                if (this.filmManagerSessionBean.delete(this.getSelectedFilm())) {
+                if (this.filmManagerBean.delete(this.getSelectedFilm())) {
                     this.refreshPage();
                 }
             } catch (CinemaBusinessException e) {
-                // TODO: Mostrar mensaje
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                                "Deleting Film", e.getMessage()));
             }
         }
     }
@@ -145,14 +149,14 @@ public class FilmManagedBean implements Serializable {
         return (genresFormat.toString());
     }
 
-    public FilmManagerBean getFilmManagerSessionBean() {
+    public FilmManagerBean getFilmManagerBean() {
 
-        return (this.filmManagerSessionBean);
+        return (this.filmManagerBean);
     }
 
-    public void setFilmManagerSessionBean(
-            FilmManagerBean filmManagerSessionBean) {
-        this.filmManagerSessionBean = filmManagerSessionBean;
+    public void setFilmManagerBean(
+            FilmManagerBean filmManagerBean) {
+        this.filmManagerBean = filmManagerBean;
     }
 
     public Film getSelectedFilm() {
@@ -252,6 +256,12 @@ public class FilmManagedBean implements Serializable {
     }
 
     private void refreshPage() {
-//        this.setFilmsList(this.filmManagerSessionBean.findAll());
+        try {
+            this.setFilmsList(this.filmManagerBean.findAll());
+        } catch (CinemaBusinessException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                            "Refreshing Page", e.getMessage()));
+        }
     }
 }

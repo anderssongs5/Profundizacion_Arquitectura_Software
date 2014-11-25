@@ -16,7 +16,7 @@ public class ClassificationManagedBean implements Serializable {
 
     private static final long serialVersionUID = -2782719886298733534L;
 
-    private ClassificationManagerBean classificationManagerSessionBean;
+    private ClassificationManagerBean classificationManagerBean;
     private SelectItem[] classificationsSelectItems;
 
     public ClassificationManagedBean() {
@@ -43,14 +43,14 @@ public class ClassificationManagedBean implements Serializable {
 //        this.setClassificationsSelectItems(selectItems);
     }
 
-    public ClassificationManagerBean getClassificationManagerSessionBean() {
+    public ClassificationManagerBean getClassificationManagerBean() {
 
-        return (this.classificationManagerSessionBean);
+        return (this.classificationManagerBean);
     }
 
-    public void setClassificationManagerSessionBean(
-            ClassificationManagerBean classificationManagerSessionBean) {
-        this.classificationManagerSessionBean = classificationManagerSessionBean;
+    public void setClassificationManagerBean(
+            ClassificationManagerBean classificationManagerBean) {
+        this.classificationManagerBean = classificationManagerBean;
     }
 
     public String formatClassification(Classification classification) {

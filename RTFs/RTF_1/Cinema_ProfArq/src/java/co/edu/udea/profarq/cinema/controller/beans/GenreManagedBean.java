@@ -15,21 +15,21 @@ public class GenreManagedBean implements Serializable {
 
     private static final long serialVersionUID = 1249911944890228782L;
 
-    private GenreManagerBean genreManagerSessionBean;
+    private GenreManagerBean genreManagerBean;
     private List<Genre> genresList;
 
     public GenreManagedBean() {
         super();
     }
 
-    public GenreManagerBean getGenreManagerSessionBean() {
+    public GenreManagerBean getGenreManagerBean() {
 
-        return (this.genreManagerSessionBean);
+        return (this.genreManagerBean);
     }
 
-    public void setGenreManagerSessionBean(
-            GenreManagerBean genreManagerSessionBean) {
-        this.genreManagerSessionBean = genreManagerSessionBean;
+    public void setGenreManagerBean(
+            GenreManagerBean genreManagerBean) {
+        this.genreManagerBean = genreManagerBean;
     }
 
     public List<Genre> getGenresList() {

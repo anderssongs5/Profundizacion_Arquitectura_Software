@@ -15,7 +15,7 @@ public class VideoFormatManagedBean implements Serializable {
 
     private static final long serialVersionUID = -6496448230256742707L;
 
-    private VideoFormatManagerBean videoFormatManagerSessionBean;
+    private VideoFormatManagerBean videoFormatManagerBean;
     private SelectItem[] videoFormatsSelectItems;
 
     public VideoFormatManagedBean() {
@@ -42,14 +42,14 @@ public class VideoFormatManagedBean implements Serializable {
 //        this.setVideoFormatsSelectItems(selectItems);
     }
 
-    public VideoFormatManagerBean getVideoFormatManagerSessionBean() {
+    public VideoFormatManagerBean getVideoFormatManagerBean() {
 
-        return (this.videoFormatManagerSessionBean);
+        return (this.videoFormatManagerBean);
     }
 
-    public void setVideoFormatManagerSessionBean(
-            VideoFormatManagerBean videoFormatManagerSessionBean) {
-        this.videoFormatManagerSessionBean = videoFormatManagerSessionBean;
+    public void setVideoFormatManagerBean(
+            VideoFormatManagerBean videoFormatManagerBean) {
+        this.videoFormatManagerBean = videoFormatManagerBean;
     }
 
     public SelectItem[] getVideoFormatsSelectItems() {
