@@ -2,6 +2,7 @@ package co.edu.udea.profarq.cinema.model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -80,7 +81,7 @@ public class Billboard implements IEntity, Serializable {
         @JoinColumn(name = "subtitle_language",
                 referencedColumnName = "subtitle_language",
                 insertable = false, updatable = false)})
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
     private AudioFormat audioFormat;
 
     public Billboard() {

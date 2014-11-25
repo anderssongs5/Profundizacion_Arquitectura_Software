@@ -119,7 +119,6 @@ public class Genre implements IEntity, Serializable {
     @Override()
     public String toString() {
 
-        return ("co.edu.udea.profarq.cinema.model.entities.Genre[ genre="
-                + this.getGenre() + " ]");
+        return (this.getGenre());
     }
 }

@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
@@ -71,14 +72,20 @@ public class Film implements IEntity, Serializable {
     @Size(min = 1, max = 55)
     @Column(name = "image")
     private String image;
-    @ManyToMany(mappedBy = "filmList")
+    @JoinTable(name = "FILMS_DIRECTORS", joinColumns = {
+        @JoinColumn(name = "FILM_TITLE", referencedColumnName = "TITLE"),
+        @JoinColumn(name = "FILM_RELEASE_DATE",
+                referencedColumnName = "RELEASE_DATE")}, inverseJoinColumns = {
+                @JoinColumn(name = "DIRECTOR_FULL_NAME",
+                        referencedColumnName = "FULL_NAME")})
+    @ManyToMany()
     private List<Director> directorList;
     @JoinTable(name = "genre_by_film", joinColumns = {
         @JoinColumn(name = "film_title", referencedColumnName = "title"),
         @JoinColumn(name = "film_release_date",
                 referencedColumnName = "release_date")}, inverseJoinColumns = {
                 @JoinColumn(name = "genre", referencedColumnName = "genre")})
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Genre> genreList;
     @JoinColumn(name = "country", referencedColumnName = "iso_code")
     @ManyToOne(optional = false)

@@ -47,11 +47,11 @@ public class AudioFormat implements IEntity, Serializable {
     @JoinColumn(name = "audio_language", referencedColumnName = "iso_code",
             insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Languages languages;
+    private Languages languages1;
     @JoinColumn(name = "subtitle_language", referencedColumnName = "iso_code",
             insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Languages languages1;
+    private Languages languages;
 
     public AudioFormat() {
         super();

@@ -6,8 +6,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -40,13 +38,7 @@ public class Director implements IEntity, Serializable {
     @Size(min = 1, max = 55)
     @Column(name = "full_name")
     private String fullName;
-    @JoinTable(name = "films_directors", joinColumns = {
-        @JoinColumn(name = "director_full_name",
-                referencedColumnName = "full_name")}, inverseJoinColumns = {
-                @JoinColumn(name = "film_title", referencedColumnName = "title"),
-                @JoinColumn(name = "film_release_date",
-                        referencedColumnName = "release_date")})
-    @ManyToMany()
+    @ManyToMany(mappedBy = "directorList")
     private List<Film> filmList;
 
     public Director() {
