@@ -1,9 +1,12 @@
 package co.edu.udea.profarq.cinema.controller.beans;
 
 import co.edu.udea.profarq.cinema.business.spring.GenreManagerBean;
+import co.edu.udea.profarq.cinema.controller.exception.CinemaBusinessException;
 import co.edu.udea.profarq.cinema.model.entities.Genre;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -33,9 +36,15 @@ public class GenreManagedBean implements Serializable {
     }
 
     public List<Genre> getGenresList() {
-//        if ((this.genresList == null) || (this.genresList.isEmpty())) {
-//            this.genresList = this.genreManagerSessionBean.findAll();
-//        }
+        if ((this.genresList == null) || (this.genresList.isEmpty())) {
+            try {
+                this.genresList = this.genreManagerBean.findAll();
+            } catch (CinemaBusinessException e) {
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                                "Genre Error", e.getMessage()));
+            }
+        }
 
         return (this.genresList);
     }

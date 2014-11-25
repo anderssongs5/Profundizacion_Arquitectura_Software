@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.StringTokenizer;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -65,34 +66,43 @@ public class FilmManagedBean implements Serializable {
     }
 
     public void saveFilm(ActionEvent actionEvent) {
-//        if ((this.getNewFilm() != null)
-//                && (this.getNewFilm().getFilmPK() != null)) {
-//            List<Director> directorsList = new ArrayList<>();
-//            StringTokenizer stringTokenizer = new StringTokenizer(
-//                    this.getNewFilm().getFullNamesDirectors(), ";");
-//            Director director;
-//
-//            while (stringTokenizer.hasMoreElements()) {
-//                director = new Director(stringTokenizer.nextToken().trim());
-//                directorsList.add(director);
-//
-//                if (this.getDirectorManagedBean().find(director.getFullName())
-//                        == null) {
-//                    this.getDirectorManagedBean().save(director);
-//                }
-//            }
-//            this.getNewFilm().setDirectorList(directorsList);
-//
-//            for (Object genreName : this.getGenresDualListModel().getTarget()) {
-//                this.getNewFilm().getGenreList().add(new Genre((String) genreName));
-//            }
-//
-//            this.filmManagerSessionBean.save(this.getNewFilm());
-//            FacesContext.getCurrentInstance().addMessage(null,
-//                    new FacesMessage("Film Saved"));
-//
-//            this.recreateAttributes();
-//        }
+        if ((this.getNewFilm() != null)
+                && (this.getNewFilm().getFilmPK() != null)) {
+            List<Director> directorsList = new ArrayList<>();
+            StringTokenizer stringTokenizer = new StringTokenizer(
+                    this.getNewFilm().getFullNamesDirectors(), ";");
+            Director director;
+
+            while (stringTokenizer.hasMoreElements()) {
+                director = new Director(stringTokenizer.nextToken().trim());
+                directorsList.add(director);
+
+                if (this.getDirectorManagedBean().find(director.getFullName())
+                        == null) {
+                    this.getDirectorManagedBean().save(director);
+                }
+            }
+            this.getNewFilm().setDirectorList(directorsList);
+
+            for (Object genreName : this.getGenresDualListModel().getTarget()) {
+                this.getNewFilm().getGenreList().add(new Genre((String) genreName));
+            }
+
+            try {
+                this.filmManagerBean.save(this.getNewFilm());
+            } catch (CinemaBusinessException e) {
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                                "Saving Film", e.getMessage()));
+
+                return;
+            }
+
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage("Film Saved"));
+
+            this.recreateAttributes();
+        }
     }
 
     private void recreateAttributes() {

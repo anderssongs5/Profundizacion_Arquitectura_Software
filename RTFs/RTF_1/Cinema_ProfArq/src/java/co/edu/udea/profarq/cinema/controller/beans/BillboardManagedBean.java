@@ -2,6 +2,7 @@ package co.edu.udea.profarq.cinema.controller.beans;
 
 import co.edu.udea.profarq.cinema.business.spring.BillboardManagerBean;
 import co.edu.udea.profarq.cinema.business.spring.StatusManagerBean;
+import co.edu.udea.profarq.cinema.controller.exception.CinemaBusinessException;
 import co.edu.udea.profarq.cinema.model.entities.AudioFormat;
 import co.edu.udea.profarq.cinema.model.entities.AudioFormatPK;
 import co.edu.udea.profarq.cinema.model.entities.Billboard;
@@ -198,7 +199,16 @@ public class BillboardManagedBean implements Serializable {
         this.newBillboard.setFilm(new Film(new FilmPK(filmTitle,
                 filmReleaseDate)));
 
-//        this.billboardManagerSessionBean.save(this.getNewBillboard());
+        try {
+            this.billboardManagerBean.save(this.getNewBillboard());
+        } catch (CinemaBusinessException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                            "Billboard Film", e.getMessage()));
+
+            return;
+        }
+
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage("Billboard Saved"));
 
@@ -226,7 +236,13 @@ public class BillboardManagedBean implements Serializable {
                         billboard.setOutDate(new Date());
                 }
 
-//                billboard = this.billboardManagerSessionBean.update(billboard);
+                try {
+                    billboard = this.billboardManagerBean.update(billboard);
+                } catch (CinemaBusinessException e) {
+                    FacesContext.getCurrentInstance().addMessage(null,
+                            new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                                    "Updating Film", e.getMessage()));
+                }
             }
         }
     }
@@ -234,8 +250,14 @@ public class BillboardManagedBean implements Serializable {
     private void refreshPage() {
         if ((this.filmManagedBean != null)
                 && (this.filmManagedBean.getSelectedFilm() != null)) {
-//            this.billboardsList = this.billboardManagerSessionBean.findByFilm(
-//                    this.getFilmManagedBean().getSelectedFilm());
+            try {
+                this.billboardsList = this.billboardManagerBean.findByFilm(
+                        this.getFilmManagedBean().getSelectedFilm());
+            } catch (CinemaBusinessException e) {
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                                "Finding Billboards by Film", e.getMessage()));
+            }
         }
     }
 }

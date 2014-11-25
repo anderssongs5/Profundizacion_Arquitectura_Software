@@ -1,9 +1,13 @@
 package co.edu.udea.profarq.cinema.controller.beans;
 
 import co.edu.udea.profarq.cinema.business.spring.ClassificationManagerBean;
+import co.edu.udea.profarq.cinema.controller.exception.CinemaBusinessException;
 import co.edu.udea.profarq.cinema.model.entities.Classification;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 /**
@@ -25,22 +29,33 @@ public class ClassificationManagedBean implements Serializable {
 
     @PostConstruct()
     private void init() {
-//        List<Classification> classificationsList
-//                = this.classificationManagerSessionBean.findAll();
-//        SelectItem[] selectItems = null;
-//
-//        if ((classificationsList != null) && (!classificationsList.isEmpty())) {
-//            selectItems = new SelectItem[classificationsList.size()];
-//
-//            for (int position = 0; position < classificationsList.size(); position++) {
-//                Classification classification = classificationsList.get(position);
-//
-//                selectItems[position] = new SelectItem(classification.getAge(),
-//                        this.formatClassification(classification));
-//            }
-//        }
-//
-//        this.setClassificationsSelectItems(selectItems);
+        List<Classification> classificationsList;
+        SelectItem[] selectItems = null;
+
+        try {
+            classificationsList = this.classificationManagerBean.findAll();
+        } catch (CinemaBusinessException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                            "Deleting Film", e.getMessage()));
+
+            this.setClassificationsSelectItems(selectItems);
+
+            return;
+        }
+
+        if ((classificationsList != null) && (!classificationsList.isEmpty())) {
+            selectItems = new SelectItem[classificationsList.size()];
+
+            for (int position = 0; position < classificationsList.size(); position++) {
+                Classification classification = classificationsList.get(position);
+
+                selectItems[position] = new SelectItem(classification.getAge(),
+                        this.formatClassification(classification));
+            }
+        }
+
+        this.setClassificationsSelectItems(selectItems);
     }
 
     public ClassificationManagerBean getClassificationManagerBean() {

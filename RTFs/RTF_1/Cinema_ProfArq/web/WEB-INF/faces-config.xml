@@ -17,7 +17,7 @@
         <description>Bean for management the data related with the Billboard Entity.</description>
         <managed-bean-name>billboardManagedBean</managed-bean-name>
         <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.BillboardManagedBean</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
+        <managed-bean-scope>session</managed-bean-scope>
 
         <!-- JSF Managed Beans -->
         <managed-property>

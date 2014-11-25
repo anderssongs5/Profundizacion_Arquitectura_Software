@@ -1,9 +1,12 @@
 package co.edu.udea.profarq.cinema.controller.beans;
 
 import co.edu.udea.profarq.cinema.business.spring.TheaterManagerBean;
+import co.edu.udea.profarq.cinema.controller.exception.CinemaBusinessException;
 import co.edu.udea.profarq.cinema.model.entities.Theater;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -23,7 +26,7 @@ public class TheaterManagedBean implements Serializable {
     }
 
     public TheaterManagerBean getTheaterManagerBean() {
-        
+
         return (this.theaterManagerBean);
     }
 
@@ -45,8 +48,18 @@ public class TheaterManagedBean implements Serializable {
     }
 
     private void refreshPage() {
-//        List<Theater> theatersFound = this.theaterManagerSessionBean.findAll();
-//
-//        this.setTheatersList(theatersFound);
+        List<Theater> theatersFound;
+
+        try {
+            theatersFound = this.theaterManagerBean.findAll();
+        } catch (CinemaBusinessException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                            "Theater Error", e.getMessage()));
+
+            return;
+        }
+
+        this.setTheatersList(theatersFound);
     }
 }

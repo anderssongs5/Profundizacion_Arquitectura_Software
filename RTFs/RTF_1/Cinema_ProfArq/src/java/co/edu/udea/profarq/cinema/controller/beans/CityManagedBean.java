@@ -1,10 +1,13 @@
 package co.edu.udea.profarq.cinema.controller.beans;
 
 import co.edu.udea.profarq.cinema.business.spring.CityManagerBean;
+import co.edu.udea.profarq.cinema.controller.exception.CinemaBusinessException;
 import co.edu.udea.profarq.cinema.model.entities.City;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 /**
@@ -27,21 +30,32 @@ public class CityManagedBean implements Serializable {
 
     @PostConstruct()
     private void init() {
-//        this.citiesList = this.cityManagerSessionBean.findAll();
-//        SelectItem[] selectItems = null;
-//
-//        if ((citiesList != null) && (!citiesList.isEmpty())) {
-//            selectItems = new SelectItem[citiesList.size()];
-//
-//            for (int position = 0; position < citiesList.size(); position++) {
-//                City city = citiesList.get(position);
-//                selectItems[position] = new SelectItem(city,
-//                        String.format("[%s] %s", city.getCode(),
-//                                city.getCity()));
-//            }
-//        }
-//
-//        this.setCitiesSelectItems(selectItems);
+        SelectItem[] selectItems = null;
+
+        try {
+            this.citiesList = this.cityManagerBean.findAll();
+        } catch (CinemaBusinessException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                            "City Error", e.getMessage()));
+
+            this.setCitiesSelectItems(selectItems);
+
+            return;
+        }
+
+        if ((citiesList != null) && (!citiesList.isEmpty())) {
+            selectItems = new SelectItem[citiesList.size()];
+
+            for (int position = 0; position < citiesList.size(); position++) {
+                City city = citiesList.get(position);
+                selectItems[position] = new SelectItem(city,
+                        String.format("[%s] %s", city.getCode(),
+                                city.getCity()));
+            }
+        }
+
+        this.setCitiesSelectItems(selectItems);
     }
 
     public CityManagerBean getCityManagerBean() {

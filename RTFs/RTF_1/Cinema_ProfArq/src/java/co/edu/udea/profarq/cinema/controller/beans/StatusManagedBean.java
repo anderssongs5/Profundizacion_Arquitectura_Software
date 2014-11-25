@@ -1,8 +1,13 @@
 package co.edu.udea.profarq.cinema.controller.beans;
 
 import co.edu.udea.profarq.cinema.business.spring.StatusManagerBean;
+import co.edu.udea.profarq.cinema.controller.exception.CinemaBusinessException;
+import co.edu.udea.profarq.cinema.model.entities.Status;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 /**
@@ -24,22 +29,32 @@ public class StatusManagedBean implements Serializable {
 
     @PostConstruct()
     private void init() {
-//        List<Status> statusesList = this.statusManagerSessionBean.findAll();
-//
-//        SelectItem[] selectItems = null;
-//
-//        if ((statusesList != null) && (!statusesList.isEmpty())) {
-//            selectItems = new SelectItem[statusesList.size()];
-//
-//            for (int position = 0; position < statusesList.size(); position++) {
-//                Status status = statusesList.get(position);
-//                selectItems[position] = new SelectItem(
-//                        status.getStatus(), status.getStatus(),
-//                        status.getDescription());
-//            }
-//        }
-//
-//        this.setStatusSelectItems(selectItems);
+        List<Status> statusesList;
+        SelectItem[] selectItems = null;
+
+        try {
+            statusesList = this.statusManagerBean.findAll();
+        } catch (CinemaBusinessException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                            "Status Error", e.getMessage()));
+            this.setStatusSelectItems(selectItems);
+
+            return;
+        }
+
+        if ((statusesList != null) && (!statusesList.isEmpty())) {
+            selectItems = new SelectItem[statusesList.size()];
+
+            for (int position = 0; position < statusesList.size(); position++) {
+                Status status = statusesList.get(position);
+                selectItems[position] = new SelectItem(
+                        status.getStatus(), status.getStatus(),
+                        status.getDescription());
+            }
+        }
+
+        this.setStatusSelectItems(selectItems);
     }
 
     public StatusManagerBean getStatusManagerBean() {

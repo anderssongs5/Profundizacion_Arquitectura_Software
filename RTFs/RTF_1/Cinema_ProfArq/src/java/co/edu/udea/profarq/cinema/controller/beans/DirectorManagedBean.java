@@ -1,8 +1,11 @@
 package co.edu.udea.profarq.cinema.controller.beans;
 
 import co.edu.udea.profarq.cinema.business.spring.DirectorManagerBean;
+import co.edu.udea.profarq.cinema.controller.exception.CinemaBusinessException;
 import co.edu.udea.profarq.cinema.model.entities.Director;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -31,12 +34,25 @@ public class DirectorManagedBean implements Serializable {
     }
 
     public Director find(String directorPK) {
+        try {
 
-//        return (this.directorManagerSessionBean.find(directorPK));
+            return (this.directorManagerBean.find(directorPK));
+        } catch (CinemaBusinessException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                            "Finding Film", e.getMessage()));
+        }
+
         return (null);
     }
 
     public void save(Director director) {
-//        this.directorManagerSessionBean.save(director);
+        try {
+            this.directorManagerBean.save(director);
+        } catch (CinemaBusinessException e) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_FATAL,
+                            "Saving Film", e.getMessage()));
+        }
     }
 }
