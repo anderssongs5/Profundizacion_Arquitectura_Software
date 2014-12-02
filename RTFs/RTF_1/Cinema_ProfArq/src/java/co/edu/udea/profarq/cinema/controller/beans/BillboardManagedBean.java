@@ -116,9 +116,7 @@ public class BillboardManagedBean implements Serializable {
     }
 
     public List<Billboard> getBillboardsList() {
-        if ((this.billboardsList == null) || (this.billboardsList.isEmpty())) {
-            this.refreshPage();
-        }
+        this.refreshPage();
 
         return (this.billboardsList);
     }

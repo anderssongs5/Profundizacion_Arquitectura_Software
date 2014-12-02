@@ -28,32 +28,45 @@
                             value="List of Billboards: #{billboardManagedBean.filmManagedBean.selectedFilm.filmPK.title}" >
                         </h:outputText>
                     </f:facet>
-                    <p:column headerText="City" id="cityColumn" >
+                    <p:column filterBy="#{billboard.theater1.city.city}"
+                              filterMatchMode="contains"
+                              headerText="City" id="cityColumn" 
+                              sortBy="#{billboard.theater1.city.city}" >
                         <h:outputText
                             value="[#{billboard.theater1.city.code}] #{billboard.theater1.city.city}" >
                         </h:outputText>
                     </p:column>
-                    <p:column headerText="Theater Name" id="theaterColumn" >
+                    <p:column filterBy="#{billboard.theater1.theaterPK.theater}"
+                              filterMatchMode="contains"
+                              headerText="Theater Name" id="theaterColumn" >
                         <h:outputText
                             value="#{billboard.theater1.theaterPK.theater}" >
                         </h:outputText>
                     </p:column>
-                    <p:column headerText="Theater Address" id="theaterAddress" >
+                    <p:column filterBy="#{billboard.theater1.address}"
+                              filterMatchMode="contains"
+                              headerText="Theater Address" id="theaterAddress" >
                         <h:outputText
                             value="#{billboard.theater1.address}" >
                         </h:outputText>
                     </p:column>
-                    <p:column headerText="Audio" id="audioLanguageColumn" >
+                    <p:column filterBy="#{billboard.audioFormat.languages1.languageName}"
+                              filterMatchMode="contains"
+                              headerText="Audio" id="audioLanguageColumn" >
                         <h:outputText
                             value="[#{billboard.audioFormat.languages1.isoCode}] #{billboard.audioFormat.languages1.languageName}" >
                         </h:outputText>
                     </p:column>
-                    <p:column headerText="Subtitle" id="subtitleLanguageColumn" >
+                    <p:column filterBy="#{billboard.audioFormat.languages.languageName}"
+                              filterMatchMode="contains"
+                              headerText="Subtitle" id="subtitleLanguageColumn" >
                         <h:outputText
                             value="[#{billboard.audioFormat.languages.isoCode}] #{billboard.audioFormat.languages.languageName}" >
                         </h:outputText>
                     </p:column>
-                    <p:column headerText="Video Format" id="videoFormatColumn" >
+                    <p:column filterBy="#{billboard.videoFormat1.videoFormat}"
+                              filterMatchMode="contains"
+                              headerText="Video Format" id="videoFormatColumn" >
                         <h:outputText
                             value="#{billboard.videoFormat1.videoFormat}" >
                         </h:outputText>
