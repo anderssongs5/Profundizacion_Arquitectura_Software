@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<co.edu.udea.cinema_profarq.model:Cinema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:co.edu.udea.cinema_profarq.model="http://co/edu/udea/cinema_profarq/model">
+  <sorts genre="DRAMA" description="Peliculas que se centran principalmente en el desarrollo de un conflicto entre los protagonistas, o del protagonista con su entorno o consigo mismo." movies="//@flicks.0"/>
+  <sorts genre="ACCION" description="Peliculas cuyo argumento implica una interaccion moral entre el &quot;bien&quot; y el &quot;mal&quot; llevada a su fin por la violencia o la fuerza fisica." movies="//@flicks.0"/>
+  <sorts genre="BELICO" description="Peliculas de campos de batalla y posiciones que pertenecen a un tiempo de guerra."/>
+  <sorts genre="VIEJO OESTE" description="Peliculas del periodo colonial a la era moderna de los Estados Unidos de America, a menudo mitificandolos."/>
+  <sorts genre="TERROR" description="Peliculas realizadas con la intencion de provocar tension, miedo y/o el sobresalto en la audiencia." movies="//@flicks.2"/>
+  <sorts genre="CIENCIA FICCION" description="Peliculas presentan la progresion de lo desconocido a lo conocido por el descubrimiento de una serie de enigmas."/>
+  <sorts genre="FANTASIA" description="Peliculas de mundos miticos que provienen unicamente de la imaginacion de su autor." movies="//@flicks.2"/>
+  <sorts genre="SUSPENSO" description="Peliculas realizadas con la intencion de provocar tension en el espectador."/>
+  <sorts genre="ANIMACION" description="Peliculas compuestas de fotogramas dibujados a mano que, pasados rapidamente, producen ilusion de movimiento." movies="//@flicks.1"/>
+  <sorts genre="COMEDIA" description="Peliculas realizadas con la intencion de provocar humor, entretenimiento y/o risa en el espectador." movies="//@flicks.1"/>
+  <classifications age="12"/>
+  <classifications age="18"/>
+  <classifications age="21"/>
+  <classifications age="6"/>
+  <classifications age="00"/>
+  <flicks title="The Hobbit: The Battle Of The Five Armies" synopsis="Bilbo y los enanos lograron entrar en Erebor y librar una feroz batalla contra el dragon Smaug, pero este logro salir airoso y ahora se dirige a la ciudad de Esgaroth para saldar cuentas con sus habitantes." pseudonym="El Hobbit: La Batalla De Los Cinco Ejercitos" image="THE_HOBBIT:_THE_BATTLE_OF_THE_FIVE_ARMIES.png" duration="7800000" releaseDate="2014-10-18T00:00:00.000-0500" classification="//@classifications.3" genres="//@sorts.0 //@sorts.1" directors="//@managers.0" actors="//@performers.3 //@performers.4 //@performers.5" homeCountry="//@countries.1"/>
+  <flicks title="The Hunger Games: Mockingjay Part 1" synopsis="En esta primera parte de Sinsajo, la heroina Katniss Everdeen, se convierte en el simbolo de la rebelion contra el Capitolio y una guerra se desata entre el gobierno y los distritos." pseudonym="Los Juegos Del Hambre: Sinsajo Parte 1" image="The_Hunger_Games:_Mockingjay_part_1.png" duration="6600000" releaseDate="2014-11-20T00:00:00.000-0500" classification="//@classifications.0" genres="//@sorts.8 //@sorts.9" directors="//@managers.4" actors="//@performers.6 //@performers.7 //@performers.8" homeCountry="//@countries.1"/>
+  <flicks title="Haunter" synopsis="Lisa es una adolescente atrapada en un viaje circular en el tiempo. Aunque siempre despierta en el mismo dia, descubre unas 'ligeras' variaciones en su rutina." pseudonym="Haunter" image="Haunter.png" duration="5820000" releaseDate="2014-11-05T00:00:00.000-0500" classification="//@classifications.1" genres="//@sorts.6 //@sorts.4" directors="//@managers.5" actors="//@performers.0 //@performers.2 //@performers.1" homeCountry="//@countries.2"/>
+  <managers fullName="Peter Jackson" films="//@flicks.0"/>
+  <managers fullName="Lasse Hallstrom"/>
+  <managers fullName="Catherine Breillat"/>
+  <managers fullName="Sam Taylor-Johnson"/>
+  <managers fullName="Francis Lawrence" films="//@flicks.1"/>
+  <managers fullName="Vincenzo Natali" films="//@flicks.2"/>
+  <performers fullName="Abigail Breslin" motionPictures="//@flicks.2"/>
+  <performers fullName="Michelle Nolden" motionPictures="//@flicks.2"/>
+  <performers fullName="Peter Outerbridge" motionPictures="//@flicks.2"/>
+  <performers fullName="Ian McKellen" motionPictures="//@flicks.0"/>
+  <performers fullName="Martin Freeman" motionPictures="//@flicks.0"/>
+  <performers fullName="Richard Armitage" motionPictures="//@flicks.0"/>
+  <performers fullName="Jennifer Lawrence" motionPictures="//@flicks.1"/>
+  <performers fullName="Josh Hutcherson" motionPictures="//@flicks.1"/>
+  <performers fullName="Liam Hemsworth" motionPictures="//@flicks.1"/>
+  <countries isoCode="COL" country="Colombia"/>
+  <countries isoCode="USA" country="Estados Unidos"/>
+  <countries isoCode="FRA" country="Francia"/>
+  <countries isoCode="ESP" country="Espania"/>
+  <cities code="05001" city="MEDELLIN">
+    <theaters theater="UNICENTRO" address="Calle 30A Nro. 82A -26">
+      <billboards outDate="2014-11-13T00:00:00.000-0500" status="//@statuses.0" audioFormat="//@audioFormats.1" videoFormat="//@videoFormats.1" film="//@flicks.2"/>
+      <billboards outDate="2014-12-05T00:00:00.000-0500" status="//@statuses.1" audioFormat="//@audioFormats.2" videoFormat="//@videoFormats.0" film="//@flicks.0"/>
+      <rooms name="Sala 1" number="1">
+        <seats number="1" row="F"/>
+        <seats number="2" row="F"/>
+      </rooms>
+      <rooms name="Sala 2" number="2">
+        <seats number="4" row="G" localityType="Preferencial"/>
+      </rooms>
+      <rates price="13000.0" points="50" startDate="2014-10-22T00:00:00.000-0500" endDate="2015-06-06T00:00:00.000-0500" localityType="Preferencial" videoType="//@videoFormats.3"/>
+      <rates price="9000.0" points="40" startDate="2014-10-22T00:00:00.000-0500" endDate="2014-06-06T00:00:00.000-0500" videoType="//@videoFormats.3"/>
+      <shows startTime="0002-11-30T12:00:00.000-0500" endTime="0002-11-30T14:25:00.000-0500" posterBoard="//@cities.1/@theaters.0/@billboards.0" room="//@cities.0/@theaters.0/@rooms.0"/>
+    </theaters>
+    <theaters theater="LOS MOLINOS" address="Carrera 43 A Nro. 7 sur 170">
+      <billboards outDate="2015-01-02T00:00:00.000-0500" status="//@statuses.0" audioFormat="//@audioFormats.0" videoFormat="//@videoFormats.2" film="//@flicks.1"/>
+      <rooms name="Sala 1" number="1">
+        <seats number="11" row="A"/>
+      </rooms>
+    </theaters>
+  </cities>
+  <cities code="76001" city="CALI">
+    <theaters theater="SANTA FE" address="Avenida Calle 26 Nro. 62-42">
+      <billboards outDate="2014-12-25T00:00:00.000-0500" status="//@statuses.0" audioFormat="//@audioFormats.0" videoFormat="//@videoFormats.3" film="//@flicks.1"/>
+      <rooms name="Sala 1" number="1">
+        <seats number="15" row="H" localityType="Preferencial"/>
+      </rooms>
+    </theaters>
+  </cities>
+  <statuses status="1" description="Proximamente en Cartelera."/>
+  <statuses status="2" description="En Cartelera."/>
+  <statuses status="3" description="Retirada de la Cartelera."/>
+  <speeches isoCode="ESP" languageName="Espaniol, Castellano"/>
+  <speeches isoCode="ENG" languageName="Ingles"/>
+  <speeches isoCode="000" languageName="Ninguno"/>
+  <speeches isoCode="FRA" languageName="Frances"/>
+  <speeches isoCode="ESP" languageName="Espaniol, Castellanio"/>
+  <speeches isoCode="000" languageName="Ninguno"/>
+  <videoFormats videoFormat="2D 35 m.m." description="Formato de Video en 2D y en 35 m.m.Formato de Video en 2D y en 35 m.m."/>
+  <videoFormats videoFormat="2D Digital" description="Formato de Video en 2D y en Digital."/>
+  <videoFormats videoFormat="3D Digital" description="Formato de Video en 3D y en Digital."/>
+  <videoFormats videoFormat="3D IMAX" description="Formato de Video en 3D y en IMAX."/>
+  <members lastNames="García Sotelo" email="anderssongarciasotelo@gmail.com" idNumber="1037622083" fullName="Andersson" password="Ad47*b" birthDate="1992-10-22T00:00:00.000-0400">
+    <card idNum="5870" points="10"/>
+  </members>
+  <members lastNames="Padierna Pérez" email="npadierna@gmail.com" idNumber="1023456789" fullName="Neiber" password="N87?da" birthDate="1991-04-23T00:00:00.000-0500">
+    <card idNum="5871" points="15"/>
+    <reserves idNum="1" creationDateTime="2014-12-05T19:13:57.000-0500" chairs="//@cities.0/@theaters.0/@rooms.0/@seats.0 //@cities.0/@theaters.0/@rooms.0/@seats.1" presentation="//@cities.0/@theaters.0/@shows.0" prices="//@cities.0/@theaters.0/@rates.1"/>
+  </members>
+  <audioFormats description="Formato de Audio hablado en Ingles y con subtitulos en Espaniol." languages="//@speeches.1 //@speeches.4"/>
+  <audioFormats description="Formato de Audio hablado en Frances y con subtitulos en Espaniol." languages="//@speeches.3 //@speeches.4"/>
+  <audioFormats description="Formato de Audio hablado en Espaniol y sin subtitulos." languages="//@speeches.0 //@speeches.2"/>
+  <audioFormats description="Formato de Audio sin hablado y sin subtitulos." languages="//@speeches.2 //@speeches.5"/>
+</co.edu.udea.cinema_profarq.model:Cinema>

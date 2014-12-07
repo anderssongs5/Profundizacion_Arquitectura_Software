@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Cinema_ProfArq/src" modelPluginID="Cinema_ProfArq"
+    modelName="Cinema_ProfArq" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>Cinema_ProfArq.ecore</foreignModel>
+  <genPackages prefix="Cinema_ProfArq" disposableProviderFactory="true" ecorePackage="Cinema_ProfArq.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cinema_ProfArq.ecore#//LocalityEnum">
+      <genEnumLiterals ecoreEnumLiteral="Cinema_ProfArq.ecore#//LocalityEnum/General"/>
+      <genEnumLiterals ecoreEnumLiteral="Cinema_ProfArq.ecore#//LocalityEnum/Preferencial"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cinema_ProfArq.ecore#//DocumentTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="Cinema_ProfArq.ecore#//DocumentTypeEnum/CC"/>
+      <genEnumLiterals ecoreEnumLiteral="Cinema_ProfArq.ecore#//DocumentTypeEnum/TI"/>
+      <genEnumLiterals ecoreEnumLiteral="Cinema_ProfArq.ecore#//DocumentTypeEnum/Pasaporte"/>
+      <genEnumLiterals ecoreEnumLiteral="Cinema_ProfArq.ecore#//DocumentTypeEnum/CE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Cinema_ProfArq.ecore#//GenderEnum">
+      <genEnumLiterals ecoreEnumLiteral="Cinema_ProfArq.ecore#//GenderEnum/Femenino"/>
+      <genEnumLiterals ecoreEnumLiteral="Cinema_ProfArq.ecore#//GenderEnum/Masculino"/>
+    </genEnums>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Cinema">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Cinema/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/sorts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/classifications"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/flicks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/managers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/performers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/countries"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/cities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/statuses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/speeches"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/videoFormats"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/members"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Cinema/audioFormats"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//City">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//City/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//City/city"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//City/theaters"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Classification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Classification/age"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Country">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Country/isoCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Country/country"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Status">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Status/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Status/description"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Theater">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Theater/theater"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Theater/address"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Theater/billboards"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Theater/rooms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Theater/rates"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Theater/shows"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Director">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Director/fullName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Director/films"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Film">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Film/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Film/synopsis"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Film/pseudonym"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Film/image"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Film/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Film/releaseDate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Film/classification"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Film/genres"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Film/directors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Film/actors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Film/homeCountry"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Billboard">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Billboard/outDate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Billboard/status"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Billboard/audioFormat"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Billboard/videoFormat"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Billboard/film"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//AudioFormat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//AudioFormat/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//AudioFormat/languages"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Language">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Language/isoCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Language/languageName"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//VideoFormat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//VideoFormat/videoFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//VideoFormat/description"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Genre">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Genre/genre"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Genre/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Genre/movies"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Show">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Show/startTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Show/endTime"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Show/posterBoard"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Show/room"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Room">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Room/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Room/number"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Room/seats"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Seat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Seat/number"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Seat/row"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Seat/localityType"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Actor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Actor/fullName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Actor/motionPictures"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Rate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Rate/price"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Rate/points"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Rate/startDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Rate/endDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Rate/localityType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Rate/videoType"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Member">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Member/lastNames"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Member/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Member/idNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Member/fullName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Member/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Member/birthDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Member/gender"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Member/card"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Member/reserves"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Card">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Card/idNum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Card/points"/>
+    </genClasses>
+    <genClasses ecoreClass="Cinema_ProfArq.ecore#//Reserve">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Reserve/idNum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Reserve/creationDateTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Cinema_ProfArq.ecore#//Reserve/cancellationDate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Reserve/chairs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Reserve/presentation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Cinema_ProfArq.ecore#//Reserve/prices"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

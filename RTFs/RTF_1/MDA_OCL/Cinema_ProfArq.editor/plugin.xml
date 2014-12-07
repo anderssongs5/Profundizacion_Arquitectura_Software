@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Cinema_ProfArq -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="Cinema_ProfArq.presentation.Cinema_ProfArqModelWizardID"
+            name="%_UI_Cinema_ProfArqModelWizard_label"
+            class="Cinema_ProfArq.presentation.Cinema_ProfArqModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Cinema_ProfArqModelFile.gif">
+         <description>%_UI_Cinema_ProfArqModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Cinema_ProfArq -->
+      <editor
+            id="Cinema_ProfArq.presentation.Cinema_ProfArqEditorID"
+            name="%_UI_Cinema_ProfArqEditor_label"
+            icon="icons/full/obj16/Cinema_ProfArqModelFile.gif"
+            extensions="cinema_profarq"
+            class="Cinema_ProfArq.presentation.Cinema_ProfArqEditor"
+            contributorClass="Cinema_ProfArq.presentation.Cinema_ProfArqActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
