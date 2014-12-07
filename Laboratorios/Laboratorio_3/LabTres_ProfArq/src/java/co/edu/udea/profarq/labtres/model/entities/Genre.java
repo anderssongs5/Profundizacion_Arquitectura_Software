@@ -2,12 +2,21 @@ package co.edu.udea.profarq.labtres.model.entities;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import java.io.Serializable;
 import java.util.Objects;
 import javax.enterprise.inject.Model;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
+ */
 @Model()
-public class Genre {
+public class Genre implements Serializable {
+
+    private static final long serialVersionUID = -2264131504692721896L;
 
     private static String GENRE = "genre";
 

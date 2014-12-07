@@ -13,5 +13,5 @@ public interface IMovieDAO {
 
     public Movie update(Movie movie);
 
-    public void delete(Movie movie);
+    public boolean delete(Movie movie);
 }

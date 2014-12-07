@@ -2,12 +2,21 @@ package co.edu.udea.profarq.labtres.model.entities;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import java.io.Serializable;
 import java.util.Objects;
 import javax.enterprise.inject.Model;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
+ */
 @Model()
-public class Casting {
+public class Casting implements Serializable {
+
+    private static final long serialVersionUID = -2050118367966776792L;
 
     private static String FULL_NAME = "fullName";
 

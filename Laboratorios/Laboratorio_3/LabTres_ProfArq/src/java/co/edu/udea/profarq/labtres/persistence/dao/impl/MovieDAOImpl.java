@@ -5,11 +5,18 @@ import co.edu.udea.profarq.labtres.persistence.dao.IMovieDAO;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
+ */
 public class MovieDAOImpl implements IMovieDAO {
 
     private static IMovieDAO instance;
@@ -51,9 +58,9 @@ public class MovieDAOImpl implements IMovieDAO {
         List<Movie> moviesList = new ArrayList<>();
         DBCursor dbCursor = this.collection.find();
 
-        dbCursor.toArray().stream().forEach((dbo) -> {
+        for (DBObject dbo : dbCursor) {
             moviesList.add(Movie.fromDBObject(dbo));
-        });
+        }
 
         return (moviesList);
     }
@@ -78,8 +85,10 @@ public class MovieDAOImpl implements IMovieDAO {
     }
 
     @Override
-    public void delete(Movie movie) {
+    public boolean delete(Movie movie) {
+        WriteResult wr = this.collection.remove(new BasicDBObject(
+                TITLE, movie.getTitle()));
 
-        WriteResult wr = this.collection.remove(movie.toDBObject());
+        return (wr.getN() == 1);
     }
 }

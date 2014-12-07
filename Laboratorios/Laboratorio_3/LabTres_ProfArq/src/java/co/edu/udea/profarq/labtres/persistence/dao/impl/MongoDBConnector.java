@@ -5,6 +5,12 @@ import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 import java.net.UnknownHostException;
 
+/**
+ *
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
+ */
 class MongoDBConnector {
 
     public static String SERVER = "localhost";

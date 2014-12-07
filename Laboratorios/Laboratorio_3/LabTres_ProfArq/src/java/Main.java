@@ -31,7 +31,7 @@ public class Main {
             Movie movie = new Movie("title", "Neiber", "synopsis", "pseudonym",
                     "language", "country", "Luismi", "director", 25,
                     genresList, castingsList);
-//            movieDAO.insert(movie);
+            movieDAO.insert(movie);
 //            movieDAO.update(movie);
             movieDAO.delete(movie);
             

@@ -3,14 +3,23 @@ package co.edu.udea.profarq.labtres.model.entities;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.enterprise.inject.Model;
 import javax.validation.constraints.Size;
 
+/**
+ *
+ * @author Andersson Garc&iacute;a Sotelo
+ * @author Miguel &Aacute;ngel Ossa Ruiz
+ * @author Neiber Padierna P&eacute;rez
+ */
 @Model()
-public class Movie {
+public class Movie implements Serializable {
+
+    private static final long serialVersionUID = 4194165105741765585L;
 
     private static final String TITLE = "title";
     private static final String RELEASE_DATE = "releaseDate";
@@ -115,18 +124,20 @@ public class Movie {
 
         if (this.getGenresList() != null) {
             basicDBList.clear();
-            this.getGenresList().stream().forEach((genre) -> {
+
+            for (Genre genre : this.getGenresList()) {
                 basicDBList.add(genre.toDBObject());
-            });
+            }
 
             basicDBObject.put(GENRES_LIST, basicDBList);
         }
 
         if (this.getCastingsList() != null) {
             basicDBList.clear();
-            this.getCastingsList().stream().forEach((casting) -> {
+
+            for (Casting casting : this.getCastingsList()) {
                 basicDBList.add(casting.toDBObject());
-            });
+            }
 
             basicDBObject.put(CASTING_LIST, basicDBList);
         }
