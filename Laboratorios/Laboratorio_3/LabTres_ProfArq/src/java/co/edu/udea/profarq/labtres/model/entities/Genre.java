@@ -27,8 +27,8 @@ public class Genre implements Serializable {
         super();
     }
 
-    public Genre(String genere) {
-        this.genre = genere;
+    public Genre(String genre) {
+        this.genre = genre;
     }
 
     public static Genre fromDBObject(DBObject dbObject) {
@@ -89,6 +89,6 @@ public class Genre implements Serializable {
     @Override()
     public String toString() {
 
-        return "Genre{" + "genere=" + genre + '}';
+        return (this.genre);
     }
 }

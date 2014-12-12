@@ -11,19 +11,25 @@
     <h:body>
         <f:view>
             <h:form id="moviesListDataTableForm" >
-                <p:growl showDetail="true" autoUpdate="true"/>
+                <p:growl id="growl" showDetail="true" autoUpdate="true"/>
 
                 <p:menubar>
                     <p:menuitem
+                        id="showMenuItem" value="Ver"
+                        action="#{movieManagedBean.navigateToShowMovieUI}"
+                        icon="ui-icon-video" >
+                    </p:menuitem>
+
+                    <p:menuitem
                         id="createMenuItem" value="Crear"
-                        actionListener="#{movieManagedBean.createMovie}"
+                        action="#{movieManagedBean.navigateToCreateMovieUI}"
                         icon="ui-icon-plusthick" >
                     </p:menuitem>
 
                     <p:menuitem
                         id="updateMenuItem" value="Actualizar" 
                         update="moviesListDataTable"
-                        action="#{movieManagedBean.updateMovie}"
+                        action="#{movieManagedBean.navigateToUpdateMovieUI}"
                         icon="ui-icon-refresh" >
                     </p:menuitem>
 
@@ -39,10 +45,25 @@
 
                 <p:accordionPanel>
                     <p:tab title="Filtros" >
-                        <h:panelGrid columns="2" cellpadding="10" >
+                        <h:panelGrid columns="4" cellpadding="10" >
                             <h:outputText
                                 value="Duración (Minutos): " >
                             </h:outputText>
+                            <p:selectOneMenu id="inequalities" required="false"
+                                             value="#{movieManagedBean.inequality}" >
+                                <f:selectItems value="#{movieManagedBean.inequalities}"></f:selectItems>
+                            </p:selectOneMenu>
+                            <p:inputText id="duration"
+                                         value="#{movieManagedBean.duration}"
+                                         title="Duraci&oacute;n" required="false" 
+                                         maxlength="3" size="10" 
+                                         requiredMessage="La duraci&oacute;n es requerida."
+                                         validatorMessage="Duraci&oacute;n: Por favor ingrese solo n&uacute;meros.">
+                                <f:validateDoubleRange minimum="0" maximum="500"/>
+                            </p:inputText>
+                            <p:watermark for="duration" value="Duraci&oacute;n en minutos" />   
+                            <p:commandButton action="#{movieManagedBean.findByInequality()}" 
+                                             value="Buscar"></p:commandButton>
                         </h:panelGrid>
                     </p:tab>
                 </p:accordionPanel>

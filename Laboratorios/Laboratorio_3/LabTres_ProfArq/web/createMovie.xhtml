@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Actualizar Pel&iacute;cula</title>
+        <title>Crear Pel&iacute;cula</title>
     </h:head>
     <h:body>
         <f:view>
@@ -15,17 +15,30 @@
                     <p:panel id="newMoviePanel" >
                         <f:facet name="header" >
                             <h:outputText 
-                                value="#{movieManagedBean.selectedMovie.title}" >
+                                value="Crear Nueva Pel&iacute;cula" >
                             </h:outputText>
                         </f:facet>
                         <p:panelGrid id="newMoviePanelGrid" columns="1">
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="title" style="font-weight: bold" 
+                                    value="T&iacute;tulo" >
+                                </p:outputLabel>
+                                <p:inputText id="title" size="50"
+                                             value="#{movieManagedBean.newMovie.title}"
+                                             title="T&iacute;tulo" 
+                                             required="true" maxlength="150"
+                                             requiredMessage="El t&iacute;tulo es requerido." >
+                                </p:inputText>
+                                <p:watermark for="title" value="T&iacute;tulo" />
+                            </h:panelGrid>
                             <h:panelGrid columns="3">
                                 <p:outputLabel
                                     for="pseudonym" style="font-weight: bold" 
                                     value="Seud&oacute;nimo" >
                                 </p:outputLabel>
                                 <p:inputText id="pseudonym" size="50"
-                                             value="#{movieManagedBean.selectedMovie.pseudonym}"
+                                             value="#{movieManagedBean.newMovie.pseudonym}"
                                              title="Seud&oacute;nimo" 
                                              required="true" maxlength="150"
                                              requiredMessage="El seud&oacute;nimo es requerido." >
@@ -38,13 +51,14 @@
                                     value="Lanzamiento" >
                                 </p:outputLabel>
                                 <p:inputMask id="releaseDate" 
-                                             value="#{movieManagedBean.selectedMovie.releaseDate}" 
+                                             value="#{movieManagedBean.newMovie.releaseDate}" 
                                              mask="9999-99-99"
                                              title="Fecha de Lanzamiento" 
                                              required="true" maxlength="10"
                                              requiredMessage="El t&iacute;tulo es requerido."
                                              size="15" >
-                                </p:inputMask>
+                                </p:inputMask>                                
+                                <p:watermark for="releaseDate" value="----/--/--" />
                             </h:panelGrid>
                             <h:panelGrid columns="3">
                                 <p:outputLabel
@@ -52,7 +66,7 @@
                                     value="Sinopsis" >
                                 </p:outputLabel>
                                 <p:inputTextarea id="synopsis" 
-                                                 value="#{movieManagedBean.selectedMovie.synopsis}"
+                                                 value="#{movieManagedBean.newMovie.synopsis}"
                                                  title="Sinopsis" rows="5" cols="73"
                                                  required="true" 
                                                  requiredMessage="La sinopsis es requerida."
@@ -66,7 +80,7 @@
                                     value="Duraci&oacute;n" >
                                 </p:outputLabel>
                                 <p:inputText id="duration"
-                                             value="#{movieManagedBean.selectedMovie.duration}"
+                                             value="#{movieManagedBean.newMovie.duration}"
                                              title="Duraci&oacute;n" required="true" 
                                              maxlength="3" size="10" 
                                              requiredMessage="La duraci&oacute;n es requerida."
@@ -81,7 +95,7 @@
                                     value="Pa&iacute;s" >
                                 </p:outputLabel>
                                 <p:inputText id="country"
-                                             value="#{movieManagedBean.selectedMovie.country}"
+                                             value="#{movieManagedBean.newMovie.country}"
                                              title="Pa&iacute;s" required="true" 
                                              maxlength="35" size="30"
                                              requiredMessage="El pa&iacute;s es requerido." >
@@ -94,7 +108,7 @@
                                     value="Idioma" >
                                 </p:outputLabel>
                                 <p:inputText id="language"
-                                             value="#{movieManagedBean.selectedMovie.language}"
+                                             value="#{movieManagedBean.newMovie.language}"
                                              title="Idioma" required="true" 
                                              maxlength="25" size="30"
                                              requiredMessage="El idioma es requerido." >
@@ -107,7 +121,7 @@
                                     value="Clasificaci&oacute;n" >
                                 </p:outputLabel>
                                 <p:inputText id="classification"
-                                             value="#{movieManagedBean.selectedMovie.classification}"
+                                             value="#{movieManagedBean.newMovie.classification}"
                                              title="Clasificaci&oacute;n" required="true" 
                                              maxlength="2" size="10"
                                              requiredMessage="La clasificaci&oacute;n es requerida." 
@@ -123,12 +137,25 @@
                                     value="Director" >
                                 </p:outputLabel>
                                 <p:inputText id="director"
-                                             value="#{movieManagedBean.selectedMovie.director}"
+                                             value="#{movieManagedBean.newMovie.director}"
                                              title="Director" required="true" 
                                              maxlength="55" size="30"
                                              requiredMessage="El director es requerido." >
                                 </p:inputText>                                
                                 <p:watermark for="director" value="Director" />
+                            </h:panelGrid>
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="casting" style="font-weight: bold" 
+                                    value="Actores" >
+                                </p:outputLabel>
+                                <p:inputText id="casting"
+                                             value="#{movieManagedBean.newMovie.casting}"
+                                             title="Director" required="true" 
+                                             maxlength="300" size="30"
+                                             requiredMessage="Los actores son requeridos." >
+                                </p:inputText>                                
+                                <p:watermark for="casting" value="Actores" />
                             </h:panelGrid>
                             <h:panelGrid columns="1" >
                                 <p:outputLabel
@@ -152,10 +179,10 @@
                             <p:spacer height="30" ></p:spacer>
 
                             <h:panelGrid columns="2">
-                                <p:commandButton actionListener="#{movieManagedBean.updateMovie}" 
-                                                 value="Actualizar Pel&iacute;cula">
+                                <p:commandButton actionListener="#{movieManagedBean.saveMovie}" 
+                                                 value="Guardar Pel&iacute;cula">
                                 </p:commandButton>
-                                <p:commandButton action="#{movieManagedBean.backToUpdatedFilmsList()}"
+                                <p:commandButton action="#{movieManagedBean.backToUpdatedFilmsList}"
                                                  process="@this"
                                                  value="Volver">
                                 </p:commandButton>

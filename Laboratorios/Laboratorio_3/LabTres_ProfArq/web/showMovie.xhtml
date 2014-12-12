@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" >
+
+    <h:head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+        <title>Detalle de Pel&iacute;cula</title>
+    </h:head>
+
+    <h:body>
+        <f:view>
+            <h:form id="filmsViewerForm" >
+                <p:fieldset legend="#{movieManagedBean.selectedMovie.title}" >
+                    <h:panelGrid cellpadding="5" columns="2" >
+                        <p:graphicImage width="200" height="280" 
+                                        url="./resources/images/cover_unavailable.jpg" >
+                        </p:graphicImage>
+                        <h:panelGrid columns="1" cellspacing="5" >
+                            <h:outputText
+                                style="font-weight: bold;" value="Seud&oacute;nimo" >
+                            </h:outputText>
+                            <h:outputText
+                                value="#{movieManagedBean.selectedMovie.pseudonym}" >
+                            </h:outputText>
+
+                            <h:panelGrid cellspacing="5" columns="5" >
+                                <h:outputText style="font-weight: bold;"
+                                              value="Fecha Lanzamiento:" >
+                                </h:outputText>
+                                <h:outputText
+                                    value="#{movieManagedBean.selectedMovie.releaseDate}" >
+                                </h:outputText>
+                                <p:spacer height="0" width="50" ></p:spacer>
+                                <h:outputText
+                                    style="font-weight: bold;" value="Duraci&oacute;n:" >
+                                </h:outputText>
+                                <h:outputText
+                                    value="#{movieManagedBean.selectedMovie.duration} minutos" >
+                                </h:outputText>
+
+                                <h:outputText
+                                    style="font-weight: bold;" value="Pa&iacute;s:" >
+                                </h:outputText>
+                                <h:outputText
+                                    value="#{movieManagedBean.selectedMovie.country}" >
+                                </h:outputText>
+                                <p:spacer height="0" width="50" ></p:spacer>
+                                <h:outputText
+                                    style="font-weight: bold;" value="Clasificaci&oacute;n:" >
+                                </h:outputText>
+                                <h:outputText
+                                    value="#{movieManagedBean.formatClassification(movieManagedBean.selectedMovie.classification)}" >
+                                </h:outputText>
+                                <h:outputText
+                                    style="font-weight: bold;" value="Idioma:" >
+                                </h:outputText>
+                                <h:outputText
+                                    value="#{movieManagedBean.selectedMovie.language}" >
+                                </h:outputText>
+                            </h:panelGrid>
+
+                            <h:outputText
+                                style="font-weight: bold;" value="G&eacute;neros:" >
+                            </h:outputText>
+                            <h:outputText
+                                value="#{movieManagedBean.formatGenresList(movieManagedBean.selectedMovie.genresList)}" >
+                            </h:outputText>
+
+                            <h:outputText
+                                style="font-weight: bold;" value="Director:" >
+                            </h:outputText>
+                            <h:outputText
+                                value="#{movieManagedBean.selectedMovie.director}" >
+                            </h:outputText>
+
+                            <h:outputText
+                                style="font-weight: bold;" value="Actores:" >
+                            </h:outputText>
+                            <h:outputText
+                                value="#{movieManagedBean.formatCasting(movieManagedBean.selectedMovie.castingsList)}" >
+                            </h:outputText>
+                        </h:panelGrid>
+                    </h:panelGrid>
+
+                    <p:panel header="Sinopsis:" >
+                        <h:outputText
+                            value="#{movieManagedBean.selectedMovie.synopsis}" >
+                        </h:outputText>
+                    </p:panel>
+                </p:fieldset>
+                <p:spacer height="30" ></p:spacer>
+
+                <p:commandButton action="#{movieManagedBean.backMovieList()}"
+                                 value="Volver" >
+                </p:commandButton>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

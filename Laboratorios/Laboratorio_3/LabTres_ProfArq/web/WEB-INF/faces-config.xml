@@ -10,11 +10,44 @@
             <from-outcome>UPDATE_MOVIE</from-outcome>
             <to-view-id>/updateMovie.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>CREATE_MOVIE</from-outcome>
+            <to-view-id>/createMovie.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SHOW_MOVIE</from-outcome>
+            <to-view-id>/showMovie.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>FILTERED_MOVIES</from-outcome>
+            <to-view-id>/filteredMovies.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/updateMovie.xhtml</from-view-id>
         <navigation-case>
+            <from-outcome>BACK_TO_UPDATED_MOVIES_LIST</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/createMovie.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>BACK_TO_UPDATED_MOVIES_LIST</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/showMovie.xhtml</from-view-id>
+        <navigation-case>
             <from-outcome>BACK_MOVIE_LIST</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/filteredMovies.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>BACK_TO_UPDATED_MOVIES_LIST</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>

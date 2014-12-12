@@ -2,6 +2,7 @@ package co.edu.udea.profarq.labtres.persistence.dao.impl;
 
 import co.edu.udea.profarq.labtres.model.entities.Movie;
 import co.edu.udea.profarq.labtres.persistence.dao.IMovieDAO;
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
@@ -9,7 +10,9 @@ import com.mongodb.DBObject;
 import com.mongodb.WriteResult;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -21,16 +24,17 @@ public class MovieDAOImpl implements IMovieDAO {
 
     private static IMovieDAO instance;
     private final DBCollection collection;
+    public static final Map<String, String> INEQUALITIES = new HashMap<>();
 
     private static final String TITLE = "title";
-    private static final String RELEASE_DATE = "releaseDate";
-    private static final String SYNOPSIS = "synopsis";
-    private static final String PSEUDONYM = "pseudonym";
-    private static final String LANGUAGE = "language";
-    private static final String COUNTRY = "country";
-    private static final String CLASSIFICATION = "classification";
-    private static final String DIRECTOR = "director";
-    private static final String DURATION = "duration";
+
+    static {
+        INEQUALITIES.put("<", "$lt");
+        INEQUALITIES.put("<=", "$lte");
+        INEQUALITIES.put(">", "$gt");
+        INEQUALITIES.put(">=", "$gte");
+        INEQUALITIES.put("!=", "$ne");
+    }
 
     private MovieDAOImpl() throws UnknownHostException {
         this.collection = MongoDBConnector.connect();
@@ -66,9 +70,11 @@ public class MovieDAOImpl implements IMovieDAO {
     }
 
     @Override
-    public void insert(Movie movie) {
+    public boolean insert(Movie movie) {
         BasicDBObject basicDBObject = movie.toDBObject();
         WriteResult wr = this.collection.insert(basicDBObject);
+
+        return (wr.getField("ok").equals(Double.valueOf("1.0")));
     }
 
     @Override
@@ -81,7 +87,7 @@ public class MovieDAOImpl implements IMovieDAO {
         WriteResult wr = this.collection.update(searchingBasicDBObject,
                 updatingBasicDBObject, false, true);
 
-        return (movie);
+        return ((wr.getN() != 0) ? movie : null);
     }
 
     @Override
@@ -90,5 +96,19 @@ public class MovieDAOImpl implements IMovieDAO {
                 TITLE, movie.getTitle()));
 
         return (wr.getN() == 1);
+    }
+
+    @Override
+    public List<Movie> findByInequality(String inequality, int duration) {
+        List<Movie> moviesList = new ArrayList<>();
+        DBObject dbObject = new BasicDBObject("duration",
+                new BasicDBObject(INEQUALITIES.get(inequality), duration));
+        DBCursor dbCursor = this.collection.find(dbObject);
+
+        for (DBObject dbo : dbCursor) {
+            moviesList.add(Movie.fromDBObject(dbo));
+        }
+
+        return (moviesList);
     }
 }

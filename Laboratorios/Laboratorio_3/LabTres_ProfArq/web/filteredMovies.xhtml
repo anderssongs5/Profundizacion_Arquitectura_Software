@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Listado de Pel&iacute;culas</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form id="moviesListDataTableForm" >
+                <center>
+                    <p:dataTable id="moviesListDataTable"
+                                 emptyMessage="No se encontraron pel&iacute;culas."
+                                 paginator="true" paginatorAlwaysVisible="false"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="5"
+                                 rowsPerPageTemplate="5,10,15,20"
+                                 value="#{movieManagedBean.moviesList}" var="film"
+                                 widgetVar="moviesTable" >
+                        <f:facet name="header" >
+                            Lista de Películas Filtradas
+                        </f:facet>
+
+                        <p:column headerText="T&iacute;tulo" id="titleColumn"
+                                  sortBy="#{film.title}" >
+                            <h:outputText value="#{film.title}" ></h:outputText>
+                        </p:column>
+                        <p:column headerText="Fecha Lanzamiento" id="releaseDateColumn" >
+                            <h:outputText
+                                value="#{film.releaseDate}" >
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Seud&oacute;nimo"
+                                  id="pseudonymColumn" sortBy="#{film.pseudonym}" >
+                            <h:outputText value="#{film.pseudonym}" ></h:outputText>
+                        </p:column>
+                        <p:column headerText="Durac&iacute;on" id="durationColumn" >
+                            <h:outputText
+                                value="#{film.duration} minutos.">
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Pa&iacute;s"
+                                  id="countryColumn" >
+                            <h:outputText value="#{film.country}" ></h:outputText>
+                        </p:column>
+                        <p:column headerText="Clasificaci&oacute;n" id="classificationColumn" >
+                            <h:outputText
+                                value="#{movieManagedBean.formatClassification(film.classification)}" >
+                            </h:outputText>
+                        </p:column>
+
+                        <f:facet name="footer" >
+                            En total hay #{movieManagedBean.moviesList.size()} pel&iacute;culas.
+                        </f:facet>
+                    </p:dataTable>
+                    <p:spacer height="30" ></p:spacer>
+                    <p:commandButton action="#{movieManagedBean.backToUpdatedFilmsList()}"
+                                     process="@this"
+                                     value="Volver">
+                    </p:commandButton>
+                </center>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

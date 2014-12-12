@@ -52,6 +52,7 @@ public class Movie implements Serializable {
     private int duration;
     private List<Genre> genresList;
     private List<Casting> castingsList;
+    private String casting;
 
     public Movie() {
         super();
@@ -110,7 +111,7 @@ public class Movie implements Serializable {
 
     public BasicDBObject toDBObject() {
         BasicDBObject basicDBObject = new BasicDBObject();
-        BasicDBList basicDBList = new BasicDBList();
+        BasicDBList basicDBList;
 
         basicDBObject.put(TITLE, this.getTitle());
         basicDBObject.put(RELEASE_DATE, this.getReleaseDate());
@@ -123,7 +124,7 @@ public class Movie implements Serializable {
         basicDBObject.put(DIRECTOR, this.getDirector());
 
         if (this.getGenresList() != null) {
-            basicDBList.clear();
+            basicDBList = new BasicDBList();
 
             for (Genre genre : this.getGenresList()) {
                 basicDBList.add(genre.toDBObject());
@@ -133,7 +134,7 @@ public class Movie implements Serializable {
         }
 
         if (this.getCastingsList() != null) {
-            basicDBList.clear();
+            basicDBList = new BasicDBList();
 
             for (Casting casting : this.getCastingsList()) {
                 basicDBList.add(casting.toDBObject());
@@ -232,6 +233,14 @@ public class Movie implements Serializable {
 
     public void setCastingsList(List<Casting> castingsList) {
         this.castingsList = castingsList;
+    }
+
+    public String getCasting() {
+        return casting;
+    }
+
+    public void setCasting(String casting) {
+        this.casting = casting;
     }
 
     @Override()

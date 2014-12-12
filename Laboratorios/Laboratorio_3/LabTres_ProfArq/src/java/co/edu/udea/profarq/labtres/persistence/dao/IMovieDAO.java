@@ -9,9 +9,11 @@ public interface IMovieDAO {
 
     public List<Movie> findAll();
 
-    public void insert(Movie movie);
+    public boolean insert(Movie movie);
 
     public Movie update(Movie movie);
 
     public boolean delete(Movie movie);
+
+    public List<Movie> findByInequality(String inequality, int duration);
 }

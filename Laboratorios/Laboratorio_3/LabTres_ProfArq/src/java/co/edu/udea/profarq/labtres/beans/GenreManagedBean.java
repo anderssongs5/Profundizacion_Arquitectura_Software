@@ -21,7 +21,6 @@ public class GenreManagedBean implements Serializable {
     private static final long serialVersionUID = 6374679451045815969L;
 
     public static final List<Genre> GENRES_LIST;
-    private List<Genre> sourceGenresList;
 
     static {
         GENRES_LIST = Arrays.asList(new Genre("DRAMA"), new Genre("ACCIÓN"),
@@ -35,9 +34,10 @@ public class GenreManagedBean implements Serializable {
     public GenreManagedBean() {
     }
 
-    public void createFilteredGenresList(List<Genre> genresList) {
-        this.sourceGenresList = new ArrayList<>(GENRES_LIST);
+    public List<Genre> createFilteredGenresList(List<Genre> genresList) {
+        List<Genre> sourceGenresList = sourceGenresList = new ArrayList<>(GENRES_LIST);
+        sourceGenresList.removeAll(genresList);
 
-        this.sourceGenresList.removeAll(genresList);
+        return (sourceGenresList);
     }
 }
