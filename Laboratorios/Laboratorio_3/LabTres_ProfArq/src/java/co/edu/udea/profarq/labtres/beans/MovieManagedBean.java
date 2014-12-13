@@ -249,6 +249,14 @@ public class MovieManagedBean implements Serializable {
     }
 
     public String navigateToShowMovieUI() {
+        if (this.selectedMovie == null) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "Ver Película",
+                            "Por favor selecciona una película."));
+
+            return (null);
+        }
 
         return (SHOW_MOVIE);
     }

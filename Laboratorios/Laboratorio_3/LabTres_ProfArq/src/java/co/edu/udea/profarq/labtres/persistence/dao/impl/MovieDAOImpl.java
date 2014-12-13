@@ -2,7 +2,6 @@ package co.edu.udea.profarq.labtres.persistence.dao.impl;
 
 import co.edu.udea.profarq.labtres.model.entities.Movie;
 import co.edu.udea.profarq.labtres.persistence.dao.IMovieDAO;
-import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
