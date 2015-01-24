@@ -30,12 +30,12 @@ abstract class AbstractEntityDAO {
 
     public Serializable delete(IEntityContext entityContext)
             throws LabCincoProfArqDAOException {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-
         Session session;
         Transaction transaction = null;
 
         try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             session.delete(entityContext);
@@ -56,12 +56,12 @@ abstract class AbstractEntityDAO {
 
     public IEntityContext find(Class<? extends IEntityContext> c,
             Serializable primaryKey) throws LabCincoProfArqDAOException {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-
         IEntityContext entityContext = null;
         Session session;
 
         try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
             session = sessionFactory.openSession();
             entityContext = (IEntityContext) session.get(c, primaryKey);
             session.close();
@@ -77,13 +77,14 @@ abstract class AbstractEntityDAO {
     @SuppressWarnings(value = {"unchecked"})
     public List<IEntityContext> findAll(Class<? extends IEntityContext> c)
             throws LabCincoProfArqDAOException {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         List<IEntityContext> entitesContextFoundList = new ArrayList<>();
 
         Criteria criteria;
         Session session;
 
         try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
             session = sessionFactory.openSession();
             criteria = session.createCriteria(c);
             entitesContextFoundList = criteria.list();
@@ -99,13 +100,13 @@ abstract class AbstractEntityDAO {
 
     public Serializable save(IEntityContext entityContext)
             throws LabCincoProfArqDAOException {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-
         Serializable primaryKey = null;
         Session session;
         Transaction transaction = null;
 
         try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             primaryKey = session.save(entityContext);
@@ -126,12 +127,12 @@ abstract class AbstractEntityDAO {
 
     public Serializable update(IEntityContext entityContext)
             throws LabCincoProfArqDAOException {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-
         Session session;
         Transaction transaction = null;
 
         try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
             session = sessionFactory.openSession();
             transaction = session.beginTransaction();
             session.update(entityContext);
