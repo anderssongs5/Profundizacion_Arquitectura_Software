@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/01/2015 06:54:00 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class catalog="lab5_profarq" name="co.edu.udea.profarq.labcinco.dto.Product" optimistic-lock="version" table="products">
+        <id name="code" type="string">
+            <column length="20" name="code"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="name" type="string">
+            <column length="55" name="name" not-null="true"/>
+        </property>
+        <property name="price" type="float">
+            <column name="price" not-null="true" precision="12" scale="0"/>
+        </property>
+        <property name="stock" type="long">
+            <column name="stock" not-null="true"/>
+        </property>
+        <property name="description" type="string">
+            <column name="description"/>
+        </property>
+    </class>
+</hibernate-mapping>
