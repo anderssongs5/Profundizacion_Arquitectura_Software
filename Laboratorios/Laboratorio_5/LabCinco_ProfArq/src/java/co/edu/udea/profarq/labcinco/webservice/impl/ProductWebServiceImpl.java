@@ -4,6 +4,7 @@ import co.edu.udea.profarq.labcinco.dao.IProductDAO;
 import co.edu.udea.profarq.labcinco.dao.exception.LabCincoProfArqDAOException;
 import co.edu.udea.profarq.labcinco.dao.hibernate.impl.ProductDAOImpl;
 import co.edu.udea.profarq.labcinco.dto.Product;
+import co.edu.udea.profarq.labcinco.util.TextUtil;
 import co.edu.udea.profarq.labcinco.webservice.IProductWebService;
 import co.edu.udea.profarq.labcinco.webservice.contract.WebServiceContract;
 import co.edu.udea.profarq.labcinco.webservice.exception.LabCincoProfArqWebServiceException;
@@ -27,7 +28,7 @@ public class ProductWebServiceImpl implements IProductWebService {
 
     private static final String TAG = ProductWebServiceImpl.class.getName();
 
-    private IProductDAO productDAO;
+    private final IProductDAO productDAO;
 
     public ProductWebServiceImpl() {
         this.productDAO = new ProductDAOImpl();
@@ -35,16 +36,41 @@ public class ProductWebServiceImpl implements IProductWebService {
 
     @Override()
     @WebMethod(operationName = WebServiceContract.ProductWebServiceContract.DELETE_OPERATION_NAME)
-    public String delete(@WebParam(name = "productId") String productId)
+    public String delete(
+            @WebParam(name = WebServiceContract.ProductWebServiceContract.PRODUCT_ID_PARAM) String productId)
             throws LabCincoProfArqWebServiceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String returnedProductId = null;
+
+        if (this.validateProductId(productId)) {
+            try {
+                Product product = this.find(productId);
+
+                if (product != null) {
+                    returnedProductId = (String) this.productDAO.delete(product);
+                }
+            } catch (LabCincoProfArqDAOException ex) {
+                Logger.getLogger(TAG).log(Level.SEVERE, null, ex);
+            }
+        }
+        return (returnedProductId);
     }
 
     @Override()
     @WebMethod(operationName = WebServiceContract.ProductWebServiceContract.FIND_OPERATION_NAME)
-    public Product find(@WebParam(name = "productId") String productId)
+    public Product find(
+            @WebParam(name = WebServiceContract.ProductWebServiceContract.PRODUCT_ID_PARAM) String productId)
             throws LabCincoProfArqWebServiceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Product product = null;
+
+        if (this.validateProductId(productId)) {
+            try {
+                product = this.productDAO.find(productId);
+            } catch (LabCincoProfArqDAOException ex) {
+                Logger.getLogger(TAG).log(Level.SEVERE, ex.getMessage(), ex);
+            }
+        }
+
+        return (product);
     }
 
     @Override()
@@ -65,13 +91,44 @@ public class ProductWebServiceImpl implements IProductWebService {
     @WebMethod(operationName = WebServiceContract.ProductWebServiceContract.SAVE_OPERATION_NAME)
     public String save(@WebParam(name = "product") Product product)
             throws LabCincoProfArqWebServiceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String returnedProductId = null;
+
+        if (this.validateProduct(product)) {
+
+        }
+
+        return (returnedProductId);
     }
 
     @Override()
     @WebMethod(operationName = WebServiceContract.ProductWebServiceContract.UPDATE_OPERATION_NAME)
     public Product update(@WebParam(name = "product") Product product)
             throws LabCincoProfArqWebServiceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Product returnedProduct = null;
+
+        if (this.validateProduct(product)) {
+
+        }
+
+        return (returnedProduct);
+    }
+
+    private boolean validateProduct(Product product) {
+        if ((product != null) && (this.validateProductId(product.getCode()))) {
+
+            return (!(TextUtil.isEmtpy(product.getName()))
+                    && (product.getPrice() > 0.0F)
+                    && (product.getStock() >= 0L));
+        }
+
+        return (false);
+    }
+
+    private boolean validateProductId(String productId) {
+
+        return (!(TextUtil.isEmtpy(productId)) && (productId.length() <= 20)
+                && ((TextUtil.hasOnlyLowerLetters(productId))
+                || (TextUtil.hasOnlyUpperLetters(productId))
+                || (TextUtil.hasOnlyNumbers(productId))));
     }
 }
