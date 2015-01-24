@@ -1,7 +1,9 @@
 package co.edu.udea.profarq.labcinco.dao.hibernate;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 /**
  *
@@ -15,14 +17,13 @@ public class HibernateUtil {
 
     static {
         try {
-//            Configuration configuration = new Configuration();
-//            configuration.configure();
-//            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-//                    .applySettings(configuration.getProperties()).build();
-//
-//            sessionFactory = new Configuration().configure().
-//                    buildSessionFactory(serviceRegistry);
-            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+            Configuration configuration = new Configuration();
+            configuration.configure();
+            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+                    .applySettings(configuration.getProperties()).build();
+
+            sessionFactory = new Configuration().configure().
+                    buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
 
