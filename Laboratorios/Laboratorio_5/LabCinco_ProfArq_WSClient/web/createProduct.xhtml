@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Crear Producto</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>                
+                <p:growl id="growl" showDetail="true" autoUpdate="true"/>
+                <center>
+                    <p:panel id="newMoviePanel" style="width: 60%;">
+                        <f:facet name="header" >
+                            <h:outputText 
+                                value="Crear Nuevo Producto" >
+                            </h:outputText>
+                        </f:facet>
+                        <p:panelGrid id="newProductoPanelGrid" columns="1">
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="code" style="font-weight: bold" 
+                                    value="C&oacute;digo" >
+                                </p:outputLabel>
+                                <p:inputText id="code" size="50"
+                                             value="#{productManagedBean.newProduct.code}"
+                                             title="C&oacute;digo" type="text"
+                                             required="true" maxlength="20"
+                                             requiredMessage="El c&oacute;digo es requerido." >
+                                </p:inputText>
+                                <p:watermark for="code" value="C&oacute;digo" />
+                            </h:panelGrid>
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="name" style="font-weight: bold" 
+                                    value="Nombre" >
+                                </p:outputLabel>
+                                <p:inputText id="name" size="60"
+                                             value="#{productManagedBean.newProduct.name}"
+                                             title="Nombre" 
+                                             required="true" maxlength="55"
+                                             requiredMessage="El es nombre es requerido." >
+                                </p:inputText>
+                                <p:watermark for="name" value="Nombre" />
+                            </h:panelGrid>
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="price" style="font-weight: bold" 
+                                    value="Precio" >
+                                </p:outputLabel>
+                                <p:inputText id="price"
+                                             value="#{productManagedBean.newProduct.price}"
+                                             title="Duraci&oacute;n" required="true" 
+                                             maxlength="2" size="20" type="number"
+                                             requiredMessage="El precio es requerido.">
+                                </p:inputText>                                
+                                <p:watermark for="price" value="Parte decimal con ." />
+                            </h:panelGrid>
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="stock" style="font-weight: bold" 
+                                    value="Cantidad en Bodega" >
+                                </p:outputLabel>
+                                <p:inputText id="stock"
+                                             value="#{productManagedBean.newProduct.stock}"
+                                             title="Cantidad en Bodega" required="true" 
+                                             maxlength="6" size="30" type="number"
+                                             requiredMessage="La cantidad en bodega es requerida." >
+                                </p:inputText>                                
+                                <p:watermark for="stock" value="Cantidad en Bodega" />
+                            </h:panelGrid>
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="description" style="font-weight: bold" 
+                                    value="Descripci&oacute;n" >
+                                </p:outputLabel>
+                                <p:inputTextarea id="description" 
+                                                 value="#{productManagedBean.newProduct.description}"
+                                                 title="Descripci&oacute;n" rows="5" 
+                                                 cols="73" required="false" 
+                                                 requiredMessage="La descripci&oacute;n es requerida."
+                                                 maxlength="255" >
+                                </p:inputTextarea>
+                                <p:watermark for="description" value="Descripci&oacute;n" />
+                            </h:panelGrid>
+                            <p:spacer height="30" ></p:spacer>
+
+                            <h:panelGrid columns="2">
+                                <p:commandButton action="#{productManagedBean.saveProduct}"
+                                                 icon="ui-icon-circle-plus"
+                                                 value="Guardar Producto">
+                                </p:commandButton>
+                                <p:commandButton action="#{productManagedBean.backToUpdatedProductList}"
+                                                 process="@this" icon="ui-icon-arrowthick-1-w"
+                                                 value="Volver">
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </p:panelGrid>
+                    </p:panel>
+                </center>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Actualizaci&oacute;n de Producto</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>                
+                <p:growl id="growl" showDetail="true" autoUpdate="true"/>
+                <center>
+                    <p:panel id="updateProductPanel" >
+                        <f:facet name="header" >
+                            <h:outputText 
+                                value="C&oacute;digo: #{productManagedBean.selectedProduct.code}" >
+                            </h:outputText>
+                        </f:facet>
+                        <p:panelGrid id="updateProductPanelGrid" columns="1">
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="name" style="font-weight: bold" 
+                                    value="Nombre" >
+                                </p:outputLabel>
+                                <p:inputText id="name" size="60"
+                                             value="#{productManagedBean.selectedProduct.name}"
+                                             title="Nombre" 
+                                             required="true" maxlength="55"
+                                             requiredMessage="El es nombre es requerido." >
+                                </p:inputText>
+                                <p:watermark for="name" value="Nombre" />
+                            </h:panelGrid>
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="price" style="font-weight: bold" 
+                                    value="Precio" >
+                                </p:outputLabel>
+                                <p:inputText id="price"
+                                             value="#{productManagedBean.selectedProduct.price}"
+                                             title="Duraci&oacute;n" required="true" 
+                                             maxlength="2" size="20" type="number"
+                                             requiredMessage="El precio es requerido.">
+                                </p:inputText>                                
+                                <p:watermark for="price" value="Parte decimal con ." />
+                            </h:panelGrid>
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="stock" style="font-weight: bold" 
+                                    value="Cantidad en Bodega" >
+                                </p:outputLabel>
+                                <p:inputText id="stock"
+                                             value="#{productManagedBean.selectedProduct.stock}"
+                                             title="Cantidad en Bodega" required="true" 
+                                             maxlength="6" size="30" type="number"
+                                             requiredMessage="La cantidad en bodega es requerida." >
+                                </p:inputText>                                
+                                <p:watermark for="stock" value="Cantidad en Bodega" />
+                            </h:panelGrid>
+                            <h:panelGrid columns="3">
+                                <p:outputLabel
+                                    for="description" style="font-weight: bold" 
+                                    value="Descripci&oacute;n" >
+                                </p:outputLabel>
+                                <p:inputTextarea id="description" 
+                                                 value="#{productManagedBean.selectedProduct.description}"
+                                                 title="Descripci&oacute;n" rows="5" 
+                                                 cols="73" required="false" 
+                                                 requiredMessage="La descripci&oacute;n es requerida."
+                                                 maxlength="255" >
+                                </p:inputTextarea>
+                                <p:watermark for="description" value="Descripci&oacute;n" />
+                            </h:panelGrid>
+                            <p:spacer height="30" ></p:spacer>
+
+                            <center>
+                                <h:panelGrid columns="2">
+                                    <p:commandButton action="#{productManagedBean.updateProduct}"
+                                                     icon="ui-icon-circle-check"
+                                                     value="Actualizar Producto">
+                                    </p:commandButton>
+                                    <p:commandButton action="#{productManagedBean.backToUpdatedProductList}"
+                                                     process="@this" icon="ui-icon-arrowthick-1-w"
+                                                     value="Volver">
+                                    </p:commandButton>
+                                </h:panelGrid>
+                            </center>
+                        </p:panelGrid>
+                    </p:panel>
+                </center>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>

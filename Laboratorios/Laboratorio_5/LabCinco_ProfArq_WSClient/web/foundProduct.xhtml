@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Producto Encontrado</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <center>
+                <h:form id="foundProductForm" >
+                    <p:fieldset legend="C&oacute;digo: #{productManagedBean.foundProduct.code}"
+                                style="width: 50%">
+                        <h:panelGrid columns="1" cellspacing="5" >
+                            <h:outputText
+                                style="font-weight: bold;" value="Nombre" >
+                            </h:outputText>
+                            <h:outputText
+                                value="#{productManagedBean.foundProduct.name}" >
+                            </h:outputText>
+
+                            <h:panelGrid cellspacing="5" columns="5" >
+                                <h:outputText style="font-weight: bold;"
+                                              value="Precio" >
+                                </h:outputText>
+                                <h:outputText
+                                    value="$ #{productManagedBean.foundProduct.price}" >
+                                </h:outputText>
+                                <p:spacer height="0" width="50" />
+                                <h:outputText
+                                    style="font-weight: bold;" value="Cantidad disponible" >
+                                </h:outputText>
+                                <h:outputText
+                                    value="#{productManagedBean.foundProduct.stock}" >
+                                </h:outputText>
+                            </h:panelGrid>
+
+                            <p:panel header="Descripci&oacute;n" >
+                                <h:outputText
+                                    value="#{productManagedBean.foundProduct.description}" >
+                                </h:outputText>
+                            </p:panel>
+                        </h:panelGrid>
+                    </p:fieldset>
+                    <p:spacer height="30" ></p:spacer>
+
+                    <p:commandButton action="#{productManagedBean.navigateToHome}"
+                                     process="@this"
+                                     value="Volver" icon="ui-icon-arrowthick-1-w" >
+                    </p:commandButton>
+                </h:form>
+            </center>
+        </f:view>
+    </h:body>
+</html>

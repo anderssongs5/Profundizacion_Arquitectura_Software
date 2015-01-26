@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Listado de Productos</title>
+    </h:head>
+    <h:body>
+        <center><h1>Productos - Laboratorio #5</h1></center>
+        <br />
+        <f:view>
+            <h:form id="productListDataTableForm" >
+                <p:growl id="growl" showDetail="true" autoUpdate="true"/>
+
+                <p:menubar>
+                    <p:menuitem
+                        id="createMenuItem" value="Crear"
+                        action="#{productManagedBean.navigateToCreateProduct}"
+                        icon="ui-icon-plusthick" >
+                    </p:menuitem>
+
+                    <p:menuitem
+                        id="updateMenuItem" value="Actualizar" 
+                        update="productListDataTable"
+                        action="#{productManagedBean.navigateToUpdateProduct}"
+                        icon="ui-icon-refresh" >
+                    </p:menuitem>
+
+                    <p:menuitem
+                        id="deleteMenuItem" value="Eliminar" 
+                        update="productListDataTable"
+                        actionListener="#{productManagedBean.deleteProduct}"
+                        icon="ui-icon-closethick" >
+                    </p:menuitem>
+                </p:menubar>
+
+                <p:spacer height="15" />
+
+                <p:accordionPanel>
+                    <p:tab title="Buscar Producto" closable="true" >
+                        <h:panelGrid columns="4" cellpadding="10" >
+                            <h:outputText
+                                value="C&oacute;digo del Producto: " >
+                            </h:outputText>
+                            <p:inputText id="productCode"
+                                         value="#{productManagedBean.code}"
+                                         title="C&oacute;digo" required="false" 
+                                         size="30" type="text"
+                                         requiredMessage="El c&oacute;digo es requerido">
+                            </p:inputText>
+                            <p:watermark for="productCode" value="C&oacute;digo del producto" />   
+                            <p:commandButton action="#{productManagedBean.findProduct}" 
+                                             value="Buscar" />
+                        </h:panelGrid>
+                    </p:tab>
+                </p:accordionPanel>
+
+                <p:spacer height="15" />
+
+                <p:dataTable id="productListDataTable"
+                             emptyMessage="No se encontraron productos."
+                             paginator="true" paginatorAlwaysVisible="false"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowKey="#{product.code}" rows="5"
+                             rowsPerPageTemplate="5,10,15,20"
+                             selection="#{productManagedBean.selectedProduct}"
+                             value="#{productManagedBean.productList}" var="product"
+                             widgetVar="productsTable" >
+                    <f:facet name="header" >
+                        Lista de Productos
+                    </f:facet>
+
+                    <p:column width="18" selectionMode="single" />
+                    <p:column headerText="C&oacute;digo" id="codeColumn" >
+                        <h:outputText value="#{product.code}" />
+                    </p:column>
+                    <p:column filterBy="#{product.name}"
+                              filterMatchMode="contains"
+                              sortBy="#{product.name}"
+                              headerText="Nombre" id="nameColumn" >
+                        <h:outputText value="#{product.name}" />
+                    </p:column>
+                    <p:column filterBy="#{product.price}"
+                              filterMatchMode="contains" headerText="Precio"
+                              id="priceColumn" sortBy="#{product.price}" >
+                        <h:outputText value="$ #{product.price}" />
+                    </p:column>
+                    <p:column headerText="Descripci&oacute;n" id="descriptionColumn" >
+                        <h:outputText
+                            value="#{product.description}">
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Cantidad Disponible"
+                              id="stockColumn" >
+                        <h:outputText value="#{product.stock}" />
+                    </p:column>
+
+                    <f:facet name="footer" >
+                        En total hay #{productManagedBean.amountProduct} productos.
+                    </f:facet>
+                </p:dataTable>
+                <p:spacer height="30" ></p:spacer>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
