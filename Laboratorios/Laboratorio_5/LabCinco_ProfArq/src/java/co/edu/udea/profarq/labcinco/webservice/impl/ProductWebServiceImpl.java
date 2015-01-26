@@ -89,12 +89,17 @@ public class ProductWebServiceImpl implements IProductWebService {
 
     @Override()
     @WebMethod(operationName = WebServiceContract.ProductWebServiceContract.SAVE_OPERATION_NAME)
-    public String save(@WebParam(name = "product") Product product)
+    public String save(
+            @WebParam(name = WebServiceContract.ProductWebServiceContract.PRODUCT_PARAM) Product product)
             throws LabCincoProfArqWebServiceException {
         String returnedProductId = null;
 
         if (this.validateProduct(product)) {
-
+            try {
+                returnedProductId = (String) this.productDAO.save(product);
+            } catch (LabCincoProfArqDAOException ex) {
+                Logger.getLogger(TAG).log(Level.SEVERE, ex.getMessage(), ex);
+            }
         }
 
         return (returnedProductId);
@@ -102,12 +107,17 @@ public class ProductWebServiceImpl implements IProductWebService {
 
     @Override()
     @WebMethod(operationName = WebServiceContract.ProductWebServiceContract.UPDATE_OPERATION_NAME)
-    public Product update(@WebParam(name = "product") Product product)
+    public Product update(
+            @WebParam(name = WebServiceContract.ProductWebServiceContract.PRODUCT_PARAM) Product product)
             throws LabCincoProfArqWebServiceException {
         Product returnedProduct = null;
 
         if (this.validateProduct(product)) {
-
+            try {
+                returnedProduct = this.productDAO.update(product);
+            } catch (LabCincoProfArqDAOException ex) {
+                Logger.getLogger(TAG).log(Level.SEVERE, ex.getMessage(), ex);
+            }
         }
 
         return (returnedProduct);

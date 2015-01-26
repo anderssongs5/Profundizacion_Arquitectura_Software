@@ -17,6 +17,7 @@ public final class WebServiceContract {
         /*
          * Parameters
          */
+        public static final String PRODUCT_PARAM = "product";
         public static final String PRODUCT_ID_PARAM = "productId";
 
         /*
