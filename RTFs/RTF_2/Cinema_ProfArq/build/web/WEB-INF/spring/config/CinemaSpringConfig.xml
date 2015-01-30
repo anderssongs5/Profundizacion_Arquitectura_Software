@@ -27,6 +27,10 @@
         base-package="co.edu.udea.profarq.cinema.controller.beans" />
     <context:component-scan
         base-package="co.edu.udea.profarq.cinema.persistence.dao.hibernate" />
+    <context:component-scan
+        base-package="co.edu.udea.profarq.cinema.webservice.restful" />
+    <context:component-scan
+        base-package="co.edu.udea.profarq.cinema.webservice.soap" />
 
     <tx:annotation-driven />
 
