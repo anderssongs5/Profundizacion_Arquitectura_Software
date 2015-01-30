@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.1"
+              xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+
+    <!-- Global Application Configurations -->
+    <application>
+        <el-resolver>
+            org.springframework.web.jsf.el.SpringBeanFacesELResolver
+        </el-resolver>
+    </application>
+
+    <!-- JSF Managed Beans -->
+    <managed-bean>
+        <description>Bean for management the data related with the Billboard Entity.</description>
+        <managed-bean-name>billboardManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.BillboardManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <!-- JSF Managed Beans -->
+        <managed-property>
+            <description>This property is for injecting the Film Managed Bean.</description>
+            <property-name>filmManagedBean</property-name>
+            <value>#{filmManagedBean}</value>
+        </managed-property>
+        <managed-property>
+            <description>This property is for injecting the City Managed Bean.</description>
+            <property-name>cityManagedBean</property-name>
+            <value>#{cityManagedBean}</value>
+        </managed-property>
+        <managed-property>
+            <description>This property is for injecting the Theater Managed Bean.</description>
+            <property-name>theaterManagedBean</property-name>
+            <value>#{theaterManagedBean}</value>
+        </managed-property>
+
+        <!-- Spring Beans -->
+        <managed-property>
+            <property-name>billboardManagerBean</property-name>
+            <value>#{billboardManagerBean}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean for management the data related with the Film Entity.</description>
+        <managed-bean-name>filmManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.FilmManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <!-- JSF Managed Beans -->
+        <managed-property>
+            <description>This property is for injecting the Genre Managed Bean.</description>
+            <property-name>genreManagedBean</property-name>
+            <value>#{genreManagedBean}</value>
+        </managed-property>
+        <managed-property>
+            <description>This property is for injecting the Director Managed Bean.</description>
+            <property-name>directorManagedBean</property-name>
+            <value>#{directorManagedBean}</value>
+        </managed-property>
+
+        <!-- Spring Beans -->
+        <managed-property>
+            <property-name>filmManagerBean</property-name>
+            <value>#{filmManagerBean}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean for management the data related with Genre Entity</description>
+        <managed-bean-name>genreManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.GenreManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <!-- JSF Managed Beans -->
+
+        <!-- Spring Beans -->
+        <managed-property>
+            <property-name>genreManagerBean</property-name>
+            <value>#{genreManagerBean}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean for management the data related with the Director Entity.</description>
+        <managed-bean-name>directorManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.DirectorManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <!-- JSF Managed Beans -->
+
+        <!-- Spring Beans -->
+        <managed-property>
+            <property-name>directorManagerBean</property-name>
+            <value>#{directorManagerBean}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean for management the data related with the City Entity.</description>
+        <managed-bean-name>cityManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.CityManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <!-- JSF Managed Beans -->
+
+        <!-- Spring Beans -->
+        <managed-property>
+            <property-name>cityManagerBean</property-name>
+            <value>#{cityManagerBean}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean for management the data related with the Theater Entity.</description>
+        <managed-bean-name>theaterManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.TheaterManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <!-- JSF Managed Beans -->
+
+        <!-- Spring Beans -->
+        <managed-property>
+            <property-name>theaterManagerBean</property-name>
+            <value>#{theaterManagerBean}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean for management the data related with the Video Format Entity.</description>
+        <managed-bean-name>videoFormatManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.VideoFormatManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <!-- JSF Managed Beans -->
+
+        <!-- Spring Beans -->
+        <managed-property>
+            <property-name>videoFormatManagerBean</property-name>
+            <value>#{videoFormatManagerBean}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean for management the data related with the Classification Entity.</description>
+        <managed-bean-name>classificationManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.ClassificationManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <!-- JSF Managed Beans -->
+
+        <!-- Spring Beans -->
+        <managed-property>
+            <property-name>classificationManagerBean</property-name>
+            <value>#{classificationManagerBean}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <description>Bean for management the data related with the Country Entity.</description>
+        <managed-bean-name>countryManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.CountryManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <!-- JSF Managed Beans -->
+
+        <!-- Spring Beans -->
+        <managed-property>
+            <property-name>countryManagerBean</property-name>
+            <value>#{countryManagerBean}</value>
+        </managed-property>
+    </managed-bean> 
+    <managed-bean>
+        <description>Bean for management the data related with the Language Entity.</description>
+        <managed-bean-name>languageManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.LanguageManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <!-- JSF Managed Beans -->
+
+        <!-- Spring Beans -->
+        <managed-property>
+            <property-name>languageManagerBean</property-name>
+            <value>#{languageManagerBean}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>statusManagedBean</managed-bean-name>
+        <managed-bean-class>co.edu.udea.profarq.cinema.controller.beans.StatusManagedBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+
+        <!-- JSF Managed Beans -->
+
+        <!-- Spring Beans -->
+        <managed-property>
+            <property-name>statusManagerBean</property-name>
+            <value>#{statusManagerBean}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- Navitagion Rules -->
+    <navigation-rule>
+        <from-view-id>/filmsListPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>UPDATE_BILLBOARDS</from-outcome>
+            <to-view-id>/billbardsListPage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>CREATE_FILM</from-outcome>
+            <to-view-id>/filmCreatorPage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>CREATE_BILLBOARD</from-outcome>
+            <to-view-id>/billboardCreatorPage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SHOW_FILM</from-outcome>
+            <to-view-id>/filmViewerPage.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/billbardsListPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>BACK_FILMS_LIST</from-outcome>
+            <to-view-id>/filmsListPage.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/filmCreatorPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>BACK_UPDATED_FILMS_LIST</from-outcome>
+            <to-view-id>/filmsListPage.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/billboardCreatorPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>BACK_FILMS_LIST</from-outcome>
+            <to-view-id>/filmsListPage.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/filmViewerPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>BACK_FILMS_LIST</from-outcome>
+            <to-view-id>/filmsListPage.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
