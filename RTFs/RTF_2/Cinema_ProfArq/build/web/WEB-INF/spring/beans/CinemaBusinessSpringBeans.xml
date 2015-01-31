@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
+
+    <bean id="billboardManagerBean" scope="session"
+          class="co.edu.udea.profarq.cinema.business.spring.BillboardManagerBean" >
+        <property name="billboardDAO" ref="billboardDAO"></property>
+    </bean>
+
+    <bean id="cityManagerBean" scope="session"
+          class="co.edu.udea.profarq.cinema.business.spring.CityManagerBean" >
+        <property name="cityDAO" ref="cityDAO"></property>
+    </bean>
+
+    <bean id="classificationManagerBean" scope="session"
+          class="co.edu.udea.profarq.cinema.business.spring.ClassificationManagerBean" >
+        <property name="classificationDAO" ref="classificationDAO"></property>
+    </bean>
+
+    <bean id="countryManagerBean" scope="session"
+          class="co.edu.udea.profarq.cinema.business.spring.CountryManagerBean" >
+        <property name="countryDAO" ref="countryDAO"></property>
+    </bean>
+
+    <bean id="directorManagerBean" scope="session"
+          class="co.edu.udea.profarq.cinema.business.spring.DirectorManagerBean" >
+        <property name="directorDAO" ref="directorDAO"></property>
+    </bean>
+
+    <bean id="filmManagerBean" scope="session"
+          class="co.edu.udea.profarq.cinema.business.spring.FilmManagerBean" >
+        <property name="filmDAO" ref="filmDAO"></property>
+    </bean>
+
+    <bean id="genreManagerBean" scope="session"
+          class="co.edu.udea.profarq.cinema.business.spring.GenreManagerBean" >
+        <property name="genreDAO" ref="genreDAO"></property>
+    </bean>
+
+    <bean id="languageManagerBean" scope="session"
+          class="co.edu.udea.profarq.cinema.business.spring.LanguageManagerBean" >
+        <property name="languageDAO" ref="languageDAO"></property>
+    </bean>
+
+    <bean id="statusManagerBean" scope="session"
+          class="co.edu.udea.profarq.cinema.business.spring.StatusManagerBean" >
+        <property name="statusDAO" ref="statusDAO"></property>
+    </bean>
+
+    <bean id="theaterManagerBean" scope="session"
+          class="co.edu.udea.profarq.cinema.business.spring.TheaterManagerBean" >
+        <property name="theaterDAO" ref="theaterDAO"></property>
+    </bean>
+
+    <bean id="videoFormatManagerBean" scope="session"
+          class="co.edu.udea.profarq.cinema.business.spring.VideoFormatManagerBean" >
+        <property name="videoFormatDAO" ref="videoFormatDAO"></property>
+    </bean>
+</beans>
