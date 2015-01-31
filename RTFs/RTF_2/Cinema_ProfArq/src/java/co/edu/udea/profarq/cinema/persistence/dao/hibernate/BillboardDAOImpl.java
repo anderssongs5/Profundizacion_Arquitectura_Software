@@ -4,11 +4,14 @@ import co.edu.udea.profarq.cinema.model.entities.Billboard;
 import co.edu.udea.profarq.cinema.model.entities.BillboardPK;
 import co.edu.udea.profarq.cinema.model.entities.Film;
 import co.edu.udea.profarq.cinema.model.entities.IEntity;
+import co.edu.udea.profarq.cinema.model.entities.TheaterPK;
 import co.edu.udea.profarq.cinema.persistence.dao.IBillboardDAO;
 import co.edu.udea.profarq.cinema.persistence.exception.CinemaPersistenceException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -63,6 +66,28 @@ public class BillboardDAOImpl extends AbstractEntityDAO
             throw new CinemaPersistenceException(
                     "Fatal error while the DAO was trying count entities", e);
         }
+    }
+
+    @Override()
+    public List<Billboard> findByTheater(Serializable theaterPK)
+            throws CinemaPersistenceException {
+        TheaterPK tPK = (TheaterPK) theaterPK;
+        Map<String, Serializable> parameteresMap = new HashMap<>();
+        parameteresMap.put("theaterCity", tPK.getCityCode());
+        parameteresMap.put("theater", tPK.getTheater());
+        parameteresMap.put("status", "2");
+
+        List<Billboard> billboardsList = new ArrayList<>();
+        List<IEntity> entitiesList = super.executeNamedQuery(
+                "Billboard.findByTheaterPK", parameteresMap);
+
+        if ((entitiesList != null) && (!entitiesList.isEmpty())) {
+            for (IEntity entity : entitiesList) {
+                billboardsList.add((Billboard) entity);
+            }
+        }
+
+        return (billboardsList);
     }
 
     @Override()

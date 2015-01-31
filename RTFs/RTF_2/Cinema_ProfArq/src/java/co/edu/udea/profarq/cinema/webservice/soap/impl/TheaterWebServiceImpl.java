@@ -65,8 +65,7 @@ public final class TheaterWebServiceImpl implements ITheaterWebService {
 
         if (!TextUtil.isEmpty(cityCode)) {
             try {
-                // TODO: Esto no es.
-                theatersList = this.getTheaterDAO().findAll();
+                theatersList = this.getTheaterDAO().findByCity(cityCode);
 
                 if (theatersList != null) {
                     for (Theater theater : theatersList) {

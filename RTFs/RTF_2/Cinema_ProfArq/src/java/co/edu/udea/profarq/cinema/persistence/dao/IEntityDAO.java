@@ -4,6 +4,7 @@ import co.edu.udea.profarq.cinema.model.entities.IEntity;
 import co.edu.udea.profarq.cinema.persistence.exception.CinemaPersistenceException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -19,7 +20,8 @@ public interface IEntityDAO {
             throws CinemaPersistenceException;
 
     public List<IEntity> executeNamedQuery(String namedQuery,
-            String where, Object whereArg) throws CinemaPersistenceException;
+            Map<String, Serializable> parameteresMap)
+            throws CinemaPersistenceException;
 
     public List<IEntity> findAll(Class<IEntity> clazz)
             throws CinemaPersistenceException;

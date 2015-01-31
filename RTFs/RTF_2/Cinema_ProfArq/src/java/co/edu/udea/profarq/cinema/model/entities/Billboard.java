@@ -43,7 +43,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Billboard.findByVideoFormat",
             query = "SELECT b FROM Billboard b WHERE b.billboardPK.videoFormat = :videoFormat"),
     @NamedQuery(name = "Billboard.findByOutDate",
-            query = "SELECT b FROM Billboard b WHERE b.outDate = :outDate")})
+            query = "SELECT b FROM Billboard b WHERE b.outDate = :outDate"),
+    @NamedQuery(name = "Billboard.findByTheaterPK",
+            query = "SELECT b FROM Billboard b WHERE b.billboardPK.theater = :theater AND b.billboardPK.theaterCity = :theaterCity AND b.status.status = :status")})
 @Table(name = "BILLBOARD")
 @XmlAccessorType(value = XmlAccessType.PROPERTY)
 @XmlRootElement()

@@ -5,6 +5,7 @@ import co.edu.udea.profarq.cinema.persistence.dao.IEntityDAO;
 import co.edu.udea.profarq.cinema.persistence.exception.CinemaPersistenceException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -80,13 +81,18 @@ abstract class AbstractEntityDAO implements IEntityDAO {
 
     @Override()
     @SuppressWarnings(value = {"unchecked"})
-    public List<IEntity> executeNamedQuery(String namedQuery, String where,
-            Object whereArg) throws CinemaPersistenceException {
+    public List<IEntity> executeNamedQuery(String namedQuery,
+            Map<String, Serializable> parameteresMap)
+            throws CinemaPersistenceException {
         List<IEntity> resultList = null;
 
         try {
             Query query = this.getEntityManager().createNamedQuery(namedQuery);
-            query.setParameter(where, whereArg);
+
+            for (String key : parameteresMap.keySet()) {
+                query.setParameter(key, parameteresMap.get(key));
+            }
+
             resultList = query.getResultList();
         } catch (Exception e) {
             throw new CinemaPersistenceException(

@@ -1,11 +1,13 @@
 package co.edu.udea.profarq.cinema.webservice.restful.impl;
 
 import co.edu.udea.profarq.cinema.model.entities.Billboard;
+import co.edu.udea.profarq.cinema.model.entities.TheaterPK;
 import co.edu.udea.profarq.cinema.persistence.dao.IBillboardDAO;
 import co.edu.udea.profarq.cinema.persistence.exception.CinemaPersistenceException;
 import co.edu.udea.profarq.cinema.util.TextUtil;
 import co.edu.udea.profarq.cinema.webservice.restful.IBillboardWebService;
 import co.edu.udea.profarq.cinema.webservice.restful.contract.RESTfulWebServiceContract;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,17 +62,17 @@ public final class BillboardWebServiceImpl implements IBillboardWebService {
                 getRequiredWebApplicationContext(this.context);
         this.setBillboardDAO(applicationContext.getBean(IBillboardDAO.class));
 
-        List<Billboard> billboardsList = null;
+        List<Billboard> billboardsList = new ArrayList<>();
 
         if (!(TextUtil.isEmpty(cityCode)) && !(TextUtil.isEmpty(theater))) {
             try {
-                // TODO: Esto no es.
-                billboardsList = this.getBillboardDAO().findAll();
+                billboardsList = this.getBillboardDAO().findByTheater(
+                        new TheaterPK(cityCode, theater));
             } catch (CinemaPersistenceException ex) {
                 Logger.getLogger(TAG).log(Level.SEVERE, null, ex);
             }
         }
 
-        return (billboardsList);
+        return ((billboardsList.isEmpty()) ? null : billboardsList);
     }
 }
