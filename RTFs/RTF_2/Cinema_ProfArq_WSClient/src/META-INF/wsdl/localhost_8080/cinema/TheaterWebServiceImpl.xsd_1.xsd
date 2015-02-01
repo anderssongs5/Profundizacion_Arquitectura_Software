@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2.0-1 (tags/2.2.0u1-7139; 2012-06-02T10:55:19+0000) JAXWS-RI/2.2.6-2 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://impl.soap.webservice.cinema.profarq.udea.edu.co/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://impl.soap.webservice.cinema.profarq.udea.edu.co/">
+
+<xs:element name="city" type="tns:city"/>
+
+<xs:element name="findTheatersByCity" type="tns:findTheatersByCity"/>
+
+<xs:element name="findTheatersByCityResponse" type="tns:findTheatersByCityResponse"/>
+
+<xs:element name="theater" type="tns:theater"/>
+
+<xs:complexType name="city">
+<xs:sequence>
+<xs:element name="city" type="xs:string" minOccurs="0"/>
+<xs:element name="code" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="theater">
+<xs:sequence>
+<xs:element name="address" type="xs:string" minOccurs="0"/>
+<xs:element ref="tns:city" minOccurs="0"/>
+<xs:element name="theaterPK" type="tns:theaterPK" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="theaterPK">
+<xs:sequence>
+<xs:element name="cityCode" type="xs:string" minOccurs="0"/>
+<xs:element name="theater" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findTheatersByCity">
+<xs:sequence>
+<xs:element name="city" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findTheatersByCityResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:theater" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
