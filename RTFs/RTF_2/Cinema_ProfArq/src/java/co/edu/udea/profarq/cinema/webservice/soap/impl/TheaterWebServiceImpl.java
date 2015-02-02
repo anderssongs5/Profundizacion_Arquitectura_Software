@@ -69,6 +69,10 @@ public final class TheaterWebServiceImpl implements ITheaterWebService {
     }
     
     /**
+     * M&eacute;todo que se llama desde el constructor del Objeto, de forma que 
+     * todo el contenido alojado en el interior de este m&eacute;todo es llamado
+     * una vez, cuando la clase es instanciada, es decir que cada que se 
+     * instanc&iacute;a esta clase el m&eacute;todo init es llamado.
      * 
      */
     @PostConstruct()
@@ -79,7 +83,13 @@ public final class TheaterWebServiceImpl implements ITheaterWebService {
 
     
     /**
+     * M&eacute;todo que permite obtener una instancia de la clase 
+     * {@code TheaterDAO} para permitir de esta manera realizar cada una de las 
+     * operaciones que tengan que ver con la entidad {@code Theater} y sus
+     * funciones en la capa de persistencia.
      * 
+     * @return Interfaz que representa las operaciones a nivel de la capa de 
+     * persistencia que pueden realizarse sobre la entidad {@code Theater}.
      */
     @WebMethod(exclude = true)
     public ITheaterDAO getTheaterDAO() {
@@ -89,7 +99,14 @@ public final class TheaterWebServiceImpl implements ITheaterWebService {
 
     
     /**
+     * M&eacute;todo que permite asignar una nueva instancia de la clase 
+     * {@code TheaterDAO} para permitir de esta manera realizar cada una de las 
+     * operaciones que tengan que ver con la entidad {@code Theater} y sus
+     * funciones en la capa de persistencia.
      * 
+     * @param theaterDAO Interfaz que representa las operaciones a nivel de la 
+     * capa de persistencia que pueden realizarse sobre la entidad 
+     * {@code Theater}.
      */
     @WebMethod(exclude = true)
     public void setTheaterDAO(ITheaterDAO theaterDAO) {
