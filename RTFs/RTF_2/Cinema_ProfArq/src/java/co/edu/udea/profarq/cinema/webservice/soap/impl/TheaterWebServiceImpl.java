@@ -20,18 +20,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 /**
- * Clase que implementa una interfaz, la cual le provee un Servicio Web para ser 
+ * Clase que implementa una interfaz, la cual le provee un Servicio Web para ser
  * ejecutado a trav&eacute;s de la tecnolog&iacute;a <b>S.O.A.P</b>, permitiendo
  * en este caso el paso de mensajes entre dos o más sistemas.
  * <p>
- * La funci&oacute;n de esta clase es implementar los m&eacute;todos expuestos 
- * por la interfaz de manera que ofrezcan el acceso a las funciones orientadas 
+ * La funci&oacute;n de esta clase es implementar los m&eacute;todos expuestos
+ * por la interfaz de manera que ofrezcan el acceso a las funciones orientadas
  * al manejo de la entidad {@code Theater}.
  * <p>
  * Al ser un Servicio Web a trav&eacute;s de S.O.A.P., todos los m&eacute;todos
  * o funciones aqu&iacute; implementadas est&aacute;n orientadas al acceso o
  * invocaci&oacute;n de m&eacute;todos o funciones relacionados con la
- * l&oacute;gica de la aplicaci&oacute;n y los procesos del negocio del Cinema 
+ * l&oacute;gica de la aplicaci&oacute;n y los procesos del negocio del Cinema
  * orientados al manejo de la entidad {@code Theater}.
  *
  * @author Andersson Garc&iacute;a Sotelo
@@ -44,36 +44,35 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 public final class TheaterWebServiceImpl implements ITheaterWebService {
 
     /**
-     * Variable global final est&aacute;tica que representa un tag que 
+     * Variable global final est&aacute;tica que representa un tag que
      * identifica la clase, de manera que pueda ser identificada en diversos
      * procesos que se lleven a cabo dentro de la aplicaci&oacute;n.
      */
     private static final String TAG = TheaterWebServiceImpl.class.getName();
 
-     /**
-     * Entidad inyectada que es utilizada para el manejo a nivel de la capa de 
-     * persistencia en la aplicaci&oacute;n orientada a cada una de las 
-     * operaciones que puedan realizarse sobre la entidad {@code Theatre}.
+    /**
+     * Entidad inyectada que es utilizada para el manejo a nivel de la capa de
+     * persistencia en la aplicaci&oacute;n orientada a cada una de las
+     * operaciones que puedan realizarse sobre la entidad {@code Theater}.
      */
     @Autowired()
     private ITheaterDAO theaterDAO;
 
     /**
-     * Constructor p&uacute;blico que permite generaci&oacute;n de instancias 
-     * de esta clase. De es modo, crea un nuevo servicio web orientado a las 
-     * operaciones que pueden realizarse sobre la entidad {@code Theatre} y que
+     * Constructor p&uacute;blico que permite generaci&oacute;n de instancias de
+     * esta clase. De es modo, crea un nuevo servicio web orientado a las
+     * operaciones que pueden realizarse sobre la entidad {@code Theater} y que
      * son expuestas para que sean consumidas por un cliente.
      */
     public TheaterWebServiceImpl() {
         super();
     }
-    
+
     /**
-     * M&eacute;todo que se llama desde el constructor del Objeto, de forma que 
+     * M&eacute;todo que se llama desde el constructor del Objeto, de forma que
      * todo el contenido alojado en el interior de este m&eacute;todo es llamado
-     * una vez, cuando la clase es instanciada, es decir que cada que se 
+     * una vez, cuando la clase es instanciada, es decir que cada que se
      * instanc&iacute;a esta clase el m&eacute;todo init es llamado.
-     * 
      */
     @PostConstruct()
     @WebMethod(exclude = true)
@@ -81,14 +80,13 @@ public final class TheaterWebServiceImpl implements ITheaterWebService {
         SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
     }
 
-    
     /**
-     * M&eacute;todo que permite obtener una instancia de la clase 
-     * {@code TheaterDAO} para permitir de esta manera realizar cada una de las 
+     * M&eacute;todo que permite obtener una instancia de la clase
+     * {@code TheaterDAO} para permitir de esta manera realizar cada una de las
      * operaciones que tengan que ver con la entidad {@code Theater} y sus
      * funciones en la capa de persistencia.
-     * 
-     * @return Interfaz que representa las operaciones a nivel de la capa de 
+     *
+     * @return Interfaz que representa las operaciones a nivel de la capa de
      * persistencia que pueden realizarse sobre la entidad {@code Theater}.
      */
     @WebMethod(exclude = true)
@@ -97,15 +95,14 @@ public final class TheaterWebServiceImpl implements ITheaterWebService {
         return (this.theaterDAO);
     }
 
-    
     /**
-     * M&eacute;todo que permite asignar una nueva instancia de la clase 
-     * {@code TheaterDAO} para permitir de esta manera realizar cada una de las 
+     * M&eacute;todo que permite asignar una nueva instancia de la clase
+     * {@code TheaterDAO} para permitir de esta manera realizar cada una de las
      * operaciones que tengan que ver con la entidad {@code Theater} y sus
      * funciones en la capa de persistencia.
-     * 
-     * @param theaterDAO Interfaz que representa las operaciones a nivel de la 
-     * capa de persistencia que pueden realizarse sobre la entidad 
+     *
+     * @param theaterDAO Interfaz que representa las operaciones a nivel de la
+     * capa de persistencia que pueden realizarse sobre la entidad
      * {@code Theater}.
      */
     @WebMethod(exclude = true)
@@ -113,8 +110,8 @@ public final class TheaterWebServiceImpl implements ITheaterWebService {
         this.theaterDAO = theaterDAO;
     }
 
-       /**
-     * M&eacute;todo o funci&oacute;n del Servicio Web que implementa un punto 
+    /**
+     * M&eacute;todo o funci&oacute;n del Servicio Web que implementa un punto
      * de invocaci&oacute;n al m&eacute;todo o proceso relacionados con las
      * instancias o entidades {@code Theater}, las cuales representan los
      * Teatros ubicados en cierta Ciudad de inter&eacute;s.
