@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cinema Prof Arq</title>
+<script type="text/javascript" src="./resources/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="./resources/js/angular/angular.js"></script>
+<script type="text/javascript"
+	src="./resources/js/angular/angular-route.js"></script>
+<script type="text/javascript"
+	src="./resources/js/angular/angular-cookies.js"></script>
+<script type="text/javascript"
+	src="./resources/js/module/cinema_profarq.js"></script>
+<script type="text/javascript"
+	src="./resources/js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+<script type="text/javascript" src="./resources/js/bootstrap.js"></script>
+<script type="text/javascript" src="./resources/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/bootstrap-theme.css">
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/bootstrap.css">
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/bootstrap-theme.css.map">
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/bootstrap.css.map">
+</head>
+<body ng-app="cinema_profarq">
+	<div class="container" ng-controller="billboardController">
+		<center>
+			<h1>Consumo de Servicio Web RESTful</h1>
+			<br> <select ng-model="selectedOption">
+				<option ng-repeat="t in theaters"
+					value="{{t.theater}},{{t.cityCode}}">{{t.theater}} -
+					{{t.cityName}}</option>
+			</select>
+
+			<div class="form-group">
+				<button type="submit" ng-click="findBillboards()"
+					class="btn btn-primary">
+					<span class="glyphicon glyphicon-share"></span> Buscar Carteleras
+				</button>
+			</div>
+			<br /> <br />
+			<table class="table table-bordered">
+				<tr>
+					<th style="text-align: center">T&iacute;tulo</th>
+					<th style="text-align: center">Pa&iacute;s</th>
+					<th style="text-align: center">Audio</th>
+					<th style="text-align: center">Subt&iacute;tulos</th>
+					<th style="text-align: center">Sinopsis</th>
+					<th style="text-align: center">Formato Video</th>
+					<th style="text-align: center">Clasificac&iacute;on</th>
+				</tr>
+				<tr ng-repeat="item in billboards">
+					<td style="text-align: justify;">{{item.film.pseudonym}}</td>
+					<td style="text-align: center">{{item.film.country.country}}</td>
+					<td style="text-align: center">{{item.audioFormat.languages1.languageName}}</td>
+					<td style="text-align: center">{{item.audioFormat.languages.languageName}}</td>
+					<td style="text-align: justify">{{item.film.sypnosis}}</td>
+					<td style="text-align: center">{{item.videoFormat1.videoFormat}}</td>
+					<td style="text-align: center">{{item.film.classification.age}}</td>
+				</tr>
+			</table>
+		</center>
+	</div>
+</body>
+</html>
