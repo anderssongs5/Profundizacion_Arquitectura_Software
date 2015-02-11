@@ -28,7 +28,8 @@
             function initialize() {
                 createGoogleMap(6.267577, -75.568995, 16,
                         createInfoWindowContent('Universidad de Antioquia',
-                                'Calle 67 #53 - 108', 'Medellín', 'Antioquia'));
+                                'Calle 67 #53 - 108', 'Medellín', 'Antioquia',
+                                'Colombia'));
             }
 
             function onShowGoogleMap(fullNames, address, building, city, zip) {
@@ -57,10 +58,10 @@
                             createGoogleMap(latitude, longitude, 17,
                                     infoWindowContent);
                         } else {
+                            initialize();
+
                             alert('No se ha podido obtener información desde el Servicio Web de Google.\n\n'
                                     .concat(infoWindowContent));
-
-                            initialize();
                         }
                     }
                 };
