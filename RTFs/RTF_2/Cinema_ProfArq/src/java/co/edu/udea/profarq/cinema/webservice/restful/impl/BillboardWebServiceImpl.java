@@ -107,7 +107,6 @@ public final class BillboardWebServiceImpl implements IBillboardWebService {
         this.billboardDAO = billboardDAO;
     }
 
-    @Consumes(value = {MediaType.APPLICATION_JSON})
     @GET()
     @Override()
     @Path(value = RESTfulWebServiceContract.BillboardWebService.FIND_BILLBOARDS_BY_THEATER_PATH)
